@@ -110,6 +110,14 @@ function Hero({ copy }: { copy: Copy }) {
         </div>
         <div className="hero__meta"><SocialLinks /><span /> <p>{copy.location}</p></div>
       </div>
+      <div className="portrait-wrap">
+        <div className="portrait-frame">
+          <img src="/profile.jpg" alt={`${profile.name} profil fotoğrafı`} />
+          <div className="portrait-caption"><span className="status-dot" /><div><strong>{copy.availability}</strong><small>{copy.role}</small></div></div>
+        </div>
+        <span className="portrait-mark portrait-mark--top">✦</span>
+        <span className="portrait-mark portrait-mark--bottom">{profile.shortName}</span>
+      </div>
     </section>
   );
 }
