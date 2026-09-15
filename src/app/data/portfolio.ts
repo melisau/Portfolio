@@ -8,7 +8,6 @@ import {
   Wrench,
 } from "lucide-react";
 import type { Experience, Project, SkillGroup, SocialLink } from "../types/portfolio";
-import profilePhoto from "./meu.jpg";
 
 /* Portfolyodaki tüm değişken içerik bu dosyada tutulur. */
 export const profile = {
@@ -24,7 +23,6 @@ export const profile = {
   email: "melisauyar5225@gmail.com",
   location: "Muğla, Türkiye",
   availability: "Çalışmaya açık",
-  photo: profilePhoto,
   resumeUrl: "/melisa-uyar-cv.pdf",
 };
 
@@ -37,7 +35,7 @@ export const navigation = [
 ];
 
 export const metrics = [
-  { value: "9", label: "Öne çıkan proje" },
+  { value: "5", label: "Öne çıkan proje" },
   { value: "2025", label: "Mezuniyet yılı" },
   { value: "Uzaktan", label: "Çalışma tercihi" },
 ];
@@ -82,58 +80,49 @@ export const skillGroups: SkillGroup[] = [
 
 export const projects: Project[] = [
   {
-    title: "BudgetBuddy", category: "Web Application",
-    summary: "Kişisel ve aile bütçe yönetimi için geliştirilen web uygulaması.",
-    technologies: ["SvelteKit", "Firebase", "JavaScript"], year: "Bireysel Proje", accent: "#00e5b0",
+    title: "Atatürk Digital Archive",
+    category: "Digital Archive",
+    summary: "A large-scale digital archive featuring multi-filter galleries, PDF viewing, light/dark mode, and interactive content sections.",
+    technologies: ["Shopify", "Liquid", "JavaScript", "Metafields"],
+    year: "Professional Project",
+    accent: "#b91c1c",
+    image: "https://images.unsplash.com/photo-1568667256549-094345857637?w=1200&auto=format&q=85",
+  },
+  {
+    title: "Budget Buddy",
+    category: "Finance Platform",
+    summary: "Personal and family finance tracker with RBAC, secure receipt uploads, CSV export, and AI-assisted financial explanations.",
+    technologies: ["Next.js", "Supabase", "PostgreSQL", "Clerk", "Tailwind"],
+    year: "Personal Project",
+    accent: "#0f766e",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&auto=format&q=85",
   },
   {
-    title: "Offline Question & Answer Platform", category: "Full-Stack Platform",
-    summary: "İnternet erişimi olmayan kurumlar için geliştirilen kurumsal soru-cevap ve dokümantasyon platformu.",
-    technologies: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Svelte"], year: "Kurumsal Proje", accent: "#7c3aed",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&q=85",
+    title: "Pin & Paper Journal",
+    category: "Journal Application",
+    summary: "A Pinterest-inspired bullet journal utilizing client-side AES-256-GCM browser encryption and password wrapping keys.",
+    technologies: ["React", "Supabase", "Web Crypto API", "RLS"],
+    year: "Personal Project",
+    accent: "#be185d",
+    image: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200&auto=format&q=85",
   },
   {
-    title: "Shopify Theme Development", category: "E-Commerce Development",
-    summary: "Shopify mağazaları için responsive tema geliştirme, Liquid özelleştirmeleri, performans ve UI/UX iyileştirmeleri ile özel section çalışmaları.",
-    technologies: ["Shopify Liquid", "HTML", "CSS", "JavaScript"], year: "Profesyonel", accent: "#f59e0b",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&q=85",
+    title: "Luma",
+    category: "Event Platform",
+    summary: "Digital invitation platform with guest RSVP, shared event photo galleries, and an isolated administrative dashboard API.",
+    technologies: ["React", "FastAPI", "PostgreSQL", "Railway"],
+    year: "Personal Project",
+    accent: "#7c3aed",
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&auto=format&q=85",
   },
   {
-    title: "FTP / SFTP Desktop Client", category: "Desktop Application",
-    summary: "Dosya yönetimi sağlayan masaüstü FTP/SFTP istemcisi.",
-    technologies: ["Python", "wxPython", "Paramiko"], year: "Akademik Proje", accent: "#ef4444",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&q=85",
-  },
-  {
-    title: "Iris Decision Tree Classification", category: "Machine Learning",
-    summary: "Makine öğrenmesi kullanılarak Iris veri seti üzerinde geliştirilen sınıflandırma uygulaması.",
-    technologies: ["Python", "Scikit-learn"], year: "Akademik Proje", accent: "#06b6d4",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&q=85",
-  },
-  {
-    title: "N-Queens Artificial Intelligence Solver", category: "Artificial Intelligence",
-    summary: "BFS, DFS, Uniform Cost, Greedy Search, A*, Hill Climbing ve Genetic Algorithm kullanılarak N-Queens probleminin çözümü.",
-    technologies: ["Python", "Search Algorithms", "Genetic Algorithm"], year: "Akademik Proje", accent: "#8b5cf6",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&q=85",
-  },
-  {
-    title: "Numerical Methods API", category: "REST API",
-    summary: "Sabit Nokta (Fixed Point Iteration) yöntemiyle kök bulan REST API.",
-    technologies: ["Flask", "Python"], year: "Akademik Proje", accent: "#14b8a6",
-    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1200&auto=format&q=85",
-  },
-  {
-    title: "Party Simulation", category: "Concurrency",
-    summary: "Java Thread kullanılarak geliştirilen eş zamanlılık simülasyonu.",
-    technologies: ["Java", "Threads"], year: "Akademik Proje", accent: "#f97316",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&q=85",
-  },
-  {
-    title: "Temperature Monitoring System", category: "Embedded Systems",
-    summary: "PIC16F877A mikrodenetleyicisi ile geliştirilen sıcaklık ölçüm sistemi.",
-    technologies: ["C", "MikroC", "Proteus", "PIC16F877A"], year: "Akademik Proje", accent: "#ec4899",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&auto=format&q=85",
+    title: "Full-Stack Blog Platform",
+    category: "Content Platform",
+    summary: "Async RESTful blogging platform featuring JWT authentication, dynamic follower feeds, categories, and notifications.",
+    technologies: ["FastAPI", "MongoDB", "React", "Beanie"],
+    year: "Personal Project",
+    accent: "#2563eb",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&auto=format&q=85",
   },
 ];
 
