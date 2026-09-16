@@ -10,6 +10,7 @@ import {
   MapPin,
   Menu,
   Moon,
+  Phone,
   Send,
   Sun,
   X,
@@ -198,7 +199,7 @@ function Contact({ copy }: { copy: Copy }) {
   }
   return (
     <section className="section contact container" id="contact">
-      <div className="contact__copy"><p className="section-kicker"><span>05</span>{copy.section.contact[0]}</p><h2>{copy.section.contact[1]}</h2><p>{copy.contactText}</p><a href={`mailto:${profile.email}`}><Mail size={17} />{profile.email}</a><span><MapPin size={17} />{copy.location}</span><SocialLinks boxed /></div>
+      <div className="contact__copy"><p className="section-kicker"><span>05</span>{copy.section.contact[0]}</p><h2>{copy.section.contact[1]}</h2><p>{copy.contactText}</p><a href={`mailto:${profile.email}`}><Mail size={17} />{profile.email}</a><a href={`tel:${profile.phone.replaceAll(" ", "")}`}><Phone size={17} />{profile.phone}</a><span><MapPin size={17} />{copy.location}</span><SocialLinks boxed /></div>
       <form className="contact-form" onSubmit={submit}><div className="field-row"><label>{copy.name}<input name="name" required placeholder={copy.namePh} /></label><label>{copy.email}<input name="email" type="email" required placeholder="mail@example.com" /></label></div><label>{copy.message}<textarea name="message" required rows={6} placeholder={copy.messagePh} /></label><button className="button" type="submit">{sent ? copy.sent : copy.send}{sent ? <CheckCircle2 size={17} /> : <Send size={17} />}</button></form>
     </section>
   );
