@@ -7,12 +7,14 @@ export type SocialLink = {
 };
 
 export type Project = {
+  slug: string;
   title: string;
   category: string;
   summary: string;
   technologies: string[];
   year: string;
   image: string;
+  imageFit?: "cover" | "contain";
   accent: string;
   liveUrl?: string;
   sourceUrl?: string;
