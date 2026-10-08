@@ -218,7 +218,6 @@ footer .container { display: flex; align-items: center; justify-content: space-b
 .detail-hero h1, .project-detail > h1 { margin: 0; font: 650 clamp(2.7rem, 6vw, 5.5rem)/1.04 'Outfit', sans-serif; letter-spacing: -.055em; overflow-wrap: anywhere; }
 .detail-hero > p { max-width: 780px; margin: 1.5rem 0; color: var(--muted-foreground); font-size: clamp(1.08rem, 2vw, 1.4rem); line-height: 1.6; }
 .detail-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-.detail-demo-note { display: block; margin-top: 1.25rem; color: var(--muted-foreground); line-height: 1.6; }
 .detail-cover { margin: 0 0 4.5rem; }
 .detail-cover > img { width: 100%; max-height: 620px; object-fit: contain; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
 .detail-cover--landing > img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }

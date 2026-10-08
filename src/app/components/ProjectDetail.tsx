@@ -20,7 +20,7 @@ export function ProjectDetail({ project, language }: { project: ProjectDetailDat
     ['purpose', labels.purpose], ['role', labels.role], ['features', labels.features], ['architecture', labels.architecture],
     ...(content.decisions.length ? [['decisions', labels.decisions]] : []),
     ...(content.challenges.length ? [['challenges', labels.challenges]] : []),
-    ...(project.image ? [['media', labels.media]] : []), ['limits', labels.limits],
+    ...(project.image ? [['media', labels.media]] : []),
   ];
   return <div className="project-detail container">
     <a className="detail-back text-link" href={`${homePath(language)}#projects`}><ArrowLeft size={16} />{labels.back}</a>
@@ -31,7 +31,6 @@ export function ProjectDetail({ project, language }: { project: ProjectDetailDat
         {project.liveUrl && <a className="button" href={project.liveUrl} target="_blank" rel="noreferrer">{copy.live}<ExternalLink size={16} /></a>}
         {project.links.map(link => <a className="text-link" key={link.url} href={link.url} target="_blank" rel="noreferrer"><Github size={16} />{link.label === 'GitHub' ? copy.source : link.label}</a>)}
       </div>
-      {!project.liveUrl && <small className="detail-demo-note">{labels.noDemo}</small>}
     </header>
     {project.image && <figure className={`detail-cover${project.slug === 'luma' ? ' detail-cover--landing' : ''}`}><SafeImage src={project.image} alt={`${project.title} — ${copy.projectImage}`} fallbackLabel={copy.imageUnavailable} /><figcaption>{content.caption}</figcaption></figure>}
     <div className="detail-layout">
@@ -48,7 +47,6 @@ export function ProjectDetail({ project, language }: { project: ProjectDetailDat
         {content.decisions.length > 0 && <section id="detail-decisions"><h2>{labels.decisions}</h2><ul className="detail-list">{content.decisions.map(item => <li key={item}>{item}</li>)}</ul></section>}
         {content.challenges.length > 0 && <section id="detail-challenges"><h2>{labels.challenges}</h2>{content.challenges.map(item => <p className="detail-challenge" key={item}>{item}</p>)}</section>}
         {project.image && <section id="detail-media"><h2>{labels.media}</h2><button ref={imageButton} type="button" className="detail-media-button" onClick={() => dialogRef.current?.showModal()} aria-label={`${labels.expand}: ${project.title}`}><SafeImage src={project.image} alt={`${project.title} — ${copy.projectImage}`} fallbackLabel={copy.imageUnavailable} loading="lazy" /><span><Maximize2 size={16} />{labels.expand}</span></button><p className="detail-caption">{content.caption}</p></section>}
-        <section id="detail-limits"><h2>{labels.limits}</h2><p>{content.limits}</p></section>
         <a className="detail-next" href={projectPath(next.slug, language)}><small>{labels.next}</small><span>{next.title}<ArrowUpRight /></span></a>
       </div>
     </div>

@@ -215,7 +215,10 @@ for (const language of ['tr', 'en', 'de'] as const) {
       await expect(page.locator('#detail-purpose h2')).toHaveText(detailLabels[language].purpose);
       await expect(page.locator('#detail-role')).toContainText(project.copy[language].role);
       await expect(page.locator('#detail-features li')).toHaveCount(project.copy[language].features.length);
-      await expect(page.locator('#detail-limits')).toContainText(project.copy[language].limits);
+      await expect(page.locator('#detail-limits')).toHaveCount(0);
+      await expect(page.locator('a[href="#detail-limits"]')).toHaveCount(0);
+      await expect(page.getByText(detailLabels[language].limits, { exact: true })).toHaveCount(0);
+      await expect(page.getByText(detailLabels[language].noDemo, { exact: true })).toHaveCount(0);
       await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
       const html = await (await request.get(path)).text();
       expect(html).toContain(project.copy[language].tagline);
