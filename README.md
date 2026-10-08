@@ -27,6 +27,12 @@ npm run dev
 - SEO metinleri `src/app/data/seo.mjs`, arayüz çevirileri `i18n.ts`, erişilebilirlik metinleri `interfaceText.ts` içindedir.
 - Favicon `public/favicon.svg`, paylaşım görseli `public/social-preview.png` (1200×630). Kartın vektör kaynağı `scripts/social-card.svg`; yeniden üretmek için `npm run generate:social`.
 
+## Yayın onayı
+
+GitHub gönderimleri canlı siteyi otomatik güncellemez: `vercel.json` içindeki `git.deploymentEnabled: false` Git kaynaklı otomatik deployment'ları kapatır. Mevcut canlı sürüm yayında kalır. Bu ayar otomatik bir onay bildirimi oluşturmaz.
+
+Her yeni canlı yayın için Melisa'dan değişikliklere özel açık onay alınmalıdır; yalnızca GitHub'a gönderme izni canlı yayın izni değildir. Onaydan sonra Vercel panelinden ilgili Git commit'i seçerek manuel deployment başlatın (veya yetkili CLI/API kullanın), sonucu doğrulayın. Otomatik yayını yeniden açmayın.
+
 ## Proje detay içerikleri
 
 `src/app/data/projectDetails.mjs` üç dilde düzenlenmiş README anlık görüntülerini tutar. Kaynak bağlantıları ve kontrol tarihi her kayıtta bulunur; ziyaret sırasında GitHub'dan içerik çekilmez. README değiştiğinde içerik bilinçli olarak yeniden incelenmelidir.
