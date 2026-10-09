@@ -13,13 +13,13 @@ import type { Experience, Project, SkillGroup, SocialLink } from "../types/portf
 export const profile = {
   name: "Melisa Uyar",
   shortName: "MU",
-  role: "Full-Stack Developer | Fintech & E-Commerce Platforms",
+  role: "Full-Stack & Shopify Developer",
   eyebrow: "Merhaba, ben Melisa",
-  headline: "Fintech ve e-ticaret için güvenli, ölçeklenebilir web uygulamaları geliştiriyorum.",
+  headline: "Web uygulamaları ve Shopify deneyimleri geliştiriyorum.",
   summary:
-    "Üretim ortamında kullanılan fintech, e-ticaret ve şifreli depolama uygulamaları geliştiren Full-Stack ve Shopify Developer'ım. Modern frontend/backend mimarileri, Shopify Liquid ve istemci tarafı kriptografi protokolleriyle yüksek performanslı, erişilebilir ve güvenli web çözümleri geliştiriyorum.",
+    "React, FastAPI ve PostgreSQL ile arayüzden veritabanına uzanan projeler üzerinde çalışıyorum.",
   about:
-    "Backend tarafında Node.js, Python, FastAPI, REST API, Supabase ve PostgreSQL; frontend ve e-ticaret tarafında React, JavaScript, HTML, CSS, Shopify Liquid ve responsive UI/UX ile çalışıyorum. Figma tasarımlarını erişilebilir ve yeniden kullanılabilir bileşenlere dönüştürüyorum.",
+    "Bireysel projelerimde Budget Buddy ile bütçe takibi ve hesap yetkilendirmesi, Luma ile dijital davetiye ve misafir yanıtları, Pin & Paper Journal ile tarayıcı tarafı şifreleme üzerinde çalışıyorum. Bu projelerde React, Next.js, FastAPI, Supabase ve PostgreSQL kullanıyorum.",
   email: "melisauyar5225@gmail.com",
   phone: "+90 537 428 00 11",
   location: "Muğla, Türkiye",
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     category: "Finance Platform",
     summary: "Personal and family finance tracker with RBAC, secure receipt uploads, CSV export, and AI-assisted financial explanations.",
     technologies: ["Next.js", "Supabase", "PostgreSQL", "Supabase Auth", "Tailwind"],
-    year: "Jan 2025 — Present",
+    year: "Personal Project · Jan 2025 — Present",
     accent: "#0f766e",
     image: "/projects/budget-buddy.png",
     sourceUrl: "https://github.com/melisau/budget-buddy",
@@ -174,10 +174,10 @@ export const projects: Project[] = [
 
 export const experience: Experience[] = [
   {
-    title: "Freelance Full-Stack Developer",
-    organization: "Self-Employed · Independent Projects",
+    title: "Full-Stack Developer · Bireysel Projeler",
+    organization: "Bireysel Projeler",
     period: "Ağustos 2025 — Günümüz",
-    description: "Fintech ve kişisel üretkenlik alanlarındaki müşteriler için Budget Buddy, Pin & Paper Journal ve Luma platformlarını React, FastAPI, Supabase ve Web Crypto API kullanarak tasarladım ve geliştirdim. Üretim ortamında çalışan full-stack web uygulamalarının mimarisini kurup yayına aldım.",
+    description: "Budget Buddy, Pin & Paper Journal ve Luma'yı bireysel projeler olarak tasarlıyor ve geliştiriyorum. Bütçe takibi, tarayıcı tarafı şifreleme ve dijital davetiye akışları üzerinde çalışıyor; arayüz, API ve veri modellerini geliştiriyorum.",
   },
   {
     title: "Full-Stack Developer",

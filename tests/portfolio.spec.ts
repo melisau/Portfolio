@@ -4,6 +4,7 @@ import { interfaceText } from '../src/app/data/interfaceText';
 import { projectDetails } from '../src/app/data/projectDetails.mjs';
 import { detailLabels } from '../src/app/data/detailLabels';
 import { projectPath } from '../src/app/utils/routes.mjs';
+import { translations } from '../src/app/data/i18n';
 
 test.beforeEach(async ({ page }) => {
   // Remote stock photos/fonts are not required for functional tests; use a deterministic image response.
@@ -35,6 +36,24 @@ for (const language of ['tr', 'en', 'de'] as const) {
       await expect(page.getByRole('combobox', { name: interfaceText[language].languageLabel })).toBeVisible();
       await expect(page.locator('.portrait-frame img')).toHaveAttribute('alt', interfaceText[language].portraitAlt);
       await expect(page.locator('.project-card')).toHaveCount(8);
+      const copy = translations[language];
+      await expect(page.locator('.nav-links a[href="#experience"]')).toHaveText(copy.nav[3]);
+      await expect(page.locator('.timeline-item').first()).toContainText(copy.experienceDescriptions[0]);
+      await expect(page.locator('.timeline-item').first()).not.toContainText(/müşteriler|\bclients\b|\bKunden\b|Freelance|Self-Employed/);
+      await expect(page.locator('#about')).toContainText(copy.about);
+      for (const index of [0, 2, 4]) {
+        await expect(page.locator('.project-card').nth(index).locator('.project-card__meta')).toContainText(copy.projectYears[index]);
+      }
+      if (testInfo.project.name === 'mobile') {
+        await expect(page.locator('.hero__actions .button')).toBeInViewport({ ratio: 1 });
+        await expect(page.locator('.hero__summary')).toBeHidden();
+        const title = await page.locator('.hero__title').boundingBox();
+        const action = await page.locator('.hero__actions .button').boundingBox();
+        const portrait = await page.locator('.portrait-wrap').boundingBox();
+        expect(title!.y + title!.height).toBeLessThan(action!.y);
+        expect(action!.y + action!.height).toBeLessThan(portrait!.y);
+        expect(portrait!.width).toBeLessThanOrEqual(200);
+      }
       await expect(page.locator('vite-error-overlay')).toHaveCount(0);
       await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
       await page.screenshot({ path: testInfo.outputPath(`${language}-${theme}.png`) });
@@ -62,6 +81,20 @@ test('language switch updates metadata, URL and back/forward history', async ({ 
   await page.reload();
   await expect(page).toHaveTitle(seo.en.title);
 });
+
+for (const language of ['tr', 'en', 'de'] as const) {
+  test(`compact phone layout: ${language}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 844 });
+    await page.goto(language === 'tr' ? '/' : `/${language}/`);
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('.hero__actions .button')).toBeInViewport({ ratio: 1 });
+    const overflowing = await page.locator('body *').evaluateAll(elements => elements
+      .filter(element => element.getBoundingClientRect().right > document.documentElement.clientWidth + 1)
+      .map(element => ({ tag: element.tagName, className: element.className, text: element.textContent?.slice(0, 70) })));
+    expect(overflowing).toEqual([]);
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+}
 
 test('invalid preferences fall back safely', async ({ page }) => {
   await page.addInitScript(() => { localStorage.setItem('portfolio-language', '__proto__'); localStorage.setItem('portfolio-theme', 'invalid'); });

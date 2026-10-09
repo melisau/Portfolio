@@ -279,8 +279,8 @@ footer .container { display: flex; align-items: center; justify-content: space-b
   .nav-links a { font: 600 1.5rem 'Outfit'; }
   .menu-button { display: flex; }
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 7.5rem; padding-bottom: 4.5rem; }
-  .hero__copy { order: 2; max-width: 760px; }
-  .portrait-wrap { order: 1; width: min(70vw, 340px); justify-self: center; }
+  .hero__copy { max-width: 760px; }
+  .portrait-wrap { width: min(48vw, 240px); justify-self: center; }
   .skill-grid { grid-template-columns: 1fr; }
   .project-card, .experience-layout, .contact { grid-template-columns: 1fr; }
   .project-card:nth-child(even) .project-card__image { order: 0; }
@@ -293,17 +293,21 @@ footer .container { display: flex; align-items: center; justify-content: space-b
   .nav-links { inset-block-start: 68px; }
   .header-contact { display: none; }
   .nav-actions { gap: .4rem; }
-  .hero { padding-top: 6rem; gap: 3rem; }
+  .hero { padding-top: 6.5rem; padding-bottom: 3rem; gap: 2.5rem; }
   .hero__copy { padding-left: 1rem; }
   .hero__name { font-size: clamp(2.65rem, 13vw, 3.8rem); }
   .hero__title { margin-top: 1rem; font-size: 1.22rem; }
-  .portrait-wrap { width: min(74vw, 295px); }
+  .hero__summary { display: none; }
+  .hero__actions { margin-top: 1.5rem; }
+  .hero__meta { margin-top: 1.25rem; }
+  .portrait-wrap { width: min(48vw, 200px); }
   .portrait-caption { right: 0; bottom: -2.4rem; min-width: 195px; }
   .portrait-mark--top { left: -.7rem; }
   .portrait-mark--bottom { right: -.7rem; }
   .hero__actions { align-items: flex-start; flex-direction: column; gap: .8rem; }
   .hero__meta { flex-wrap: wrap; }
   .section-heading__row, .about-grid { display: block; }
+  .section-heading h2 { overflow-wrap: anywhere; hyphens: auto; }
   .section-heading__row > p { margin-top: 1rem; }
   .about-copy { margin-top: 2rem; }
   .metrics { grid-template-columns: 1fr; }
