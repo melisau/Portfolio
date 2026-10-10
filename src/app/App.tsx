@@ -99,7 +99,7 @@ function Header({ language, setLanguage, copy, detail = false }: { language: Lan
   return (
     <header ref={headerRef} className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
       <div className="container nav">
-        <a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel} onClick={() => navigate(detail ? homePath(language) : '#top')}>Melisa <span>Uyar</span></a>
+        <a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel} onClick={() => navigate(detail ? homePath(language) : '#top')}>{profile.shortName}<span>.</span></a>
         <nav id="main-navigation" className={`nav-links ${open ? "nav-links--open" : ""}`} aria-label={copy.navigationLabel} aria-hidden={mobile && !open ? true : undefined}>
           {navigation.map((item, index) => { const href = detail ? `${homePath(language)}${item.href}` : item.href; return <a href={href} key={item.href} onClick={() => navigate(href)}>{copy.nav[index]}</a>; })}
         </nav>
@@ -286,5 +286,5 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
   const detail = Boolean(detailProject || notFound);
-  return <><a className="skip-link" href="#main-content">{copy.skipLink}</a><Header language={language} setLanguage={changeLanguage} copy={copy} detail={detail} /><main id="main-content" tabIndex={-1}>{notFound ? <ProjectNotFound language={language} /> : detailProject ? <ProjectDetail key={detailProject.slug} project={detailProject} language={language} /> : <><Hero copy={copy} /><About copy={copy} /><Skills copy={copy} /><Projects copy={copy} language={language} /><Experience copy={copy} /><Contact copy={copy} /></>}</main><footer><div className="container"><a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel}>Melisa <span>Uyar</span></a><p>© {new Date().getFullYear()} {profile.name}. {copy.footer}</p><a href={detail ? '#main-content' : '#top'}>{copy.backTop}</a></div></footer></>;
+  return <><a className="skip-link" href="#main-content">{copy.skipLink}</a><Header language={language} setLanguage={changeLanguage} copy={copy} detail={detail} /><main id="main-content" tabIndex={-1}>{notFound ? <ProjectNotFound language={language} /> : detailProject ? <ProjectDetail key={detailProject.slug} project={detailProject} language={language} /> : <><Hero copy={copy} /><About copy={copy} /><Skills copy={copy} /><Projects copy={copy} language={language} /><Experience copy={copy} /><Contact copy={copy} /></>}</main><footer><div className="container"><a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel}>{profile.shortName}<span>.</span></a><p>© {new Date().getFullYear()} {profile.name}. {copy.footer}</p><a href={detail ? '#main-content' : '#top'}>{copy.backTop}</a></div></footer></>;
 }
