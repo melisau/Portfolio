@@ -99,7 +99,7 @@ function Header({ language, setLanguage, copy, detail = false }: { language: Lan
   return (
     <header ref={headerRef} className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
       <div className="container nav">
-        <a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel} onClick={() => navigate(detail ? homePath(language) : '#top')}>{profile.shortName}<span>.</span></a>
+        <a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel} onClick={() => navigate(detail ? homePath(language) : '#top')}>Melisa <span>Uyar</span></a>
         <nav id="main-navigation" className={`nav-links ${open ? "nav-links--open" : ""}`} aria-label={copy.navigationLabel} aria-hidden={mobile && !open ? true : undefined}>
           {navigation.map((item, index) => { const href = detail ? `${homePath(language)}${item.href}` : item.href; return <a href={href} key={item.href} onClick={() => navigate(href)}>{copy.nav[index]}</a>; })}
         </nav>
@@ -151,8 +151,8 @@ function Hero({ copy }: { copy: Copy }) {
   return (
     <section className="hero container" id="top">
       <div className="hero__copy">
-        <p className="hero__eyebrow" aria-label={copy.heroEyebrows[0]}>
-          <span aria-hidden="true">{reducedMotion ? copy.heroEyebrows[0] : phrase.slice(0, visibleCharacters)}</span>{!reducedMotion && <i aria-hidden="true" />}
+        <p className="hero__eyebrow">
+          <span>{reducedMotion ? copy.heroEyebrows[0] : phrase.slice(0, visibleCharacters)}</span>{!reducedMotion && <i aria-hidden="true" />}
         </p>
         <h1 className="hero__name"><span>{firstName}</span> <strong>{surname}</strong></h1>
         <h2 className="hero__title">{copy.headline}</h2>
@@ -165,8 +165,7 @@ function Hero({ copy }: { copy: Copy }) {
       </div>
       <div className="portrait-wrap">
         <div className="portrait-frame">
-          <SafeImage src="/profile.jpg" alt={copy.portraitAlt} fallbackLabel={copy.imageUnavailable} />
-          <div className="portrait-caption"><span className="status-dot" /><div><strong>{copy.availability}</strong><small>{copy.role}</small></div></div>
+          <SafeImage src="/profile.webp" alt={copy.portraitAlt} fallbackLabel={copy.imageUnavailable} fetchPriority="high" />
         </div>
         <span className="portrait-mark portrait-mark--top">✦</span>
         <span className="portrait-mark portrait-mark--bottom">{profile.shortName}</span>
@@ -287,5 +286,5 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
   const detail = Boolean(detailProject || notFound);
-  return <><a className="skip-link" href="#main-content">{copy.skipLink}</a><Header language={language} setLanguage={changeLanguage} copy={copy} detail={detail} /><main id="main-content" tabIndex={-1}>{notFound ? <ProjectNotFound language={language} /> : detailProject ? <ProjectDetail key={detailProject.slug} project={detailProject} language={language} /> : <><Hero copy={copy} /><About copy={copy} /><Skills copy={copy} /><Projects copy={copy} language={language} /><Experience copy={copy} /><Contact copy={copy} /></>}</main><footer><div className="container"><a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel}>{profile.shortName}<span>.</span></a><p>© {new Date().getFullYear()} {profile.name}. {copy.footer}</p><a href={detail ? '#main-content' : '#top'}>{copy.backTop}</a></div></footer></>;
+  return <><a className="skip-link" href="#main-content">{copy.skipLink}</a><Header language={language} setLanguage={changeLanguage} copy={copy} detail={detail} /><main id="main-content" tabIndex={-1}>{notFound ? <ProjectNotFound language={language} /> : detailProject ? <ProjectDetail key={detailProject.slug} project={detailProject} language={language} /> : <><Hero copy={copy} /><About copy={copy} /><Skills copy={copy} /><Projects copy={copy} language={language} /><Experience copy={copy} /><Contact copy={copy} /></>}</main><footer><div className="container"><a className="logo" href={detail ? homePath(language) : '#top'} aria-label={copy.homeLabel}>Melisa <span>Uyar</span></a><p>© {new Date().getFullYear()} {profile.name}. {copy.footer}</p><a href={detail ? '#main-content' : '#top'}>{copy.backTop}</a></div></footer></>;
 }

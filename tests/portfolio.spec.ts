@@ -168,6 +168,7 @@ test('reduced motion shows a full static phrase without a cursor', async ({ page
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/en/');
   await expect(page.locator('.hero__eyebrow span')).toHaveText('JUNIOR FULL-STACK DEVELOPER');
+  await expect(page.locator('.hero__eyebrow')).not.toHaveAttribute('aria-label');
   await expect(page.locator('.hero__eyebrow i')).toHaveCount(0);
   const before = await page.locator('.hero__eyebrow').textContent();
   await page.waitForTimeout(600);
@@ -175,7 +176,7 @@ test('reduced motion shows a full static phrase without a cursor', async ({ page
 });
 
 test('broken portrait and project images have localized fallbacks', async ({ page }) => {
-  await page.route('**/profile.jpg', route => route.abort());
+  await page.route('**/profile.webp', route => route.abort());
   await page.route('**/projects/luma.png', route => route.abort());
   await page.goto('/en/');
   await expect(page.locator('.portrait-frame .image-fallback')).toHaveAttribute('aria-label', /Portrait of Melisa Uyar.*Image unavailable/);
@@ -218,7 +219,7 @@ test('links, local assets and static language metadata are valid', async ({ page
   }
   await expect(page.getByRole('link', { name: 'GitHub', exact: true }).first()).toHaveAttribute('href', 'https://github.com/melisau');
   await expect(page.getByRole('link', { name: 'LinkedIn', exact: true }).first()).toHaveAttribute('href', /^https:\/\/www.linkedin.com\/in\//);
-  for (const url of ['/favicon.svg', '/social-preview.png', '/profile.jpg', '/projects/luma.png', '/projects/rogi.png', '/projects/be-a-real-developer.png', '/projects/budget-buddy.png', '/projects/journal.png', '/projects/mitzi-paw-path.jpg']) {
+  for (const url of ['/favicon.svg', '/social-preview.png', '/profile.webp', '/projects/luma.png', '/projects/rogi.png', '/projects/be-a-real-developer.png', '/projects/budget-buddy.png', '/projects/journal.png', '/projects/mitzi-paw-path.jpg']) {
     const response = await request.get(url);
     expect(response.ok(), url).toBe(true);
     expect(response.headers()['content-type'], url).toMatch(/^image\//);

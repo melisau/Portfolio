@@ -11,12 +11,5 @@
     "env": {
       "VITE_SITE_URL": "https://melisauyar.com"
     }
-  },
-  "redirects": [
-    {
-      "source": "/google5bca3d63b307d33a.html",
-      "destination": "/",
-      "permanent": false
-    }
-  ]
+  }
 }

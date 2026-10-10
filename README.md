@@ -18,6 +18,8 @@ npm run dev
 
 Üretim derlemesi için `npm run build` komutunu kullanın.
 
+Yazı tipleri `public/fonts` altında self-hosted WOFF2 dosyaları olarak tutulur. `src/styles/fonts.css` yalnızca kullanılan Inter (400/500/600), JetBrains Mono (400/500/600) ve Outfit (400/500/600/700/800) varyantlarını `font-display: swap` ile tanımlar; Google Fonts CDN bağlantısı gerektirmez.
+
 ## Dil, SEO ve yayın adresi
 
 - Türkçe ana sayfa `/`, İngilizce `/en/`, Almanca `/de/` adresindedir.

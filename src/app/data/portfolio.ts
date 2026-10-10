@@ -13,7 +13,6 @@ import type { Experience, Project, SkillGroup, SocialLink } from "../types/portf
 export const profile = {
   name: "Melisa Uyar",
   shortName: "MU",
-  role: "Full-Stack & Shopify Developer",
   eyebrow: "Merhaba, ben Melisa",
   headline: "Web uygulamaları ve Shopify deneyimleri geliştiriyorum.",
   summary:
@@ -23,7 +22,6 @@ export const profile = {
   email: "melisauyar5225@gmail.com",
   phone: "+90 537 428 00 11",
   location: "Muğla, Türkiye",
-  availability: "Çalışmaya açık",
   resumeUrl: "/melisa-uyar-cv.pdf",
 };
 
