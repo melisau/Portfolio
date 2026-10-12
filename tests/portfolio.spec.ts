@@ -186,6 +186,26 @@ test('broken portrait and project images have localized fallbacks', async ({ pag
   await expect(page.locator('.portrait-frame .image-fallback')).toHaveAttribute('aria-label', /Porträt.*Bild nicht verfügbar/);
 });
 
+test('published CV downloads the actual PDF in every language', async ({ page, request }) => {
+  const response = await request.get('/melisa-uyar-cv.pdf');
+  expect(response.ok()).toBe(true);
+  expect(response.headers()['content-type']).toContain('application/pdf');
+  const pdf = await response.body();
+  expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+  expect(pdf.length).toBeGreaterThan(1000);
+  for (const language of ['tr', 'en', 'de'] as const) {
+    await page.goto(language === 'tr' ? '/' : `/${language}/`);
+    const link = page.getByRole('link', { name: translations[language].resume, exact: true });
+    await expect(link).toHaveAttribute('href', '/melisa-uyar-cv.pdf');
+    await expect(link).toHaveAttribute('download', '');
+    const pendingDownload = page.waitForEvent('download');
+    await link.click();
+    const download = await pendingDownload;
+    expect(download.suggestedFilename()).toBe('melisa-uyar-cv.pdf');
+    expect(await download.failure()).toBeNull();
+  }
+});
+
 test('missing CV or HTML fallback never creates a fake download', async ({ page }) => {
   await page.route('**/melisa-uyar-cv.pdf', route => route.fulfill({ status: 200, contentType: 'text/html', body: '<html>SPA fallback</html>' }));
   await page.goto('/en/');
