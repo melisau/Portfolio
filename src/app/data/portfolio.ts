@@ -97,7 +97,8 @@ export const projects: Project[] = [
     technologies: ["Unity","C#","2D Physics","Android"],
     year: "In Development",
     accent: "#8b5cf6",
-    image: "/projects/mitzi-paw-path.jpg",
+    image: "/projects/mitzi-gameplay.webp",
+    imageFit: "contain",
     sourceUrl: "https://github.com/melisau/Mitzi",
   },
   {

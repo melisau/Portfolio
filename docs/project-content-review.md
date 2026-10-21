@@ -26,7 +26,7 @@ GitHub kayıtları `gh api` ile salt okunur alındı. Diğer projelerin çalış
 - Rogi'nin bazı README kapsam satırları TASKS ve koddaki hesap/kalıcı rapor özelliklerinin gerisindedir. Node güvenli taşıması ve kalıcı kota mevcutken Worker taşıma sınırı korunur. Korumalı kişisel demo, herkesin erişebileceği demo gibi linklenmez.
 - Luma aynı commit'te olmasına rağmen önceki portfolyo kaydında özetlenmeyen görsel düzenleyici kapsamı ayrıntılandırıldı. Canlı kapasite ve SMTP ayrıca test edilmedi.
 - Atatürk Arşivi ve genel Shopify kaydında yeni paylaşılabilir kaynak olmadığı için kişisel katkı sınırı, içerik ve inceleme tarihi korunur.
-- Mevcut ekran görselleri değiştirilmedi; Journal ve Mitzi'nin temsili görsel etiketleri korundu.
+- İlk içerik güncellemesinde ekran görselleri değiştirilmedi. Sonraki Mitzi görsel çalışmasında ortam görselinin yerini gerçek Unity ekranları aldı; ayrıntılar [görsel kaydındadır](mitzi-screenshots.md). Journal'ın tasarım önizlemesi etiketi korunur.
 
 ## Doğrulama sınırı
 

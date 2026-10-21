@@ -130,7 +130,25 @@ export const projectDetails = [
   {
     "slug": "mitzi-paw-path",
     "title": "Mitzi: Paw Path",
-    "image": "/projects/mitzi-paw-path.jpg",
+    "image": "/projects/mitzi-gameplay.webp",
+    "gallery": [
+      {
+        "image": "/projects/mitzi-gameplay.webp",
+        "captions": {
+          "tr": "Sokak bölümü ve pati joystickleri — Unity’den alınmış gerçek oyun ekran görüntüsü.",
+          "en": "Street level and paw joysticks — an actual game screenshot captured in Unity.",
+          "de": "Straßenlevel und Pfoten-Joysticks — echte Spielaufnahme aus Unity."
+        }
+      },
+      {
+        "image": "/projects/mitzi-home.webp",
+        "captions": {
+          "tr": "Kedi evi, bakım göstergeleri ve oda kontrolleri — Unity’den alınmış gerçek oyun ekran görüntüsü.",
+          "en": "Cat home, care indicators and room controls — an actual game screenshot captured in Unity.",
+          "de": "Katzenzuhause, Pflegeanzeigen und Zimmersteuerung — echte Spielaufnahme aus Unity."
+        }
+      }
+    ],
     "stack": [
       "Unity 2022.3",
       "C#",
@@ -184,7 +202,7 @@ export const projectDetails = [
           "Mobil sürüm hazırlığı: imzalı AAB/APK, API 36 ve 16 KB sayfa uyumluluğu kontrolleri belgelendi; mağaza ve cihaz kabulü ayrı doğrulanır."
         ],
         "limits": "Android paket ve Play test hazırlığı sürüyor; genel mağaza yayını veya canlı reklam onayı iddia edilmez. Fizik denemeleri tam oyun/gerçek cihaz kabulünün yerine geçmez.",
-        "caption": "Projeden oyun ortamı görseli; oynanış kaydı değildir."
+        "caption": "Sokak bölümü — Unity’den alınmış gerçek oyun ekran görüntüsü."
       },
       "en": {
         "tagline": "Draw a path or use paw joysticks, then bring eight cats together in a two-room home.",
@@ -213,7 +231,7 @@ export const projectDetails = [
           "Mobile release preparation documents signed AAB/APK, API 36 and 16 KB compatibility checks; store and device acceptance remain separate."
         ],
         "limits": "Android package and Play test preparation is ongoing; no general store launch or live-ad approval is claimed. Physics checks are not complete gameplay or device acceptance.",
-        "caption": "Environment artwork from the project; not a gameplay recording."
+        "caption": "Street level — an actual game screenshot captured in Unity."
       },
       "de": {
         "tagline": "Zeichne Wege oder steuere mit Pfoten-Joysticks und vereine acht Katzen in einem Zuhause mit zwei Zimmern.",
@@ -242,7 +260,7 @@ export const projectDetails = [
           "Signierte AAB/APK, API 36 und 16-KB-Kompatibilität sind dokumentiert; Store- und Geräteabnahme werden separat geprüft."
         ],
         "limits": "Android-Paket- und Play-Testvorbereitung läuft; kein allgemeiner Store-Start und keine Freigabe für Live-Werbung werden behauptet.",
-        "caption": "Umgebungsgrafik aus dem Projekt; keine Spielaufnahme."
+        "caption": "Straßenlevel — echte Spielaufnahme aus Unity."
       }
     },
     "sourceRevisions": {

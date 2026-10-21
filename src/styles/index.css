@@ -239,7 +239,9 @@ footer .container { display: flex; align-items: center; justify-content: space-b
 .detail-architecture { padding: 1.25rem 1.5rem; border-left: 2px solid var(--accent); background: var(--surface-soft); }
 .detail-challenge { margin-block: 1.5rem; }
 .detail-media-button { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); cursor: zoom-in; color: var(--text); }
-.detail-media-button > img { width: 100%; }
+.detail-gallery { display: grid; gap: 2rem; }
+.detail-gallery > figure { min-width: 0; margin: 0; }
+.detail-media-button > img { display: block; width: 100%; height: auto; }
 .detail-media-button > span { position: absolute; right: .75rem; bottom: .75rem; display: flex; align-items: center; gap: .5rem; padding: .65rem .85rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font-size: .75rem; }
 .detail-next { display: block; padding-block: .5rem; }
 .detail-next > small { color: var(--muted-foreground); font-size: .8rem; }

@@ -242,7 +242,7 @@ test('links, local assets and static language metadata are valid', async ({ page
   }
   await expect(page.getByRole('link', { name: 'GitHub', exact: true }).first()).toHaveAttribute('href', 'https://github.com/melisau');
   await expect(page.getByRole('link', { name: 'LinkedIn', exact: true }).first()).toHaveAttribute('href', /^https:\/\/www.linkedin.com\/in\//);
-  for (const url of ['/favicon.svg', '/social-preview.png', '/profile.webp', '/projects/luma.png', '/projects/rogi.png', '/projects/be-a-real-developer.png', '/projects/budget-buddy.png', '/projects/journal.png', '/projects/mitzi-paw-path.jpg']) {
+  for (const url of ['/favicon.svg', '/social-preview.png', '/profile.webp', '/projects/luma.png', '/projects/rogi.png', '/projects/be-a-real-developer.png', '/projects/budget-buddy.png', '/projects/journal.png', '/projects/mitzi-gameplay.webp', '/projects/mitzi-home.webp']) {
     const response = await request.get(url);
     expect(response.ok(), url).toBe(true);
     expect(response.headers()['content-type'], url).toMatch(/^image\//);
@@ -341,6 +341,44 @@ test('card opens details, language keeps the project, zoom dialog supports Escap
   await expect(page).toHaveURL(/\/de\/#projects$/);
   await expect(page.locator('.project-card')).toHaveCount(8);
 });
+
+for (const language of ['tr', 'en', 'de'] as const) {
+  test(`Mitzi real screenshots: card, gallery, zoom and focus (${language})`, async ({ page }, testInfo) => {
+    const project = projectDetails.find(item => item.slug === 'mitzi-paw-path')!;
+    await page.goto(language === 'tr' ? '/' : `/${language}/`);
+    const card = page.locator('.project-card').nth(1);
+    await expect(card).toHaveClass(/project-card--contain/);
+    await expect(card.locator('img')).toHaveAttribute('src', '/projects/mitzi-gameplay.webp');
+    await card.scrollIntoViewIfNeeded();
+    await expect(card.locator('img')).toHaveCSS('object-fit', 'contain');
+    await card.locator('.project-detail-link').click();
+    await expect(page).toHaveURL(new RegExp(`${projectPath(project.slug, language)}$`));
+    await expect(page.locator('.detail-cover img')).toHaveAttribute('src', '/projects/mitzi-gameplay.webp');
+    await expect(page.locator('#detail-media .detail-media-button')).toHaveCount(2);
+    for (const [index, item] of project.gallery!.entries()) {
+      const button = page.locator('#detail-media .detail-media-button').nth(index);
+      await button.scrollIntoViewIfNeeded();
+      const image = button.locator('img');
+      await expect.poll(() => image.evaluate(img => img.complete && img.naturalWidth)).toBe(1920);
+      await expect(image).toHaveAttribute('src', item.image);
+      await expect(image).toHaveAttribute('alt', `${project.title} — ${item.captions[language]}`);
+      const box = await image.boundingBox();
+      expect(box!.width / box!.height).toBeCloseTo(16 / 9, 2);
+      await button.click();
+      const dialog = page.getByRole('dialog');
+      await expect(dialog).toBeVisible();
+      await expect(dialog.locator('img')).toHaveAttribute('src', item.image);
+      await expect(dialog.locator('img')).toHaveCSS('object-fit', 'contain');
+      await expect(dialog.locator('p')).toHaveText(item.captions[language]);
+      await expect(page.getByRole('button', { name: detailLabels[language].close })).toBeFocused();
+      await page.keyboard.press('Escape');
+      await expect(dialog).not.toBeVisible();
+      await expect(button).toBeFocused();
+    }
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath(`mitzi-gallery-${language}.png`) });
+  });
+}
 
 test('unknown project renders a localized noindex state', async ({ page }) => {
   await page.goto('/en/projects/missing-project/');

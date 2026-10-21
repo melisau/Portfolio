@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, ExternalLink, Github, Maximize2, X } from 'lucide-react';
 import { projectDetails } from '../data/projectDetails.mjs';
 import { detailLabels } from '../data/detailLabels';
@@ -13,7 +13,13 @@ export function ProjectDetail({ project, language }: { project: ProjectDetailDat
   const labels = detailLabels[language];
   const copy = translations[language];
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const imageButton = useRef<HTMLButtonElement>(null);
+  const imageButton = useRef<HTMLButtonElement | null>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const gallery = project.gallery ?? (project.image ? [{
+    image: project.image,
+    captions: { tr: project.copy.tr.caption, en: project.copy.en.caption, de: project.copy.de.caption },
+  }] : []);
+  const activeImage = gallery[activeImageIndex] ?? gallery[0];
   const index = projectDetails.findIndex(item => item.slug === project.slug);
   const next = projectDetails[(index + 1) % projectDetails.length];
   const sections = [
@@ -46,11 +52,26 @@ export function ProjectDetail({ project, language }: { project: ProjectDetailDat
         <section id="detail-architecture"><h2>{labels.architecture}</h2><p className="detail-architecture">{content.architecture}</p></section>
         {content.decisions.length > 0 && <section id="detail-decisions"><h2>{labels.decisions}</h2><ul className="detail-list">{content.decisions.map(item => <li key={item}>{item}</li>)}</ul></section>}
         {content.challenges.length > 0 && <section id="detail-challenges"><h2>{labels.challenges}</h2>{content.challenges.map(item => <p className="detail-challenge" key={item}>{item}</p>)}</section>}
-        {project.image && <section id="detail-media"><h2>{labels.media}</h2><button ref={imageButton} type="button" className="detail-media-button" onClick={() => dialogRef.current?.showModal()} aria-label={`${labels.expand}: ${project.title}`}><SafeImage src={project.image} alt={`${project.title} — ${copy.projectImage}`} fallbackLabel={copy.imageUnavailable} loading="lazy" /><span><Maximize2 size={16} />{labels.expand}</span></button><p className="detail-caption">{content.caption}</p></section>}
+        {gallery.length > 0 && <section id="detail-media">
+          <h2>{labels.media}</h2>
+          <div className="detail-gallery">
+            {gallery.map((item, imageIndex) => <figure key={item.image}>
+              <button type="button" className="detail-media-button" onClick={event => {
+                imageButton.current = event.currentTarget;
+                setActiveImageIndex(imageIndex);
+                dialogRef.current?.showModal();
+              }} aria-label={`${labels.expand}: ${project.title} — ${item.captions[language]}`}>
+                <SafeImage src={item.image} alt={`${project.title} — ${item.captions[language]}`} fallbackLabel={copy.imageUnavailable} loading="lazy" />
+                <span><Maximize2 size={16} />{labels.expand}</span>
+              </button>
+              <figcaption className="detail-caption">{item.captions[language]}</figcaption>
+            </figure>)}
+          </div>
+        </section>}
         <a className="detail-next" href={projectPath(next.slug, language)}><small>{labels.next}</small><span>{next.title}<ArrowUpRight /></span></a>
       </div>
     </div>
-    {project.image && <dialog className="image-dialog" ref={dialogRef} onClose={() => imageButton.current?.focus()} onClick={event => { if (event.target === event.currentTarget) dialogRef.current?.close(); }} aria-label={`${project.title} — ${labels.media}`}><button className="icon-button" type="button" aria-label={labels.close} onClick={() => dialogRef.current?.close()}><X /></button><SafeImage src={project.image} alt={`${project.title} — ${copy.projectImage}`} fallbackLabel={copy.imageUnavailable} /><p>{content.caption}</p></dialog>}
+    {activeImage && <dialog className="image-dialog" ref={dialogRef} onClose={() => imageButton.current?.focus()} onClick={event => { if (event.target === event.currentTarget) dialogRef.current?.close(); }} aria-label={`${project.title} — ${labels.media}`}><button className="icon-button" type="button" aria-label={labels.close} onClick={() => dialogRef.current?.close()}><X /></button><SafeImage src={activeImage.image} alt={`${project.title} — ${activeImage.captions[language]}`} fallbackLabel={copy.imageUnavailable} /><p>{activeImage.captions[language]}</p></dialog>}
   </div>;
 }
 
