@@ -39,9 +39,9 @@ Her yeni canlı yayın için Melisa'dan değişikliklere özel açık onay alın
 
 `src/app/data/projectDetails.mjs` üç dilde düzenlenmiş README anlık görüntülerini tutar. Kaynak bağlantıları ve kontrol tarihi her kayıtta bulunur; ziyaret sırasında GitHub'dan içerik çekilmez. README değiştiğinde içerik bilinçli olarak yeniden incelenmelidir.
 
-Belgelenmeyen kişisel başarılar veya canlı bağlantılar üretilmez. Atatürk Arşivi ve genel Shopify çalışması mevcut portfolyo kapsamıyla sınırlıdır. Budget Buddy'nin GitHub README'si ile daha yeni yerel Supabase Auth dokümantasyonu arasındaki fark detayda açıklanır. Journal görseli tasarım önizlemesi; Mitzi görseli ortam varlığıdır. Bunlar canlı ekran/oynanış olarak etiketlenmez.
+Belgelenmeyen kişisel başarılar veya canlı bağlantılar üretilmez. Atatürk Arşivi ve genel Shopify çalışması mevcut portfolyo kapsamıyla sınırlıdır. 21 Ekim 2026 incelemesinde altı bireysel projenin README, ek dokümantasyon ve kaynakları karşılaştırılmıştır. GitHub commit'leri `sourceRevisions` alanında; yerel geliştirme ve yayın ayrımları [kaynak notlarında](docs/project-content-review.md) tutulur. Budget Buddy'nin güncel GitHub kaydı artık Supabase Auth geçişiyle tutarlıdır. Journal görseli tasarım önizlemesi; Mitzi görseli ortam varlığıdır. Bunlar canlı ekran/oynanış olarak etiketlenmez.
 
-CV hazır olduğunda `public/melisa-uyar-cv.pdf` olarak ekleyin. PDF imzası doğrulanınca indirme bağlantısı açılır; dosya yoksa, HTML dönüyorsa veya ağ hatası varsa e-posta ile CV isteme seçeneği gösterilir.
+CV `public/melisa-uyar-cv.pdf` dosyasıdır. PDF imzası doğrulanınca indirme bağlantısı açılır; dosya yoksa, HTML dönüyorsa veya ağ hatası varsa e-posta ile CV isteme seçeneği gösterilir.
 
 ## Otomatik doğrulama
 
@@ -52,5 +52,5 @@ npm run test:ui
 
 Playwright üretim derlemesini `http://127.0.0.1:4173` üzerinde başlatır ve kapatır. Varsayılan olarak kurulu Microsoft Edge kullanılır; alternatif kurulu kanal `PLAYWRIGHT_CHANNEL` ile seçilebilir. Playwright Chromium kullanmak için bir kez `npx playwright install chromium` çalıştırıp `PLAYWRIGHT_CHANNEL=chromium` ayarlayın.
 
-Kapsam: masaüstü/mobil, üç dil/iki tema, metadata, proje adresleri ve dil geçişi, menü odağı/Escape, içeriğe atlama, azaltılmış hareket, bozuk görseller, engelli localStorage ve CV indirme/hata akışları. CV başarı testi yapay PDF fixture kullanır; gerçek CV henüz yoktur. Dış görseller deterministik fixture ile izole edilir; testler dış sitelerin erişilebilirliğini garanti etmez. Çıktılar işletim sisteminin geçici klasöründeki `portfolio-playwright-results` dizinine yazılır.
+Kapsam: masaüstü/mobil, üç dil/iki tema, metadata, proje adresleri ve dil geçişi, menü odağı/Escape, içeriğe atlama, azaltılmış hareket, bozuk görseller, engelli localStorage ve CV indirme/hata akışları. CV için gerçek PDF indirme ve hata fixture testleri bulunur. Proje içerik testleri üç dilde güncel alanları, kaynak sürümlerini ve kart/detay uyumunu denetler. Dış görseller deterministik fixture ile izole edilir; testler dış sitelerin erişilebilirliğini garanti etmez. Çıktılar işletim sisteminin geçici klasöründeki `portfolio-playwright-results` dizinine yazılır.
   

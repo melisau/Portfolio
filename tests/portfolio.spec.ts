@@ -37,6 +37,9 @@ for (const language of ['tr', 'en', 'de'] as const) {
       await expect(page.locator('.portrait-frame img')).toHaveAttribute('alt', interfaceText[language].portraitAlt);
       await expect(page.locator('.project-card')).toHaveCount(8);
       const copy = translations[language];
+      for (const [index, summary] of copy.projectSummaries.entries()) {
+        await expect(page.locator('.project-card').nth(index)).toContainText(summary);
+      }
       await expect(page.locator('.nav-links a[href="#experience"]')).toHaveText(copy.nav[3]);
       await expect(page.locator('.timeline-item').first()).toContainText(copy.experienceDescriptions[0]);
       await expect(page.locator('.timeline-item').first()).not.toContainText(/müşteriler|\bclients\b|\bKunden\b|Freelance|Self-Employed/);
@@ -282,6 +285,37 @@ for (const language of ['tr', 'en', 'de'] as const) {
     expect(errors).toEqual([]);
   });
 }
+
+test('reviewed project content retains current features and source revisions in every language', () => {
+  const highlights = {
+    luma: [/390 px|390-px/, /GSAP/, /WebP/],
+    'mitzi-paw-path': [/Neo/, /70/, /IL2CPP/],
+    'pin-paper-journal': [/AES-256-GCM/, /IndexedDB/, /yerel|local|lokal/i],
+    'be-a-real-developer': [/1[.,]312/, /13/, /QuickJS/, /Docker/],
+    'budget-buddy': [/Supabase Auth/, /Groq/, /hreflang/],
+    rogi: [/Chromium/, /Neon/, /Babel/],
+  };
+  for (const [slug, patterns] of Object.entries(highlights)) {
+    const project = projectDetails.find(item => item.slug === slug)!;
+    expect(project.reviewedAt).toBe('2026-10-21');
+    expect(Object.values(project.sourceRevisions ?? {}).length).toBeGreaterThan(0);
+    for (const revision of Object.values(project.sourceRevisions ?? {})) expect(revision).toMatch(/^[a-f0-9]{40}$/);
+    expect(project.sources.length).toBeGreaterThanOrEqual(2);
+    for (const language of ['tr', 'en', 'de'] as const) {
+      const content = project.copy[language];
+      expect(content.features.length).toBeGreaterThanOrEqual(6);
+      const text = [content.tagline, content.scope, ...content.features, content.architecture, ...content.decisions, ...content.challenges].join(' ');
+      for (const pattern of patterns) expect(text).toMatch(pattern);
+    }
+  }
+  const journal = projectDetails.find(item => item.slug === 'pin-paper-journal')!;
+  expect(journal.editorialNote).toContain('not claimed as a deployed release');
+  const rogi = projectDetails.find(item => item.slug === 'rogi')!;
+  expect(rogi.liveUrl).toBeUndefined();
+  for (const slug of ['ataturk-digital-archive', 'shopify-theme-development']) {
+    expect(projectDetails.find(item => item.slug === slug)!.reviewedAt).toBe('2026-10-08');
+  }
+});
 
 test('card opens details, language keeps the project, zoom dialog supports Escape and next/back links work', async ({ page }, testInfo) => {
   await page.goto('/en/');

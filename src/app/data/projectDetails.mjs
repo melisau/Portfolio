@@ -1,4 +1,4 @@
-// README-based editorial snapshots. Update deliberately; do not fetch arbitrary Markdown at runtime.
+// Editorial snapshots from reviewed documentation and source; never fetched at runtime.
 export const projectDetails = [
   {
     "slug": "luma",
@@ -32,86 +32,99 @@ export const projectDetails = [
         "url": "https://github.com/melisau/luma-backend"
       }
     ],
-    "reviewedAt": "2026-10-08",
+    "reviewedAt": "2026-10-21",
     "copy": {
       "tr": {
-        "tagline": "Davetiyeden misafir yanıtlarına, etkinliğin dijital deneyimi tek yerde.",
+        "tagline": "Görsel davetiye tasarımından RSVP ve özel anı albümüne uzanan etkinlik platformu.",
         "problem": "Davetiyeler, katılım yanıtları ve etkinlik fotoğrafları farklı araçlara dağıldığında takip ve gizlilik yönetimi zorlaşıyor.",
-        "goal": "Etkinlik sahibine kişiselleştirilebilir davetiye ve yönetim paneli; misafirlere kolay RSVP, fotoğraf yükleme ve mesaj bırakma akışı sunmak.",
+        "goal": "Etkinlik sahibinin davetiyeyi kod yazmadan kişiselleştirmesini; misafir yanıtlarını, fotoğrafları ve mesajları aynı panelden yönetmesini sağlamak.",
         "role": "Full-stack geliştirme",
-        "scope": "Çalışma kapsamı: davetiye arayüzü ve düzenleyici, misafir formları, FastAPI uçları, veri modelleri ve özel medya erişimi.",
+        "scope": "Bireysel full-stack proje: iki dilli tanıtım, görsel davetiye düzenleyicisi, mobil önizleme, misafir akışları, FastAPI servisleri ve özel medya yönetimi.",
         "features": [
-          "Davetiye temaları, renkler ve görsel katman düzenleme",
-          "İki aşamalı zarf/kurdele açılışı ve azaltılmış hareket desteği",
-          "RSVP, kişisel düzenleme bağlantıları ve CSV aktarımı",
-          "Onaylı fotoğraf galerisi, ziyaretçi defteri ve QR yükleme",
-          "Etkinlik erişim kodu, albüm gizliliği ve isteğe bağlı saklama politikası"
+          "Bölüm arka planları, sticker, kâğıt dokuları, fotoğraf çerçeveleri ve asimetrik sergi düzenleri",
+          "Zarf ve kurdele açılışı; kaydırma animasyonları ve azaltılmış hareket desteği",
+          "Kaydetmeden renk, görsel katman ve açılış ayarlarını gösteren 390 px mobil önizleme",
+          "Kişisel düzenleme bağlantılı RSVP; kişi sayısı, beslenme notları ve CSV aktarımı",
+          "Onaylı fotoğraf ve ziyaretçi defteri, QR yükleme, yinelenen fotoğraf kontrolü ve ZIP albüm aktarımı",
+          "Etkinlik erişim kodu, bağımsız albüm gizliliği ve onaylı anı saklama politikası"
         ],
-        "architecture": "Statik JavaScript arayüz → FastAPI REST API → SQLAlchemy / PostgreSQL. Fotoğraflar özel R2/S3 depolamasında; yönetici işlemleri JWT ile korunuyor. SQLite yerel geliştirme seçeneği.",
+        "architecture": "Statik JavaScript arayüz → FastAPI REST API → SQLAlchemy / PostgreSQL. Alembic şema geçişlerini yönetir; özel R2/S3 medyası yetki kontrollü API üzerinden sunulur. GSAP açılışları ve bölüm animasyonlarını yürütür; üretim için veritabanı tabanlı hız sınırlama seçeneği bulunur.",
         "decisions": [
-          "Kalıcı veri ve yetki kontrolü arayüz yerine API katmanında tutuluyor.",
-          "Şema değişiklikleri mevcut etkinlikleri koruyan Alembic migration’larıyla uygulanıyor.",
-          "Medya için kalıcı açık bucket bağlantıları yerine erişim kontrollü API kullanılıyor."
+          "Düzenleyicinin 12 katmana kadar görsel verisi etkinliğe ait varlık kimlikleriyle saklanır; istemcinin verdiği rastgele medya URL’leri kalıcılaştırılmaz.",
+          "Yüklenen görseller EXIF yönüne göre düzeltilir, boyutlandırılır ve şeffaflığı koruyan WebP’ye dönüştürülür.",
+          "Davetiye görünümü yönetim panelinin marka stilinden ayrılır; PATCH isteğinde gönderilmeyen ayarlar korunur.",
+          "Misafir RSVP bağlantılarında yalnız token hash’i saklanır; albümün görünürlüğü ile yükleme izni ayrı yönetilir."
         ],
         "challenges": [
-          "Gizlilik ayarı değiştiğinde eski fotoğraf bağlantılarının erişimi: yeni okumalar API üzerinden güncel izinlerle doğrulanıyor; önceden indirilen kopyalar geri alınamaz.",
-          "Karmaşık açılış animasyonlarının etkileşimi kilitlemesi: animasyona ait timeline ve scroll trigger’lar temizleniyor, azaltılmış harekette dönüşümler kapatılıyor."
+          "Kaydedilmemiş tasarımı telefonda değerlendirmek: mobil tuval yerel dosyaları sunucuya yüklemeden gösterir; tam animasyon ayrı canlı önizlemede çalışır.",
+          "Özel albüm erişimi: yeni medya okumaları güncel izinlerden geçer; indirilen kopyaların geri alınabileceği iddia edilmez.",
+          "Saklama süresi dolan anılar: başarısız dosya silmelerinin kayıtları yeniden deneme için tutulur; PostgreSQL satır kilitleri çoklu worker işlemlerini koordine eder."
         ],
-        "limits": "Bellek içi hız sınırlama, çoklu API worker kullanımında paylaşımlı depolama gerektiriyor. Canlı demo adresi doğrulanmadığı için burada yayınlanmıyor.",
+        "limits": "Kaynak ve kod incelemesi yapıldı; canlı hizmet kapasitesi veya üretimde SMTP teslimatı bu portfolyo güncellemesinde test edilmedi.",
         "caption": "Luma giriş ekranı"
       },
       "en": {
-        "tagline": "Digital invitations, guest responses and shared memories in one event experience.",
+        "tagline": "An event platform spanning visual invitation design, RSVPs and private shared memories.",
         "problem": "Invitations, attendance responses and event photos become difficult to manage when scattered across different tools.",
-        "goal": "Give hosts a customizable invitation and administration panel, with straightforward RSVP, photo and guestbook flows for guests.",
+        "goal": "Let hosts personalize invitations without writing code and manage guest responses, photos and messages in one workspace.",
         "role": "Full-stack development",
-        "scope": "Scope: invitation UI and editor, guest forms, FastAPI endpoints, data models and private media access.",
+        "scope": "Personal full-stack project: bilingual landing, visual invitation editor, mobile preview, guest flows, FastAPI services and private media management.",
         "features": [
-          "Invitation themes, colors and visual-layer editing",
-          "Two-stage envelope/ribbon opening with reduced-motion support",
-          "RSVP, private edit links and CSV export",
-          "Moderated photos, guestbook and QR upload",
-          "Event access codes, album privacy and optional retention"
+          "Section backgrounds, stickers, paper textures, photo frames and asymmetric gallery layouts",
+          "Envelope and ribbon openings, scroll animation and reduced-motion support",
+          "A 390 px mobile preview for unsaved colors, visual layers and opening settings",
+          "RSVP with private edit links, party size, dietary notes and CSV export",
+          "Moderated photos and guestbook, QR uploads, duplicate detection and ZIP album export",
+          "Event access codes, independent album privacy and explicitly confirmed retention settings"
         ],
-        "architecture": "Static JavaScript UI → FastAPI REST API → SQLAlchemy / PostgreSQL. Photos live in private R2/S3 storage; admin operations use JWT. SQLite is available for local development.",
+        "architecture": "Static JavaScript UI → FastAPI REST API → SQLAlchemy / PostgreSQL. Alembic manages schema changes; private R2/S3 media is served through permission-checked APIs. GSAP drives openings and section animation; a database-backed rate-limit option supports production configuration.",
         "decisions": [
-          "Persistence and authorization stay in the API rather than the browser.",
-          "Alembic migrations preserve existing event data across schema changes.",
-          "Media is exposed through access-controlled APIs, not permanent public bucket links."
+          "Up to 12 visual layers reference event-owned asset IDs; arbitrary client-provided media URLs are not persisted.",
+          "Uploads are EXIF-oriented, resized and encoded as WebP while preserving transparency.",
+          "Invitation presentation is separate from the administration brand; omitted PATCH settings retain their saved values.",
+          "Only RSVP token hashes are stored; album visibility and upload permission remain independent."
         ],
         "challenges": [
-          "Changing photo privacy: new reads pass through current API permission checks; previously downloaded copies cannot be recalled.",
-          "Complex opening animations: owned timelines and scroll triggers are cleaned up, with spatial transforms disabled for reduced motion."
+          "Previewing unsaved designs on a phone-sized canvas: local files render without uploading; the full animation runs in a separate live preview.",
+          "Private albums: new media reads check current permissions; previously downloaded copies cannot be recalled.",
+          "Expiring memories: failed storage deletions retain their records for retry, while PostgreSQL row locks coordinate multiple workers."
         ],
-        "limits": "In-memory rate limiting requires shared storage with multiple API workers. No verified public demo URL is listed.",
+        "limits": "Reviewed against documentation and code; this portfolio update does not test live capacity or production SMTP delivery.",
         "caption": "Luma landing screen"
       },
       "de": {
-        "tagline": "Digitale Einladungen, Gästeantworten und gemeinsame Erinnerungen an einem Ort.",
+        "tagline": "Eine Eventplattform von der visuellen Einladung bis zu Zusagen und privaten Erinnerungen.",
         "problem": "Einladungen, Zusagen und Veranstaltungsfotos lassen sich in getrennten Werkzeugen nur schwer verwalten.",
-        "goal": "Gastgebern eine anpassbare Einladung und Verwaltung sowie Gästen einfache Zusagen, Foto-Uploads und Nachrichten bieten.",
+        "goal": "Gastgeber sollen Einladungen ohne Programmierung gestalten und Gästeantworten, Fotos und Nachrichten gemeinsam verwalten können.",
         "role": "Full-Stack-Entwicklung",
-        "scope": "Umfang: Einladungsoberfläche und Editor, Gästeformulare, FastAPI-Endpunkte, Datenmodelle und privater Medienzugriff.",
+        "scope": "Persönliches Full-Stack-Projekt: zweisprachige Landingpage, visueller Editor, mobile Vorschau, Gästeabläufe, FastAPI-Dienste und private Medienverwaltung.",
         "features": [
-          "Einladungsthemen, Farben und visuelle Ebenen",
-          "Zweistufige Umschlag-/Schleifenöffnung mit reduzierter Bewegung",
-          "Zusagen, private Bearbeitungslinks und CSV-Export",
-          "Moderierte Fotos, Gästebuch und QR-Upload",
-          "Zugangscodes, Album-Privatsphäre und optionale Aufbewahrung"
+          "Abschnittshintergründe, Sticker, Papiertexturen, Fotorahmen und asymmetrische Galerien",
+          "Umschlag- und Schleifenöffnung, Scrollanimationen und reduzierte Bewegung",
+          "390-px-Mobilvorschau für ungespeicherte Farben, Ebenen und Öffnungseinstellungen",
+          "Zusagen mit privaten Bearbeitungslinks, Personenzahl, Ernährungshinweisen und CSV-Export",
+          "Moderierte Fotos und Gästebuch, QR-Uploads, Duplikatprüfung und ZIP-Albumexport",
+          "Zugangscodes, separate Album-Privatsphäre und ausdrücklich bestätigte Aufbewahrung"
         ],
-        "architecture": "Statische JavaScript-Oberfläche → FastAPI REST API → SQLAlchemy / PostgreSQL. Fotos liegen in privatem R2/S3-Speicher, Verwaltungsaktionen sind JWT-geschützt. SQLite unterstützt die lokale Entwicklung.",
+        "architecture": "Statische JavaScript-Oberfläche → FastAPI REST API → SQLAlchemy / PostgreSQL. Alembic verwaltet Schemaänderungen; private R2/S3-Medien werden über berechtigungsgeprüfte APIs bereitgestellt. GSAP steuert Öffnungs- und Scrollanimationen; eine datenbankgestützte Ratenbegrenzung ist konfigurierbar.",
         "decisions": [
-          "Persistenz und Berechtigungen liegen in der API statt im Browser.",
-          "Alembic-Migrationen erhalten bestehende Veranstaltungsdaten.",
-          "Medienzugriff erfolgt über geschützte APIs statt dauerhafte öffentliche Bucket-Links."
+          "Bis zu 12 Bildebenen referenzieren veranstaltungseigene Dateien; beliebige vom Client gelieferte Medien-URLs werden nicht gespeichert.",
+          "Uploads werden anhand der EXIF-Ausrichtung korrigiert, verkleinert und mit erhaltener Transparenz als WebP gespeichert.",
+          "Einladungsdesign und Verwaltungsdesign bleiben getrennt; ausgelassene PATCH-Felder behalten ihre bisherigen Werte.",
+          "Für RSVP-Links werden nur Token-Hashes gespeichert; Albumansicht und Upload-Erlaubnis bleiben unabhängig."
         ],
         "challenges": [
-          "Geänderte Foto-Privatsphäre: neue Zugriffe prüfen aktuelle API-Rechte; heruntergeladene Kopien lassen sich nicht zurückholen.",
-          "Komplexe Öffnungsanimationen: eigene Timelines und Scroll-Trigger werden bereinigt; reduzierte Bewegung deaktiviert räumliche Transformationen."
+          "Ungespeicherte Gestaltung mobil prüfen: lokale Dateien erscheinen ohne Upload auf der Vorschaufläche; die vollständige Animation läuft separat.",
+          "Private Alben: neue Medienaufrufe prüfen aktuelle Rechte; bereits heruntergeladene Kopien lassen sich nicht zurückholen.",
+          "Abgelaufene Erinnerungen: fehlgeschlagene Dateilöschungen bleiben erneut ausführbar; PostgreSQL-Zeilensperren koordinieren mehrere Worker."
         ],
-        "limits": "In-Memory-Ratenbegrenzung benötigt bei mehreren API-Workern gemeinsamen Speicher. Eine bestätigte öffentliche Demo-URL liegt nicht vor.",
+        "limits": "Dokumentation und Code wurden geprüft; Live-Kapazität und SMTP-Zustellung wurden hier nicht getestet.",
         "caption": "Luma-Startseite"
       }
+    },
+    "sourceRevisions": {
+      "luma-frontend": "150ec238d4cf939aed899dbea309f7594648ca7c",
+      "luma-backend": "6dd571fab70f2b9dfd95984e926c6982636b9f96"
     }
   },
   {
@@ -123,12 +136,17 @@ export const projectDetails = [
       "C#",
       "2D Physics",
       "ScriptableObject",
-      "PlayerPrefs"
+      "PlayerPrefs",
+      "Android / IL2CPP"
     ],
     "sources": [
       {
         "label": "README",
         "url": "https://github.com/melisau/Mitzi/blob/main/README.md"
+      },
+      {
+        "label": "Android release",
+        "url": "https://github.com/melisau/Mitzi/blob/81d21c5150a8d4773c0be1707f5d431e0756cc22/ANDROID_RELEASE.md"
       }
     ],
     "links": [
@@ -137,86 +155,98 @@ export const projectDetails = [
         "url": "https://github.com/melisau/Mitzi"
       }
     ],
-    "reviewedAt": "2026-10-08",
+    "reviewedAt": "2026-10-21",
     "copy": {
       "tr": {
-        "tagline": "Çizerek yol aç, kedileri kurtar ve onlara bir yuva kur.",
+        "tagline": "Çizerek ya da pati joystickleriyle ilerle; sekiz kediyi iki odalı evinde buluştur.",
         "problem": "Yalnızca bölüm geçmeye dayalı oyun döngüsüne, yaratıcı kontrol ve kalıcı bir bakım alanı ekleme fikri.",
-        "goal": "Çizim ve doğrudan kontrol seçeneklerini; kedi kurtarma, eşya toplama ve ev düzenlemeyle birleştiren sakin bir 2D deneyim oluşturmak.",
+        "goal": "İki kontrol biçimini, mekâna göre gelişen zorluğu ve kalıcı kedi bakımını birleştiren mobil 2D oyun geliştirmek.",
         "role": "Unity / C# oyun geliştirme",
-        "scope": "Çalışma kapsamı: çizilebilir fizik yolları, bölüm akışı, kontrol modları, ev etkileşimleri ve sürümlü yerel kayıt sistemi.",
+        "scope": "Bireysel Unity / C# projesi: çizim fiziği, çift joystick kontrolü, bölüm ve kurtarma ilerlemesi, iki odalı ev, ekonomi, kayıt dayanıklılığı ve Android sürüm hazırlığı.",
         "features": [
-          "Normal, zıplama, tehlike ve buz fırçalarıyla Draw to Play",
-          "Sol/sağ, zıplama ve eğilme için doğrudan kontrol",
-          "Sokak, orman ve şehir temaları; deterministik ileri bölümler",
-          "Her beş tamamlanan bölümde yeni kedi kurtarma",
-          "Mobilya satın alma, yerleştirme ve kedi bakım değerleri"
+          "Çizerek ve tuşlarla oynama; hareket, çift zıplama ve eğilme için pati joystickleri",
+          "Sokak, Orman, Cadde ve Neo Teknoloji; ilerlemeyle açılan mekânlar ve mekâna özgü otomatik zorluk",
+          "Mitzi ile başlayan, 7–70. bölümler arasında yedi farklı kedinin kurtarıldığı ilerleme",
+          "İki oda, dokunarak veya joystick ile kedi yönlendirme; mama, su, uyku ve bakım etkileşimleri",
+          "Mobilya yerleştirme, taşıma, döndürme, depolama, satış ve oda bazlı duvar kâğıdı",
+          "Türkçe, İngilizce ve Almanca öğreticiler; sürümlü kayıt ve sekiz saatle sınırlı çevrimdışı ihtiyaç hesabı"
         ],
-        "architecture": "Unity tek sahne akışı; Core, Levels, Drawing, Hub, UI ve Audio modülleri. İçerik tanımları ScriptableObject; ilerleme PlayerPrefs üzerinde sürümlü JSON olarak saklanıyor.",
+        "architecture": "Unity Built-in Render Pipeline üzerinde Core, Drawing, Levels, Hub, UI ve Economy modülleri. ScriptableObject içerik kataloglarını; PlayerPrefs içindeki şema 5 JSON ilerleme, envanter, oda düzeni ve ihtiyaçları taşır. Android sürüm hazırlığı ARM64 / IL2CPP ve imzalı paket doğrulamasını kapsar.",
         "decisions": [
-          "Aynı bölüm numarası aynı yerleşimi üretiyor; tekrar denemelerde düzen korunuyor.",
-          "Dekoratif sprite’lar oyun geometrisi ve collider’lardan ayrılıyor.",
-          "Kayıt sistemi son sağlam yedeği tutuyor ve yeni sürüm verisini yanlışlıkla düşürmüyor."
+          "Zorluk her mekânın kendi geçmişiyle ilerler; eski kayıtlarda genel ilerleme ve kurtarılan kediler korunur.",
+          "Kayıtlar son sağlam yedekle tutulur; çevrimdışı ihtiyaç azalması sekiz saatle sınırlandırılır.",
+          "İki joystick ayrı parmakları izler; odak kaybı, duraklatma ve bırakma sırasında giriş temizlenir.",
+          "Reklam ödülü yalnız tamamlanmış izleme sonrası ve günlük sınırla verilir; SDK ve yayın onayı canlı reklamın etkin olduğu anlamına gelmez."
         ],
         "challenges": [
-          "Bozuk kayıt veya eski sürüm: JSON doğrulama, migration ve yedek okunabilirliği için editör doğrulama komutu bulunuyor.",
-          "Yol ve boşluk sınırları: 1–100. bölümleri kontrol eden geometri doğrulama aracı kullanılıyor; bu tam bir oynanış testi değil."
+          "Çukur ve eğilme geometrisi: gerçek collider’larla dört mekânda, farklı kedi boyutları ve hareket durumlarında fizik senaryoları doğrulandı.",
+          "Evde dokunma, oda kaydırma ve eşya düzenlemesini ayırmak: UI ve eşyalardan başlayan hareketler oda geçişi veya yanlış yürüme komutu üretmez.",
+          "Mobil sürüm hazırlığı: imzalı AAB/APK, API 36 ve 16 KB sayfa uyumluluğu kontrolleri belgelendi; mağaza ve cihaz kabulü ayrı doğrulanır."
         ],
-        "limits": "Geliştiriliyor. Fiziksel Android/iOS cihaz sonuçları henüz kaydedilmemiş; bazı kedilerin animasyonları ve bellek profillemesi tamamlanmayı bekliyor.",
+        "limits": "Android paket ve Play test hazırlığı sürüyor; genel mağaza yayını veya canlı reklam onayı iddia edilmez. Fizik denemeleri tam oyun/gerçek cihaz kabulünün yerine geçmez.",
         "caption": "Projeden oyun ortamı görseli; oynanış kaydı değildir."
       },
       "en": {
-        "tagline": "Draw a path, rescue cats and build a home for them.",
+        "tagline": "Draw a path or use paw joysticks, then bring eight cats together in a two-room home.",
         "problem": "Explore a level-based game loop that combines creative controls with a persistent cat-care space.",
-        "goal": "Create a cozy 2D experience combining drawing and direct controls with cat rescue, collectibles and home customization.",
+        "goal": "Build a mobile 2D game combining two control modes, environment-specific difficulty and persistent cat care.",
         "role": "Unity / C# game development",
-        "scope": "Scope: drawable physics paths, level flow, control modes, home interactions and versioned local saves.",
+        "scope": "Personal Unity / C# project: drawing physics, dual-joystick controls, levels and rescues, a two-room home, economy, resilient saves and Android release preparation.",
         "features": [
-          "Draw to Play with normal, bounce, hazard and ice brushes",
-          "Direct movement, jump and crouch controls",
-          "Street, forest and city themes with deterministic later levels",
-          "A new cat rescue every five completed levels",
-          "Furniture shopping, placement and per-cat care values"
+          "Draw-to-play and direct controls with paw joysticks for movement, double jump and crouch",
+          "Street, Forest, Avenue and Neo Technology, unlocked through progress with environment-specific difficulty",
+          "Start with Mitzi and rescue seven more cats between levels 7 and 70",
+          "Two rooms, tap or joystick cat movement, feeding, water, sleep and care interactions",
+          "Place, move, rotate, store and sell furniture, with separate wallpapers for each room",
+          "Turkish, English and German tutorials, versioned saves and offline needs capped at eight hours"
         ],
-        "architecture": "Unity single-scene flow with Core, Levels, Drawing, Hub, UI and Audio modules. Content uses ScriptableObjects; progress is stored as versioned JSON in PlayerPrefs.",
+        "architecture": "Unity Built-in Render Pipeline with Core, Drawing, Levels, Hub, UI and Economy modules. ScriptableObjects define content; schema-5 JSON in PlayerPrefs stores progress, inventory, room layouts and needs. Android release preparation covers ARM64 / IL2CPP and signed-package verification.",
         "decisions": [
-          "A level number produces a stable layout for consistent retries.",
-          "Decorative sprites stay separate from gameplay geometry and colliders.",
-          "Save handling retains a last-known-good backup and protects newer-version data."
+          "Difficulty follows each environment’s own history; legacy saves retain overall progress and rescued cats.",
+          "Saves retain a last-known-good backup, while offline needs decay is capped at eight hours.",
+          "Joysticks track separate fingers and clear input on focus loss, pause and release.",
+          "Ad rewards require completed viewing and daily limits; SDK integration and release preparation do not imply approved live ads."
         ],
         "challenges": [
-          "Malformed or legacy saves: editor validation covers JSON rejection, migration and backup readability.",
-          "Road and gap bounds: a geometry validator checks levels 1–100; it is not a complete gameplay test suite."
+          "Gaps and crouch geometry: physics scenarios use real colliders across four environments, different cat sizes and movement states.",
+          "Separating room swipes, taps and furniture editing prevents gestures starting on UI or objects from causing room changes or unintended movement.",
+          "Mobile release preparation documents signed AAB/APK, API 36 and 16 KB compatibility checks; store and device acceptance remain separate."
         ],
-        "limits": "In development. Physical Android/iOS device results are not recorded yet; some cat animations and memory profiling remain incomplete.",
+        "limits": "Android package and Play test preparation is ongoing; no general store launch or live-ad approval is claimed. Physics checks are not complete gameplay or device acceptance.",
         "caption": "Environment artwork from the project; not a gameplay recording."
       },
       "de": {
-        "tagline": "Zeichne Wege, rette Katzen und gestalte ihr Zuhause.",
+        "tagline": "Zeichne Wege oder steuere mit Pfoten-Joysticks und vereine acht Katzen in einem Zuhause mit zwei Zimmern.",
         "problem": "Ein Level-Spielkonzept, das kreative Steuerung mit einem dauerhaften Pflegebereich für Katzen verbindet.",
-        "goal": "Ein entspanntes 2D-Erlebnis mit Zeichen- und Direktsteuerung, Katzenrettung, Sammelobjekten und Wohnungsgestaltung schaffen.",
+        "goal": "Ein mobiles 2D-Spiel mit zwei Steuerungen, umgebungsabhängiger Schwierigkeit und dauerhafter Katzenpflege entwickeln.",
         "role": "Unity-/C#-Spieleentwicklung",
-        "scope": "Umfang: zeichnbare Physikwege, Level-Ablauf, Steuerungsmodi, Interaktionen im Zuhause und versionierte lokale Spielstände.",
+        "scope": "Persönliches Unity-/C#-Projekt: Zeichenphysik, zwei Joysticks, Level- und Rettungsfortschritt, zwei Zimmer, Wirtschaft, robuste Spielstände und Android-Vorbereitung.",
         "features": [
-          "Zeichnen mit Normal-, Sprung-, Gefahren- und Eispinseln",
-          "Direktsteuerung für Bewegung, Sprung und Ducken",
-          "Straßen-, Wald- und Stadtthemen mit deterministischen späteren Levels",
-          "Eine neue Katzenrettung nach jeweils fünf abgeschlossenen Levels",
-          "Möbelkauf, Platzierung und individuelle Pflegewerte"
+          "Zeichenmodus und Direktsteuerung mit Pfoten-Joysticks für Bewegung, Doppelsprung und Ducken",
+          "Straße, Wald, Avenue und Neo-Technologie mit freischaltbaren Umgebungen und eigener Schwierigkeit",
+          "Mit Mitzi beginnen und sieben weitere Katzen zwischen Level 7 und 70 retten",
+          "Zwei Zimmer, Katzen per Tippen oder Joystick führen, Futter, Wasser, Schlaf und Pflege",
+          "Möbel platzieren, bewegen, drehen, lagern und verkaufen; eigene Tapeten je Zimmer",
+          "Türkische, englische und deutsche Tutorials, versionierte Spielstände und höchstens acht Stunden Offline-Bedürfnisse"
         ],
-        "architecture": "Unity-Ablauf in einer Szene mit Core-, Levels-, Drawing-, Hub-, UI- und Audio-Modulen. Inhalte nutzen ScriptableObjects; Fortschritt wird als versioniertes JSON in PlayerPrefs gespeichert.",
+        "architecture": "Unity Built-in Render Pipeline mit Core-, Drawing-, Levels-, Hub-, UI- und Economy-Modulen. ScriptableObjects definieren Inhalte; JSON mit Schema 5 in PlayerPrefs speichert Fortschritt, Inventar, Zimmer und Bedürfnisse. Die Android-Vorbereitung umfasst ARM64 / IL2CPP und signierte Pakete.",
         "decisions": [
-          "Eine Levelnummer erzeugt ein stabiles Layout für wiederholbare Versuche.",
-          "Dekorative Sprites bleiben von Spielgeometrie und Collidern getrennt.",
-          "Spielstände behalten eine letzte gültige Sicherung und schützen Daten neuerer Versionen."
+          "Jede Umgebung hat einen eigenen Schwierigkeitsverlauf; alte Spielstände behalten Gesamtfortschritt und gerettete Katzen.",
+          "Eine letzte intakte Sicherung schützt Spielstände; Offline-Bedürfnisse ändern sich höchstens über acht Stunden.",
+          "Joysticks verfolgen Finger getrennt und setzen Eingaben bei Fokusverlust, Pause und Loslassen zurück.",
+          "Werbebelohnungen gelten erst nach vollständiger Wiedergabe und mit Tageslimit; die Integration bedeutet keine Freigabe für Live-Werbung."
         ],
         "challenges": [
-          "Fehlerhafte oder alte Spielstände: Editor-Prüfungen decken JSON-Ablehnung, Migration und Sicherungen ab.",
-          "Straßen- und Lückengrenzen: ein Geometrieprüfer kontrolliert Level 1–100, ersetzt aber keine vollständigen Spieltests."
+          "Lücken und Duckpassagen: Physikprüfungen verwenden echte Collider in vier Umgebungen, unterschiedliche Katzengrößen und Bewegungszustände.",
+          "Zimmerwechsel, Tippen und Möbelbearbeitung werden getrennt, damit Gesten über UI oder Objekten keine falschen Bewegungen auslösen.",
+          "Signierte AAB/APK, API 36 und 16-KB-Kompatibilität sind dokumentiert; Store- und Geräteabnahme werden separat geprüft."
         ],
-        "limits": "In Entwicklung. Ergebnisse physischer Android-/iOS-Geräte fehlen noch; einige Katzenanimationen und Speicherprofile sind unvollständig.",
+        "limits": "Android-Paket- und Play-Testvorbereitung läuft; kein allgemeiner Store-Start und keine Freigabe für Live-Werbung werden behauptet.",
         "caption": "Umgebungsgrafik aus dem Projekt; keine Spielaufnahme."
       }
+    },
+    "sourceRevisions": {
+      "Mitzi": "81d21c5150a8d4773c0be1707f5d431e0756cc22"
     }
   },
   {
@@ -227,13 +257,22 @@ export const projectDetails = [
       "Next.js",
       "TypeScript",
       "Supabase Auth",
-      "PostgreSQL",
-      "Web Crypto API"
+      "PostgreSQL / RLS",
+      "Web Crypto API",
+      "IndexedDB"
     ],
     "sources": [
       {
         "label": "README",
         "url": "https://github.com/melisau/pin-paper-journal/blob/main/README.md"
+      },
+      {
+        "label": "Encrypted media",
+        "url": "https://github.com/melisau/pin-paper-journal/blob/077e4c02b0dfe97eb741f883c468ef37e319ef1b/lib/asset-repository.ts"
+      },
+      {
+        "label": "Encrypted drafts",
+        "url": "https://github.com/melisau/pin-paper-journal/blob/077e4c02b0dfe97eb741f883c468ef37e319ef1b/lib/cloud-drafts.ts"
       }
     ],
     "links": [
@@ -242,87 +281,103 @@ export const projectDetails = [
         "url": "https://github.com/melisau/pin-paper-journal"
       }
     ],
-    "reviewedAt": "2026-10-08",
+    "reviewedAt": "2026-10-21",
     "copy": {
       "tr": {
-        "tagline": "Kişisel düşünceler için görsel bir günlük ve tarayıcı tarafında şifreleme.",
+        "tagline": "Yazı, fotoğraf ve çizimleri şifreli bir dijital defterde bir araya getir.",
         "problem": "Görsel günlüklerin kişisel içerikleri kolay düzenlemesi kadar, hesabın ve saklanan verinin sınırlarını koruması da önemli.",
-        "goal": "Fotoğraf, sticker, çizim ve çok sayfalı defter düzenini; özel hesaplar, isteğe bağlı kilitler ve istemci tarafı şifrelemeyle birleştirmek.",
+        "goal": "Çok sayfalı görsel günlük düzenini; hesaplara özel veri, tarayıcıda şifrelenen medya, kurtarma ve yerel taslak korumasıyla birleştirmek.",
         "role": "Full-stack geliştirme",
-        "scope": "Çalışma kapsamı: Next.js editör geçişi, kayıt/giriş ekranları, korumalı journal rotası, anahtar sarma ve kurtarma akışı.",
+        "scope": "Bireysel full-stack proje: görsel defter editörü, Supabase hesapları, metin ve medya şifreleme, yedek/kurtarma, mobil kullanım; yerel geliştirmede sürüm kontrollü eşitleme ve tema çalışmaları.",
         "features": [
-          "Fotoğraflar, sticker’lar, çizimler ve kâğıt stilleri",
-          "E-posta doğrulamalı Supabase hesapları",
-          "Sahip bazlı PostgreSQL Row Level Security",
-          "AES-256-GCM ile tarayıcıda içerik şifreleme",
-          "Tek kullanımlık gösterilen kurtarma koduyla anahtar kurtarma"
+          "Çok sayfalı defterler, fotoğraf, sticker, çizim, kâğıt stilleri ve planlayıcı şablonları",
+          "Supabase Auth, e-posta doğrulama, parola kurtarma ve sahip bazlı PostgreSQL RLS",
+          "Metin, fotoğraf ve çizim verisini yüklemeden önce AES-256-GCM ile şifreleme",
+          "Şifreli IndexedDB medya önbelleği ve şifreli bekleyen bulut taslakları",
+          "Kurtarma koduyla ana anahtarı açma; parola değişiminde aynı içeriğe erişimi koruma",
+          "Fotoğraf sıkıştırma, görünür sayfa medyasını yükleme ve parolalı defter yedeği",
+          "Türkçe/İngilizce arayüz, mobil defter kitaplığı ve okuma modu"
         ],
-        "architecture": "Next.js App Router → Supabase Auth / PostgreSQL / özel Storage. Web Crypto ile içerik yüklemeden önce şifreleniyor; hesap anahtarı parola ve ayrı kurtarma koduyla sarılıyor.",
+        "architecture": "Next.js App Router → Supabase Auth / PostgreSQL / özel Storage. Metin ve medya tarayıcıda Web Crypto ile şifrelenir; IndexedDB şifreli medya önbelleği tutar. Yerel geliştirmedeki sürümlü SQL snapshot/RPC akışı, kaydı beklenen defter revizyonuyla aynı transaction içinde karşılaştırır.",
         "decisions": [
-          "Her şifreli değer için yeni 96-bit IV kullanılıyor.",
-          "Paroladan sarma anahtarı PBKDF2-HMAC-SHA-256, rastgele salt ve 600.000 yinelemeyle türetiliyor.",
-          "Kurtarma kodunun okunabilir biçimi Supabase’de saklanmıyor."
+          "Her şifreli değer yeni 96-bit IV kullanır; parola sarma anahtarı rastgele salt ve 600.000 PBKDF2-HMAC-SHA-256 yinelemesiyle türetilir.",
+          "Kurtarma kodunun açık biçimi sunucuda tutulmaz; parola değişiminde içerik anahtarı değil sarılmış kopyası yenilenir.",
+          "Medya indirme sonrası tarayıcıda çözülür; önbellek ve bekleyen taslaklar açık metin yerine şifreli tutulur.",
+          "Yerel eşitleme geliştirmesinde çakışma otomatik ezilmez; taslak yeni anahtarla ayrı deftere kurtarılır. Gerçek iki cihaz kabulü henüz ayrı doğrulama gerektirir."
         ],
         "challenges": [
-          "Parola değişiminde mevcut içeriğe erişim: kurtarma kodu aynı ana anahtarı açar; yeni parola yalnızca bu anahtarın sarılmış kopyasını değiştirir.",
-          "Hesaplar arası veri erişimi: her günlük, sayfa ve varlık satırı sahibine göre RLS ile sınırlandırılıyor."
+          "Metin dışında medyayı korumak: dosya ve metadata ayrı şifrelenir; çözülmüş object URL’leri kullanım sonunda temizlenir.",
+          "Kesintide taslağı kaybetmemek: senkronize edilmemiş içerik şifreli saklanır; tarayıcı verilerinin silinmesine karşı kalıcı garanti verilmez.",
+          "Birden fazla sekmeden eski kayıt: yerel sürüm denetimi eski revizyonu reddeder ve sekme taslaklarını ayırır; yayın durumu ile yerel test sonucu karıştırılmaz."
         ],
-        "limits": "README bu altyapıyı ilk güvenlik uygulaması olarak tanımlıyor; hassas veri için bağımsız güvenlik incelemesi gerekiyor. Görsel yüklemelerin şifrelenmesi README’de gelecek adım olarak belirtiliyor.",
+        "limits": "Medya şifrelemesi artık kaynakta uygulanmış durumda; README’deki gelecek zaman ifadesi geride kalmış. Sürüm kontrollü eşitleme ve tema değişiklikleri yerel çalışma olarak incelendi; bağımsız güvenlik incelemesi ve canlı iki cihaz kabulü yerine geçmez.",
         "caption": "Journal için tasarım önizlemesi; doğrulanmış canlı uygulama ekranı değildir."
       },
       "en": {
-        "tagline": "A visual journal for personal thoughts, with browser-side encryption.",
+        "tagline": "Bring writing, photos and drawings together in an encrypted digital notebook.",
         "problem": "A visual journal needs both flexible creative editing and clear boundaries around accounts and stored personal content.",
-        "goal": "Combine photos, stickers, drawings and notebook spreads with private accounts, optional locks and client-side encryption.",
+        "goal": "Combine multi-page visual journaling with owner-only data, browser-encrypted media, recovery and local draft protection.",
         "role": "Full-stack development",
-        "scope": "Scope: Next.js editor migration, registration/sign-in UI, protected journal route, key wrapping and recovery flow.",
+        "scope": "Personal full-stack project: visual notebook editor, Supabase accounts, text/media encryption, backup and recovery, mobile use; local development includes versioned sync and theme work.",
         "features": [
-          "Photos, stickers, drawings and paper styles",
-          "Supabase accounts with email verification",
-          "Owner-scoped PostgreSQL Row Level Security",
-          "Browser-side content encryption with AES-256-GCM",
-          "Key recovery using a one-time-displayed recovery code"
+          "Multi-page notebooks, photos, stickers, drawings, paper styles and planner templates",
+          "Supabase Auth, email verification, password recovery and owner-scoped PostgreSQL RLS",
+          "AES-256-GCM encryption of text, photos and drawings before upload",
+          "Encrypted IndexedDB media cache and encrypted pending cloud drafts",
+          "Recovery-code access to the master key, preserving content through password changes",
+          "Photo compression, visible-page media loading and password-protected notebook backups",
+          "Turkish/English interface, mobile notebook library and reading mode"
         ],
-        "architecture": "Next.js App Router → Supabase Auth / PostgreSQL / private Storage. Web Crypto encrypts content before upload; the account key is wrapped using a password and a separate recovery code.",
+        "architecture": "Next.js App Router → Supabase Auth / PostgreSQL / private Storage. Web Crypto encrypts text and media in the browser; IndexedDB stores encrypted media caches. The locally developed versioned SQL snapshot/RPC flow checks the expected notebook revision within the write transaction.",
         "decisions": [
-          "Each encrypted value uses a fresh 96-bit IV.",
-          "Password wrapping keys use PBKDF2-HMAC-SHA-256, random salt and 600,000 iterations.",
-          "Readable recovery codes are not stored in Supabase."
+          "Each encrypted value uses a fresh 96-bit IV; wrapping keys use a random salt and 600,000 PBKDF2-HMAC-SHA-256 iterations.",
+          "Readable recovery codes are not stored on the server; password changes replace the wrapped key, not the content key.",
+          "Media is decrypted after download; cached media and pending drafts stay encrypted rather than plaintext.",
+          "Local sync work rejects conflicting overwrites and recovers drafts into a separate notebook with a new key; live two-device acceptance remains separate."
         ],
         "challenges": [
-          "Keeping content readable after password recovery: the recovery code unwraps the same master key; the new password changes its wrapped copy.",
-          "Cross-account data access: journal, page and asset rows use owner-based RLS policies."
+          "Protecting media as well as text: files and metadata are encrypted separately, and decrypted object URLs are cleaned up after use.",
+          "Preserving interrupted edits: unsynced drafts stay encrypted, but clearing browser data cannot be made loss-proof.",
+          "Stale saves from multiple tabs: local revision checks reject old writes and isolate tab drafts; local verification is not a deployed-release claim."
         ],
-        "limits": "The README identifies this as an initial security implementation requiring independent review for sensitive data. Image-upload encryption is described as a future step.",
+        "limits": "Media encryption is implemented in source despite older README wording. Versioned sync and themes were reviewed as local work, not independent security review or live two-device acceptance.",
         "caption": "Journal design preview; not a verified live-application screenshot."
       },
       "de": {
-        "tagline": "Ein visuelles Tagebuch für persönliche Gedanken mit browserseitiger Verschlüsselung.",
+        "tagline": "Texte, Fotos und Zeichnungen in einem verschlüsselten digitalen Notizbuch verbinden.",
         "problem": "Ein visuelles Tagebuch benötigt flexible Gestaltung und klare Grenzen für Konten und persönliche Inhalte.",
-        "goal": "Fotos, Sticker, Zeichnungen und Doppelseiten mit privaten Konten, optionalen Sperren und clientseitiger Verschlüsselung verbinden.",
+        "goal": "Mehrseitige visuelle Tagebücher mit kontoeigenen Daten, im Browser verschlüsselten Medien, Wiederherstellung und lokalen Entwürfen verbinden.",
         "role": "Full-Stack-Entwicklung",
-        "scope": "Umfang: Migration des Editors zu Next.js, Registrierung/Anmeldung, geschützte Journal-Route, Schlüsselverpackung und Wiederherstellung.",
+        "scope": "Persönliches Full-Stack-Projekt: visueller Editor, Supabase-Konten, Text-/Medienverschlüsselung, Sicherung und Wiederherstellung sowie mobile Nutzung; lokale Arbeit an versionierter Synchronisierung und Themes.",
         "features": [
-          "Fotos, Sticker, Zeichnungen und Papierstile",
-          "Supabase-Konten mit E-Mail-Bestätigung",
-          "Eigentümerbasierte PostgreSQL Row Level Security",
-          "Inhaltsverschlüsselung im Browser mit AES-256-GCM",
-          "Schlüsselwiederherstellung über einen einmalig angezeigten Code"
+          "Mehrseitige Notizbücher, Fotos, Sticker, Zeichnungen, Papierstile und Planervorlagen",
+          "Supabase Auth, E-Mail-Bestätigung, Passwortwiederherstellung und kontobezogenes PostgreSQL RLS",
+          "AES-256-GCM-Verschlüsselung von Texten, Fotos und Zeichnungen vor dem Upload",
+          "Verschlüsselter IndexedDB-Mediencache und verschlüsselte ausstehende Cloud-Entwürfe",
+          "Hauptschlüssel per Wiederherstellungscode öffnen und Inhalte bei Passwortänderung erhalten",
+          "Fotokompression, Medienladen für sichtbare Seiten und passwortgeschützte Sicherungen",
+          "Türkische/englische Oberfläche, mobile Notizbuchbibliothek und Lesemodus"
         ],
-        "architecture": "Next.js App Router → Supabase Auth / PostgreSQL / privater Storage. Web Crypto verschlüsselt Inhalte vor dem Upload; Kontoschlüssel werden mit Passwort und separatem Wiederherstellungscode verpackt.",
+        "architecture": "Next.js App Router → Supabase Auth / PostgreSQL / privater Storage. Web Crypto verschlüsselt Text und Medien im Browser; IndexedDB speichert verschlüsselte Medien. Der lokal entwickelte versionierte SQL-Snapshot/RPC prüft die erwartete Notizbuchrevision innerhalb der Schreibtransaktion.",
         "decisions": [
-          "Jeder verschlüsselte Wert verwendet einen neuen 96-Bit-IV.",
-          "Passwortbasierte Verpackungsschlüssel nutzen PBKDF2-HMAC-SHA-256, zufälliges Salt und 600.000 Iterationen.",
-          "Lesbare Wiederherstellungscodes werden nicht in Supabase gespeichert."
+          "Jeder verschlüsselte Wert nutzt einen neuen 96-Bit-IV; Schlüsselableitung erfolgt mit zufälligem Salt und 600.000 PBKDF2-HMAC-SHA-256-Iterationen.",
+          "Lesbare Wiederherstellungscodes werden nicht serverseitig gespeichert; Passwortänderungen erneuern den verpackten Schlüssel, nicht den Inhaltsschlüssel.",
+          "Medien werden nach dem Download entschlüsselt; Cache und ausstehende Entwürfe bleiben verschlüsselt.",
+          "Die lokale Synchronisierung verweigert widersprüchliche Überschreibungen und rettet Entwürfe in ein neues Notizbuch; echte Zwei-Geräte-Abnahme bleibt separat."
         ],
         "challenges": [
-          "Inhaltszugriff nach Passwortwiederherstellung: der Code öffnet denselben Hauptschlüssel; das neue Passwort verändert dessen verpackte Kopie.",
-          "Kontenübergreifender Zugriff: Journal-, Seiten- und Mediendatensätze nutzen eigentümerbasierte RLS-Regeln."
+          "Medien ebenso wie Text schützen: Dateien und Metadaten werden separat verschlüsselt, entschlüsselte Object-URLs anschließend freigegeben.",
+          "Unterbrochene Bearbeitung: ungesendete Entwürfe bleiben verschlüsselt; das Löschen von Browserdaten kann dennoch Inhalte entfernen.",
+          "Veraltete Speicherungen aus mehreren Tabs: lokale Revisionsprüfung und getrennte Entwürfe verhindern Überschreiben; dies ist keine Behauptung einer veröffentlichten Version."
         ],
-        "limits": "Die README beschreibt eine erste Sicherheitsimplementierung, die vor sensiblen Daten unabhängig geprüft werden muss. Verschlüsselte Bild-Uploads werden als künftiger Schritt genannt.",
+        "limits": "Medienverschlüsselung ist im Code vorhanden, obwohl die README ältere Formulierungen enthält. Versionierte Synchronisierung und Themes wurden als lokale Arbeit geprüft, nicht als unabhängige Sicherheits- oder Live-Geräteabnahme.",
         "caption": "Journal-Designvorschau; kein bestätigter Screenshot der Live-Anwendung."
       }
-    }
+    },
+    "sourceRevisions": {
+      "pin-paper-journal": "077e4c02b0dfe97eb741f883c468ef37e319ef1b"
+    },
+    "editorialNote": "Includes read-only local development review of versioned sync and themes on 2026-10-21. Local changes are not claimed as a deployed release."
   },
   {
     "slug": "be-a-real-developer",
@@ -332,14 +387,28 @@ export const projectDetails = [
       "JavaScript",
       "Node.js",
       "Cloudflare Workers",
-      "SQLite / D1",
+      "D1 / Drizzle",
+      "Firebase Auth",
       "QuickJS",
+      "Docker / Piston",
       "OpenAI API"
     ],
     "sources": [
       {
         "label": "README",
         "url": "https://github.com/melisau/RealDev/blob/main/README.md"
+      },
+      {
+        "label": "Project inventory",
+        "url": "https://github.com/melisau/RealDev/blob/eab5f40d7024cb37da0788ba76dd969b62e449c6/PROJECT-STATUS.md"
+      },
+      {
+        "label": "Project acceptance tests",
+        "url": "https://github.com/melisau/RealDev/blob/eab5f40d7024cb37da0788ba76dd969b62e449c6/PROJECT-DELIVERY.md"
+      },
+      {
+        "label": "Runner deployment",
+        "url": "https://github.com/melisau/RealDev/blob/eab5f40d7024cb37da0788ba76dd969b62e449c6/docs/runner-vds.md"
       }
     ],
     "links": [
@@ -348,86 +417,110 @@ export const projectDetails = [
         "url": "https://github.com/melisau/RealDev"
       }
     ],
-    "reviewedAt": "2026-10-08",
+    "reviewedAt": "2026-10-21",
     "copy": {
       "tr": {
-        "tagline": "Doğru cevaptan fazlası: kod, açıklama ve hata ayıklamayla öğrenme kanıtı.",
-        "problem": "Birden fazla seçmeli doğru cevap, geliştiricinin uygulama ve problem çözme derinliğini tek başına göstermiyor.",
-        "goal": "Başlangıç taraması, çalıştırılabilir görevler ve kişisel rotalarla; doğrulanmış test kanıtını geçici AI değerlendirmesinden ayıran pratik ortamı sunmak.",
+        "tagline": "Soru çözmekten çalışan proje teslimine: kanıta dayalı geliştirici pratiği.",
+        "problem": "Doğru seçeneği bulmak, kod yazma, hata ayıklama ve bir projeyi teslim etme becerilerini tek başına göstermiyor. Öğrenme geçmişinin hangi tür kanıta dayandığını ayırmak gerekiyor.",
+        "goal": "Konu çalışmasını kod laboratuvarı, proje kabul testleri ve kişisel rotalarla birleştirmek; testle doğrulanmış davranışı yazılı öz değerlendirme ve geçici AI geri bildiriminden ayrı göstermek.",
         "role": "Full-stack geliştirme",
-        "scope": "Çalışma kapsamı: öğrenme arayüzü, değerlendirme API’si, kişisel veri yaşam döngüsü, güvenli kod çalıştırma ve kaynak izlenebilirliği.",
+        "scope": "Bireysel full-stack proje: iki dilli öğrenme arayüzü, soru ve hata katalogları, hesap izolasyonu, kod sandbox’ı, şablonlu proje teslimi ve kaynak izlenebilirliği.",
         "features": [
-          "Sekiz görevli başlangıç taraması ve kişisel öğrenme rotaları",
-          "Dört devam edilebilir proje ve on bir kaynaklı teknik inceleme",
-          "Sunucuda yeniden çalıştırılan testler ve sahip bazlı geçmiş",
-          "Rubrik tabanlı, geçici olarak etiketlenen isteğe bağlı AI geri bildirimi",
-          "JSON dışa aktarma, hesap silme ve izinli ses transkripsiyonu"
+          "13 alanda 1.312 TR/EN değerlendirme sorusu; konu araması, açıklama, not ve kayıtlı soru kütüphanesi",
+          "Sekiz görevli başlangıç taraması, kişisel öğrenme rotaları ve kod/cevap geçmişi",
+          "JavaScript için QuickJS; Python, C# ve Java için sınırlandırılmış Piston kod çalıştırma altyapısı",
+          "Python HTTP/SQLite ve .NET proje teslimlerinde kaynak hash’i ve sürümlü sekiz kabul testi; Unity şablonu için ayrı yerel test kapsamı",
+          "Hata laboratuvarı, kaynaklı teknik kod incelemeleri ve 24 özgün iki dilli kavram makalesi",
+          "Aktif çalışma süresi ve takvim; hesap dışa aktarma, öğrenme sıfırlama ve hesap silme",
+          "Rubrik ve öğrenci alıntısına dayanan isteğe bağlı AI geri bildirimi; onaylı ses transkripsiyonu",
+          "Cihaz iznine bağlı Web Push hatırlatıcıları, saat dilimi ayarı ve test bildirimi"
         ],
-        "architecture": "Vanilla web arayüzü → kimlik doğrulamalı Worker API → D1. QuickJS, JavaScript görevlerini sınırlandırılmış ortamda çalıştırıyor. Python/C#/Java görevleri isteğe bağlı özel Piston gateway kullanıyor.",
+        "architecture": "Vanilla JavaScript arayüz → Firebase kimliği doğrulanan Worker API → D1 / Drizzle. JavaScript görevleri önceden derlenmiş WebAssembly modülü kullanan QuickJS’te çalışır. Piston ve Python/.NET proje kabul servisi kimlik doğrulamalı ayrı gateway’ler kullanır; kalıcı Ubuntu runner için Docker Compose, Caddy, sağlık kontrolü ve geri alma akışı hazırlanmıştır.",
         "decisions": [
-          "İstemcinin gönderdiği notlar yerine sunucunun test sonuçları esas alınıyor.",
-          "QuickJS ortamında host ağ, dosya sistemi, DOM veya hesap erişimi yok.",
-          "AI kaynak özetleri tam makaleden değil RSS başlık/alıntılarından üretiliyor ve kaynak metin hash’iyle önbelleğe alınıyor."
+          "Her soru sürümü yanıtla birlikte tutulur; cevap anahtarı genel payload’a gönderilmez, not sunucuda hesaplanır.",
+          "Test sonucu kaynak SHA-256, görev, motor ve test sürümüyle eşleşmeden beceri kanıtına katılmaz.",
+          "Farklı dillerdeki eşdeğer görevler tek kanıt ailesidir; AI geçici değerlendirmesi gerçek test sonucuyla birleştirilmez.",
+          "Worker çalışma anında WASM derleyemediği için QuickJS modülü derleme sırasında ayrıştırılır ve önceden derlenmiş olarak yüklenir.",
+          "Runner sürümü production dalındaki commit’e bağlanır; sağlık kontrolü başarısız olduğunda önceki sürüme dönüş yolu bulunur."
         ],
         "challenges": [
-          "Güvenilmeyen kodu çalıştırma: QuickJS bellek, stack ve süre bütçeleriyle sınırlandırılıyor; sunucu yazılmış testleri yeniden çalıştırıyor.",
-          "Şişirilmiş yetkinlik çıkarımları: eşdeğer görevler aynı kanıt ailesinde gruplanıyor; AI değerlendirmesi bağımsız test kanıtından ayrılıyor."
+          "Güvenilmeyen kod: QuickJS bellek/süre bütçeleri ve proje tesliminde sınırlı dosya listesi kullanılır; Python/.NET öğrenci ve test süreçleri ayrı kapsayıcılarda çalışır.",
+          "Gerçek proje davranışını ölçmek: HTTP, SQLite, sahip izolasyonu, sürüm ve yeniden başlatma senaryoları özgün kabul testleriyle denetlenir; yerel Unity sonucu canlı öğrenci sandbox’ı gibi sunulmaz.",
+          "Yanıltıcı yetkinlik iddiaları: seçenekli sorular tek başına uzmanlık sayılmaz; notlar, AI yorumu ve sunucu testleri ayrı kanıt türleri olarak gösterilir.",
+          "Dış servis bağımlılığı: runner erişimi ve bildirim izinleri açık durumlarla gösterilir; altyapı kodunun varlığı kesintisiz canlı hizmet garantisi değildir."
         ],
-        "limits": "Mesleki sertifikasyon değildir. Çok dilli kod runner’ının canlı kullanımı özel, kararlı host/tünel; AI özellikleri API kredisi gerektiriyor.",
+        "limits": "Soru ve kod kapsamı kaynaklardan doğrulandı; 7/24 runner işletimi, gerçek cihaz bildirimleri ve canlı Unity öğrenci ortamı burada yeniden doğrulanmadı. Mesleki sertifikasyon değildir.",
         "caption": "İngilizce öğrenme paneli"
       },
       "en": {
-        "tagline": "Beyond the right answer: learning evidence through code, explanations and debugging.",
-        "problem": "Correct multiple-choice answers alone do not show a developer’s practical implementation and debugging depth.",
-        "goal": "Offer scans, executable tasks and personal routes while keeping verified test evidence separate from provisional AI assessment.",
+        "tagline": "From answering questions to submitting working projects: evidence-based developer practice.",
+        "problem": "Picking the right option alone does not demonstrate coding, debugging or project delivery. Learning records need to distinguish the kind of evidence behind each result.",
+        "goal": "Connect topic practice with code labs, project acceptance tests and personal routes, keeping verified behavior separate from written self-review and provisional AI feedback.",
         "role": "Full-stack development",
-        "scope": "Scope: learning UI, assessment API, personal-data lifecycle, bounded code execution and source traceability.",
+        "scope": "Personal full-stack project: bilingual learning UI, question and debugging catalogs, account isolation, code sandboxing, template-based project submissions and source traceability.",
         "features": [
-          "Eight-task initial scan and personal learning routes",
-          "Four resumable projects and eleven sourced technical reviews",
-          "Server-rerun tests and owner-scoped history",
-          "Optional rubric-based AI feedback labeled provisional",
-          "JSON export, account deletion and consent-based audio transcription"
+          "1,312 TR/EN assessment questions across 13 areas, with topic search, explanations, notes and a saved-question library",
+          "Eight-task initial scan, personal learning routes and answer/code history",
+          "QuickJS for JavaScript and a bounded Piston execution integration for Python, C# and Java",
+          "Python HTTP/SQLite and .NET submissions with source hashes and eight versioned acceptance tests; separate local Unity template tests",
+          "Debugging lab, sourced technical code reviews and 24 original bilingual concept articles",
+          "Active study time and calendar, account export, learning reset and account deletion",
+          "Optional rubric- and quotation-based AI feedback, plus consent-based audio transcription",
+          "Permission-based Web Push reminders, timezone preferences and test notifications"
         ],
-        "architecture": "Vanilla web UI → authenticated Worker API → D1. QuickJS executes authored JavaScript tasks in a bounded environment; optional private Piston handles Python/C#/Java.",
+        "architecture": "Vanilla JavaScript UI → Firebase-verified Worker API → D1 / Drizzle. JavaScript tasks use QuickJS with a precompiled WebAssembly module. Piston and Python/.NET project acceptance services use separate authenticated gateways; an Ubuntu runner deployment includes Docker Compose, Caddy, health checks and rollback.",
         "decisions": [
-          "Server test results are authoritative, not client-submitted grades.",
-          "QuickJS has no host network, filesystem, DOM or account access.",
-          "AI feed summaries use RSS titles/excerpts rather than full articles and are cached by source-text hash."
+          "Answers retain their question version; answer keys stay out of public payloads and grading runs on the server.",
+          "A result must match the source SHA-256, assignment, engine and suite version before contributing skill evidence.",
+          "Equivalent tasks across languages share one evidence family; provisional AI evaluation is not merged into test verification.",
+          "The Worker cannot compile WASM at runtime, so the build extracts the QuickJS module for precompiled loading.",
+          "Runner releases reference production-branch commits and include rollback when a health check fails."
         ],
         "challenges": [
-          "Untrusted code: QuickJS uses memory, stack and time budgets, and the server reruns authored tests.",
-          "Inflated mastery claims: equivalent tasks share one evidence family, while AI assessment stays separate from independent test evidence."
+          "Untrusted code: QuickJS has memory/time budgets, project files are allowlisted, and Python/.NET learner and tester run in separate containers.",
+          "Project behavior: original acceptance checks exercise HTTP, SQLite, owner isolation, versions and restart persistence; local Unity results are not claimed as a live learner sandbox.",
+          "Avoiding inflated proficiency claims: choice answers alone do not establish mastery; notes, AI comments and server tests remain separate evidence types.",
+          "External services: runner connectivity and notification permissions have explicit states; deployment code does not guarantee always-on operation."
         ],
-        "limits": "This is formative practice, not professional certification. The polyglot runner requires a stable private host/tunnel; AI features require API credit.",
+        "limits": "Question and execution scope was reviewed from source; always-on runner operation, device delivery and a live Unity learner environment were not reverified. Not professional certification.",
         "caption": "English learning dashboard"
       },
       "de": {
-        "tagline": "Mehr als die richtige Antwort: Lernbelege durch Code, Erklärungen und Debugging.",
-        "problem": "Richtige Multiple-Choice-Antworten allein zeigen keine praktische Implementierungs- und Debugging-Tiefe.",
-        "goal": "Scans, ausführbare Aufgaben und persönliche Lernwege anbieten und geprüfte Testbelege von vorläufiger KI-Bewertung trennen.",
+        "tagline": "Von Fragen zu lauffähigen Projektabgaben: evidenzbasierte Entwicklungspraxis.",
+        "problem": "Die richtige Auswahlantwort beweist weder Programmierung noch Debugging oder Projektabgabe. Lernfortschritt muss die Art der zugrunde liegenden Nachweise unterscheiden.",
+        "goal": "Themenübungen, Code-Labor, Projektabnahmen und persönliche Lernpfade verbinden; geprüftes Verhalten bleibt von Selbsteinschätzung und vorläufigem KI-Feedback getrennt.",
         "role": "Full-Stack-Entwicklung",
-        "scope": "Umfang: Lernoberfläche, Bewertungs-API, Lebenszyklus persönlicher Daten, begrenzte Codeausführung und Quellennachverfolgbarkeit.",
+        "scope": "Persönliches Full-Stack-Projekt: zweisprachige Lernoberfläche, Fragen- und Fehlerkataloge, Kontentrennung, Code-Sandbox, vorlagenbasierte Abgaben und Quellennachweise.",
         "features": [
-          "Startscan mit acht Aufgaben und persönliche Lernwege",
-          "Vier fortsetzbare Projekte und elf quellengestützte technische Reviews",
-          "Serverseitig wiederholte Tests und eigentümerbezogener Verlauf",
-          "Optionale rubrikbasierte, als vorläufig markierte KI-Rückmeldung",
-          "JSON-Export, Kontolöschung und Audiotranskription mit Zustimmung"
+          "1.312 TR/EN-Fragen in 13 Bereichen mit Themensuche, Erklärungen, Notizen und gespeicherten Fragen",
+          "Einstiegsscan mit acht Aufgaben, persönliche Lernpfade und Antwort-/Codeverlauf",
+          "QuickJS für JavaScript und begrenzte Piston-Anbindung für Python, C# und Java",
+          "Python-HTTP/SQLite- und .NET-Abgaben mit Quellcode-Hash und acht versionierten Abnahmetests; separate lokale Unity-Vorlagentests",
+          "Fehlerlabor, quellenbasierte Code-Reviews und 24 eigene zweisprachige Fachartikel",
+          "Aktive Lernzeit und Kalender, Datenexport, Lernreset und Kontolöschung",
+          "Optionales KI-Feedback mit Rubrik und Originalzitaten sowie Audiotranskription mit Zustimmung",
+          "Web-Push-Erinnerungen mit Geräteerlaubnis, Zeitzoneneinstellung und Testbenachrichtigung"
         ],
-        "architecture": "Vanilla-Weboberfläche → authentifizierte Worker-API → D1. QuickJS führt JavaScript-Aufgaben begrenzt aus; ein optionales privates Piston-Gateway unterstützt Python/C#/Java.",
+        "architecture": "Vanilla-JavaScript-Oberfläche → Worker-API mit Firebase-Identitätsprüfung → D1 / Drizzle. JavaScript-Aufgaben laufen in QuickJS mit vorkompiliertem WebAssembly-Modul. Piston und Python/.NET-Abnahmen nutzen getrennte authentifizierte Gateways; die Ubuntu-Runner-Konfiguration enthält Docker Compose, Caddy, Gesundheitsprüfung und Rollback.",
         "decisions": [
-          "Server-Testergebnisse zählen statt clientseitig übermittelter Noten.",
-          "QuickJS hat keinen Zugriff auf Host-Netzwerk, Dateisystem, DOM oder Konten.",
-          "KI-Feed-Zusammenfassungen verwenden RSS-Titel/-Auszüge und einen Quelltext-Hash für den Cache."
+          "Antworten behalten die Fragenversion; Lösungsschlüssel fehlen im öffentlichen Payload und die Bewertung erfolgt serverseitig.",
+          "Ergebnisse müssen zu Quellcode-SHA-256, Aufgabe, Engine und Testsuite passen, bevor sie als Kompetenznachweis zählen.",
+          "Gleichwertige Aufgaben in mehreren Sprachen bilden eine Nachweisfamilie; KI-Bewertung bleibt vorläufig.",
+          "Da der Worker WASM nicht zur Laufzeit kompiliert, wird das QuickJS-Modul beim Build extrahiert und vorkompiliert eingebunden.",
+          "Runner-Releases beziehen sich auf Commits des production-Branches und erlauben Rollback bei fehlgeschlagener Gesundheitsprüfung."
         ],
         "challenges": [
-          "Nicht vertrauenswürdiger Code: QuickJS begrenzt Speicher, Stack und Laufzeit; der Server wiederholt Tests.",
-          "Überhöhte Kompetenzannahmen: gleichwertige Aufgaben teilen eine Belegfamilie; KI-Bewertung bleibt von unabhängigen Tests getrennt."
+          "Nicht vertrauenswürdiger Code: QuickJS-Zeit-/Speicherlimits, erlaubte Abgabedateien und getrennte Python/.NET-Container für Lernende und Tests.",
+          "Projektverhalten prüfen: eigene Tests untersuchen HTTP, SQLite, Kontentrennung, Versionen und Neustarts; lokale Unity-Tests sind kein Live-Sandbox-Nachweis.",
+          "Überhöhte Kompetenzurteile vermeiden: Auswahlantworten, Notizen, KI-Kommentare und serverseitige Tests bleiben unterschiedliche Nachweise.",
+          "Externe Dienste: Runner-Verbindung und Benachrichtigungsrechte haben explizite Zustände; Konfigurationscode garantiert keinen Dauerbetrieb."
         ],
-        "limits": "Dies ist Lernpraxis, keine berufliche Zertifizierung. Der mehrsprachige Runner benötigt einen stabilen privaten Host/Tunnel; KI-Funktionen benötigen API-Guthaben.",
+        "limits": "Fragen- und Codeumfang wurden anhand der Quellen geprüft; Dauerbetrieb, Gerätebenachrichtigungen und eine Live-Unity-Lernumgebung wurden nicht erneut bestätigt. Keine Berufszertifizierung.",
         "caption": "Englisches Lern-Dashboard"
       }
+    },
+    "sourceRevisions": {
+      "RealDev": "eab5f40d7024cb37da0788ba76dd969b62e449c6"
     }
   },
   {
@@ -435,18 +528,26 @@ export const projectDetails = [
     "title": "Budget Buddy",
     "image": "/projects/budget-buddy.png",
     "stack": [
-      "Next.js",
-      "React",
+      "Next.js 16",
+      "React 19",
       "TypeScript",
       "Supabase Auth",
       "PostgreSQL",
       "Groq",
-      "Tailwind CSS"
+      "Vinext / Workers"
     ],
     "sources": [
       {
         "label": "GitHub README",
         "url": "https://github.com/melisau/budget-buddy/blob/main/README.md"
+      },
+      {
+        "label": "Architecture",
+        "url": "https://github.com/melisau/budget-buddy/blob/7f6543865487b3aa507fe06d14219305ccb8398c/docs/architecture.md"
+      },
+      {
+        "label": "Auth migration",
+        "url": "https://github.com/melisau/budget-buddy/blob/7f6543865487b3aa507fe06d14219305ccb8398c/docs/supabase-auth-migration.md"
       }
     ],
     "links": [
@@ -455,86 +556,104 @@ export const projectDetails = [
         "url": "https://github.com/melisau/budget-buddy"
       }
     ],
-    "reviewedAt": "2026-10-08",
+    "reviewedAt": "2026-10-21",
     "copy": {
       "tr": {
-        "tagline": "Kişisel bütçeni ve aile hedeflerini tek bir yerde takip et.",
+        "tagline": "Kişisel bütçeni korurken ailenle hedef, alışveriş ve hediye planla.",
         "problem": "Kişisel harcamalar ile ortak aile planlarını aynı araçta yönetirken özel işlemleri gereksiz yere paylaşmamak gerekiyor.",
-        "goal": "Gelir, gider, bütçe ve tasarruf hedeflerini; seçici aile paylaşımı ve onaylı AI işlem taslaklarıyla anlaşılır hâle getirmek.",
+        "goal": "Gelir/gider takibini kişisel hedefler, harçlık planı ve seçici aile paylaşımıyla birleştirmek; özel işlemleri ortak planlardan ayrı tutmak.",
         "role": "Full-stack geliştirme",
-        "scope": "Çalışma kapsamı: finans ekranları, sunucu yetkilendirmesi, ilişkisel veri, özel fiş depolama, aile rolleri ve AI açıklama sınırları.",
+        "scope": "Bireysel full-stack proje: finans ekranları, Supabase Auth geçişi, sunucu sahiplik/rol kontrolleri, aile iş birliği, özel fiş depolama ve onaylı AI işlem taslakları.",
         "features": [
-          "Hesaplar, gelir/gider, transfer, bütçe ve raporlar",
-          "CSV içe/dışa aktarma ve özel fiş görselleri",
-          "Kişisel tasarruf hedefleri ve isteğe bağlı aile paylaşımı",
-          "Aile davetleri, alışveriş listesi ve hediye rezervasyonları",
-          "Groq destekli açıklamalar ve onay gerektiren sesli işlem taslakları"
+          "Hesaplar, gelir/gider, transfer, bütçe, rapor ve kişisel tasarruf hedefleri",
+          "Banka hesabı veya geçmiş işlem gerektirmeden hedef oluşturma; özel aylık harçlık ve tasarruf yüzdesi",
+          "Aile grubu, davet ve roller; seçilen hedef ilerlemesini özel işlemleri açmadan paylaşma",
+          "Ortak alışveriş listesi ve not; etkinlik istek listelerinde hediye rezervasyonu ve sürpriz modu",
+          "Supabase Auth ile doğrulamalı kayıt, parola kurtarma ve kullanıcı diline göre e-posta şablonları",
+          "Özel fiş görselleri, CSV içe/dışa aktarma, Groq finans asistanı ve onay gerektiren sesli işlem taslakları",
+          "Ayrı Türkçe/İngilizce giriş adresleri, canonical/hreflang, sitemap ve yerelleştirilmiş paylaşım metaverisi"
         ],
-        "architecture": "Next.js arayüzü → doğrulama ve sahip/rol kontrolleri yapan server routes → Supabase PostgreSQL ve özel Storage. Groq yalnızca yetkili, temizlenmiş finans özetlerini alıyor.",
+        "architecture": "Next.js 16 / React 19 / TypeScript → doğrulanmış Supabase Auth oturumuyla server routes → Supabase PostgreSQL ve özel Storage. Finans grafikleri Recharts; arayüz Tailwind ve shadcn/ui kullanır. Dağıtım altyapısı Vinext / Cloudflare Workers içerir; Groq yalnız yetkilendirilmiş, temizlenmiş finans özetlerini alır.",
         "decisions": [
-          "Yetki, yalnızca arayüzde buton gizleyerek değil sunucuda doğrulanıyor.",
-          "Fişler özel bucket ve kısa süreli imzalı URL’lerle sunuluyor.",
-          "AI açık kullanıcı onayı olmadan işlem kaydedemiyor."
+          "Clerk yerine Supabase Auth kullanılır; kimlik her korumalı kaynağın yanında auth.getUser() ile doğrulanır, istemci başlıklarına güvenilmez.",
+          "Eski finans kayıtları korunur; e-posta eşleşmesi otomatik sahiplik vermez, doğrulanmış açık kimlik bağlantısı gerekir.",
+          "Sunucu aile üyeliği, owner/member/viewer rolleri ve sürpriz hediye görünürlüğünü denetler; özel işlemler hedef paylaşımından ayrıdır.",
+          "Fişler özel bucket ve kısa süreli imzalı URL kullanır; AI kullanıcı açıkça onaylamadan işlem oluşturamaz.",
+          "TR/EN girişleri ayrı kanonik adreslerdir; indekslenebilir dil içeriği yalnız tarayıcı tercihine bırakılmaz."
         ],
         "challenges": [
-          "Kimlik sağlayıcı geçişinde eski finans kayıtları: güncel yerel runbook e-posta üzerinden otomatik eşleştirme yerine doğrulanmış, açık kimlik bağlantısı istiyor.",
-          "Aile paylaşımında gizlilik: üyelik/rol kontrolleri, isteğe bağlı hedef paylaşımı ve sürpriz hediye görünürlüğü sunucuda uygulanıyor."
+          "Kimlik sağlayıcı geçişinin kesinti üretmesi: eksik yayın anahtarı tüm sayfalarda 500 yerine güvenli oturum-dışı duruma düşer; migration’lar mevcut veriyi korur.",
+          "Aile gizliliği: üye olmayan, bekleyen davetli ve kaldırılan üyeler veri alamaz; hediye sahibi sürpriz rezervasyonları göremez.",
+          "Yetki testleri: kişisel işlem sahipliği, aile rolleri ve başka hesaba ait hesap/kategori kullanımı bellek içi servislerle sınanır; şema geçişleri PostgreSQL üzerinde ayrıca doğrulanmıştır."
         ],
-        "limits": "Kaynak farkı: GitHub README hâlâ Clerk’i anlatıyor; güncel yerel README ve mimari Supabase Auth geçişini belgeliyor. Bu sayfa güncel yerel uygulamayı esas alır. Stripe ödeme altyapısı ayrı yapılandırma gerektiriyor.",
+        "limits": "Güncel GitHub README ve kod Supabase Auth kullanımında tutarlı. Stripe ödeme temeli ve Google girişi ayrı yapılandırma gerektirir; bu inceleme canlı ödeme veya AI servis kabulü değildir.",
         "caption": "İngilizce giriş sayfası"
       },
       "en": {
-        "tagline": "Track personal finances and shared family goals in one place.",
+        "tagline": "Keep your budget private while planning goals, shopping and gifts with family.",
         "problem": "Managing personal spending and family plans in one tool should not require sharing private transactions.",
-        "goal": "Make income, expenses, budgets and savings goals understandable through selective family sharing and confirmed AI transaction drafts.",
+        "goal": "Combine income and expense tracking with personal goals, allowance planning and selective family sharing, keeping private transactions separate from shared plans.",
         "role": "Full-stack development",
-        "scope": "Scope: finance screens, server authorization, relational data, private receipts, family roles and AI explanation boundaries.",
+        "scope": "Personal full-stack project: finance screens, Supabase Auth migration, server-side ownership and role checks, family collaboration, private receipts and confirmed AI transaction drafts.",
         "features": [
-          "Accounts, income/expenses, transfers, budgets and reports",
-          "CSV import/export and private receipt images",
-          "Personal savings goals with optional family sharing",
-          "Family invitations, shopping lists and gift reservations",
-          "Groq explanations and voice drafts requiring confirmation"
+          "Accounts, income/expenses, transfers, budgets, reports and personal savings goals",
+          "Start goals without bank accounts or historical transactions; private monthly allowance and savings percentage",
+          "Family groups, invitations and roles; share selected goal progress without exposing private transactions",
+          "Shared shopping list and notes, occasion wishlists, gift reservations and surprise mode",
+          "Verified Supabase Auth registration, password recovery and language-aware email templates",
+          "Private receipt images, CSV import/export, Groq assistant and voice drafts requiring confirmation",
+          "Separate Turkish/English landing routes, canonical/hreflang, sitemap and localized sharing metadata"
         ],
-        "architecture": "Next.js UI → server routes enforcing validation, ownership and family roles → Supabase PostgreSQL and private Storage. Groq receives authorized, sanitized financial summaries only.",
+        "architecture": "Next.js 16 / React 19 / TypeScript → server routes with verified Supabase Auth sessions → Supabase PostgreSQL and private Storage. Recharts powers charts, with Tailwind and shadcn/ui for the interface. Deployment infrastructure includes Vinext / Cloudflare Workers; Groq receives only authorized, sanitized financial summaries.",
         "decisions": [
-          "Authorization is enforced on the server, not merely by hiding UI actions.",
-          "Receipts use private buckets and short-lived signed URLs.",
-          "AI cannot commit a transaction without explicit user confirmation."
+          "Supabase Auth replaces Clerk; auth.getUser() verifies identity beside each protected resource and client headers are not trusted.",
+          "Legacy financial records are preserved; email matching alone grants no ownership, requiring an explicitly verified identity link.",
+          "The server enforces family membership, owner/member/viewer roles and surprise-gift visibility; sharing goals does not expose private transactions.",
+          "Receipts use private storage and short-lived signed URLs; AI cannot create transactions without explicit confirmation.",
+          "TR/EN landings have separate canonical URLs, making localized content independent of browser-only preferences."
         ],
         "challenges": [
-          "Identity-provider migration: the current local runbook requires verified, explicit identity linking rather than automatic email matching of legacy finance records.",
-          "Family privacy: server membership/role checks enforce opt-in goal sharing and surprise-gift visibility."
+          "Authentication cutover outages: missing publishable configuration falls back safely to signed-out state instead of breaking every page with HTTP 500; migrations preserve existing data.",
+          "Family privacy: outsiders, pending invitees and removed members cannot access data, while wishlist owners cannot see surprise reservations.",
+          "Authorization tests cover transaction ownership, family roles and foreign account/category access using in-memory services; migrations are separately checked on PostgreSQL."
         ],
-        "limits": "Source difference: GitHub still documents Clerk; the current local README and architecture document the Supabase Auth migration. This page follows the current local app. Stripe payments require separate configuration.",
+        "limits": "The current GitHub documentation and code agree on Supabase Auth. Stripe and Google sign-in require separate configuration; this review does not certify live payment or AI flows.",
         "caption": "English landing page"
       },
       "de": {
-        "tagline": "Persönliche Finanzen und gemeinsame Familienziele an einem Ort verfolgen.",
+        "tagline": "Das eigene Budget privat halten und Ziele, Einkäufe und Geschenke gemeinsam planen.",
         "problem": "Private Ausgaben und Familienpläne gemeinsam zu verwalten darf keine unnötige Offenlegung persönlicher Transaktionen erfordern.",
-        "goal": "Einnahmen, Ausgaben, Budgets und Sparziele durch gezielte Familienfreigaben und bestätigte KI-Entwürfe verständlich machen.",
+        "goal": "Einnahmen und Ausgaben mit persönlichen Zielen, Taschengeldplanung und gezieltem Familienteilen verbinden; private Transaktionen bleiben getrennt.",
         "role": "Full-Stack-Entwicklung",
-        "scope": "Umfang: Finanzoberflächen, Serverberechtigungen, relationale Daten, private Belege, Familienrollen und Grenzen für KI-Erklärungen.",
+        "scope": "Persönliches Full-Stack-Projekt: Finanzoberflächen, Supabase-Auth-Umstellung, serverseitige Rechteprüfung, Familienfunktionen, private Belege und bestätigte KI-Entwürfe.",
         "features": [
-          "Konten, Einnahmen/Ausgaben, Transfers, Budgets und Berichte",
-          "CSV-Import/-Export und private Belegbilder",
-          "Persönliche Sparziele mit optionaler Familienfreigabe",
-          "Familieneinladungen, Einkaufslisten und Geschenkreservierungen",
-          "Groq-Erklärungen und Sprachentwürfe mit Bestätigung"
+          "Konten, Einnahmen/Ausgaben, Überweisungen, Budgets, Berichte und Sparziele",
+          "Ziele ohne Bankkonto oder alte Transaktionen starten; privater monatlicher Taschengeldplan und Sparanteil",
+          "Familiengruppen, Einladungen und Rollen; ausgewählten Zielfortschritt ohne private Transaktionen teilen",
+          "Gemeinsame Einkaufsliste und Notizen, Anlass-Wunschlisten, Geschenkreservierungen und Überraschungsmodus",
+          "Supabase Auth mit bestätigter Registrierung, Passwortwiederherstellung und sprachabhängigen E-Mail-Vorlagen",
+          "Private Belege, CSV-Import/-Export, Groq-Assistent und bestätigungspflichtige Sprachentwürfe",
+          "Separate türkische/englische Landingpages, Canonical/hreflang, Sitemap und lokalisierte Sharing-Metadaten"
         ],
-        "architecture": "Next.js-Oberfläche → Server-Routen mit Validierung, Eigentümer- und Rollenprüfung → Supabase PostgreSQL und privater Storage. Groq erhält nur autorisierte, bereinigte Finanzübersichten.",
+        "architecture": "Next.js 16 / React 19 / TypeScript → Serverrouten mit geprüfter Supabase-Auth-Sitzung → Supabase PostgreSQL und privater Storage. Recharts liefert Diagramme, Tailwind und shadcn/ui die Oberfläche. Die Bereitstellung umfasst Vinext / Cloudflare Workers; Groq erhält nur autorisierte, bereinigte Finanzübersichten.",
         "decisions": [
-          "Berechtigungen werden serverseitig geprüft, nicht nur durch versteckte Schaltflächen.",
-          "Belege nutzen private Buckets und kurzlebige signierte URLs.",
-          "KI kann ohne ausdrückliche Bestätigung keine Transaktion speichern."
+          "Supabase Auth ersetzt Clerk; auth.getUser() prüft die Identität direkt an geschützten Ressourcen statt Client-Headern zu vertrauen.",
+          "Bestehende Finanzdaten bleiben erhalten; gleiche E-Mail-Adressen reichen nicht als Eigentumsnachweis, eine geprüfte Zuordnung ist erforderlich.",
+          "Der Server prüft Mitgliedschaft, owner/member/viewer-Rollen und Überraschungsgeschenke; geteilte Ziele veröffentlichen keine privaten Transaktionen.",
+          "Belege nutzen privaten Storage und kurzlebige signierte URLs; KI erstellt Transaktionen nur nach ausdrücklicher Bestätigung.",
+          "TR/EN-Landingpages haben eigene kanonische Adressen und sind nicht allein von Browserpräferenzen abhängig."
         ],
         "challenges": [
-          "Identitätsmigration: das aktuelle lokale Runbook fordert geprüfte, explizite Verknüpfungen statt automatischer E-Mail-Zuordnung alter Finanzdaten.",
-          "Familien-Privatsphäre: serverseitige Mitglieds-/Rollenprüfungen regeln freiwillige Zielfreigaben und Überraschungsgeschenke."
+          "Ausfälle bei der Auth-Umstellung: fehlende Konfiguration führt sicher zu abgemeldet statt überall zu HTTP 500; Migrationen erhalten vorhandene Daten.",
+          "Familienprivatsphäre: Außenstehende, unbestätigte und entfernte Mitglieder erhalten keinen Zugriff; Wunschlisteneigentümer sehen keine Überraschungsreservierungen.",
+          "Berechtigungstests prüfen Eigentum, Familienrollen und fremde Konten/Kategorien mit In-Memory-Diensten; Migrationen wurden separat mit PostgreSQL geprüft."
         ],
-        "limits": "Quellenunterschied: GitHub beschreibt noch Clerk; aktuelle lokale README und Architektur dokumentieren Supabase Auth. Diese Seite folgt der lokalen Anwendung. Stripe-Zahlungen erfordern zusätzliche Konfiguration.",
+        "limits": "Aktuelle GitHub-Dokumentation und Code verwenden Supabase Auth. Stripe und Google-Anmeldung benötigen gesonderte Konfiguration; Live-Zahlungen und KI-Abläufe wurden hier nicht abgenommen.",
         "caption": "Englische Startseite"
       }
+    },
+    "sourceRevisions": {
+      "budget-buddy": "7f6543865487b3aa507fe06d14219305ccb8398c"
     }
   },
   {
@@ -685,14 +804,25 @@ export const projectDetails = [
     "image": "/projects/rogi.png",
     "stack": [
       "JavaScript",
-      "Node.js 22+",
-      "Cloudflare Workers",
-      "HTML / CSS"
+      "Node.js 24",
+      "Neon PostgreSQL",
+      "Neon Auth",
+      "Babel / parse5",
+      "Playwright / Chromium",
+      "Vercel"
     ],
     "sources": [
       {
         "label": "README",
         "url": "https://github.com/melisau/Rogi/blob/main/README.md"
+      },
+      {
+        "label": "Verified backlog",
+        "url": "https://github.com/melisau/Rogi/blob/6ba7f34d9ed6fdf8a64dc16d53fb7f46d54aa849/TASKS.md"
+      },
+      {
+        "label": "Rendered-page scanner",
+        "url": "https://github.com/melisau/Rogi/blob/6ba7f34d9ed6fdf8a64dc16d53fb7f46d54aa849/rogi-landing/server/render.js"
       }
     ],
     "links": [
@@ -701,83 +831,104 @@ export const projectDetails = [
         "url": "https://github.com/melisau/Rogi"
       }
     ],
-    "reviewedAt": "2026-10-08",
+    "reviewedAt": "2026-10-21",
     "copy": {
       "tr": {
-        "tagline": "Yayına çıkmadan önce sitendeki eksikleri görünür kıl.",
+        "tagline": "Siteyi ve kaynak kodunu incele; bulguyu kanıtıyla takip et, raporları karşılaştır.",
         "problem": "SEO, kaynak kod, güvenlik ve mobil kullanılabilirlik kontrolleri farklı yerlerde kaldığında yayın öncesi eksikler gözden kaçabiliyor.",
-        "goal": "Canlı site taraması ve yerel proje incelemesini, açık kapsamlı kontrol listeleriyle tek bir çalışma alanında toplamak.",
+        "goal": "Canlı tarama, yerel proje incelemesi ve manuel kontrolleri; önceliklendirilmiş bulgular, düzeltme önerileri ve izlenebilir raporlarla tek çalışma alanında toplamak.",
         "role": "Web uygulaması geliştirme",
-        "scope": "Çalışma kapsamı: TR/EN landing, etkileşimli örnek rapor, tarama API’si ve mevcut denetim çalışma alanının bütünleştirilmesi.",
+        "scope": "Bireysel web uygulaması: iki dilli tanıtım ve denetim arayüzü, URL tarama motoru, yerel AST incelemesi, hesap/proje alanı, kalıcı raporlar ve güvenli ağ taşıması.",
         "features": [
-          "TR/EN giriş sayfası ve kalıcı dil tercihi",
-          "Etkileşimli örnek rapor, iş akışı ve SSS",
-          "Canlı web sitesi tarama API’si",
-          "Yerel proje incelemesi",
-          "Masaüstü ve mobil responsive düzen"
+          "TR/EN arayüz ve dil adresleri; canonical, hreflang, sitemap ve yapılandırılmış veri",
+          "SEO, JSON-LD ve X-Robots-Tag kontrolleri; kanıt, öncelik, efor ve düzeltme önerileri",
+          "İsteğe bağlı en fazla üç aynı-origin ek sayfa ve on iç bağlantı kontrolü; sayfa bazlı ayrı sonuçlar",
+          "JavaScript ile oluşan sayfalar için sınırlandırılmış Chromium render desteği",
+          "Next.js metadata, generateMetadata, rota ve JSX sinyallerinin kaynak çalıştırmadan Babel AST incelemesi",
+          "Hesaplara ait projeler ve proje başına son 20 bulut raporu; açık kullanıcı eylemiyle kayıt",
+          "Son 10 yerel rapor, bulgu karşılaştırması, site bazlı notlar ve JSON/CSV dışa aktarma"
         ],
-        "architecture": "Bağımlılıksız Node.js önizleme; Cloudflare Worker modüllerine derlenen landing ve denetim akışı. Giriş sayfası /, çalışma alanı /app; özgün uygulama seo-kontrol klasöründe korunuyor.",
+        "architecture": "Node.js tarama taşıması → parse5 / Babel inceleme motoru → hesap ve raporlar için Neon PostgreSQL / yönetilen Neon Auth. Vercel Node taşıması hedef bağlantıda DNS/IP doğrulaması yapar. JavaScript render için Playwright/Chromium ağ istekleri aynı kontrollü taşıma üzerinden geçirilir; Worker yolu güvenli taşıma yoksa taramayı reddeder.",
         "decisions": [
-          "Landing ve çalışma alanı ayrı rotalarda sunuluyor.",
-          "Yeni sunum katmanı eklenirken özgün denetim uygulaması korunuyor.",
-          "Örnek puan gerçek tarama sonucuymuş gibi sunulmuyor."
+          "Giriş sayfasının puanı ek sayfa puanlarıyla karıştırılmaz; geçti, hata, doğrulanamadı ve uygulanamaz durumları ayrılır.",
+          "Yerel proje kodu çalıştırılmaz; AST bulguları dosya/satır kanıtı sunar ve çalışma zamanı doğrulaması gerektiğini belirtir.",
+          "Kalıcı kota ham IP yerine HMAC anahtarıyla tutulur; kota servisi erişilemiyorsa tarama güvenli biçimde durur.",
+          "Chromium yalnız aynı-origin GET kaynaklarını, istek ve boyut bütçeleri içinde alır; WebSocket ve service worker erişimi engellenir.",
+          "Normal raporlar ve notlar tarayıcıda kalır; bulut kaydı yeni sunucu taraması ve hesap sahipliği kontrolü gerektirir."
         ],
         "challenges": [
-          "Otomatik kontrol ile manuel doğrulamayı ayırmak: güvenlik ve mobil listeleri gerçek akış/cihaz doğrulaması gerektiren kapsam olarak belgeleniyor."
+          "SSRF ve DNS rebinding: Node soket çözümlemesinde public IP seçimi ve her yönlendirmede yeniden doğrulama uygulanır.",
+          "SPA taramalarında belirsizlik: render edilmiş DOM ek sinyal sağlar; engellenen kaynaklar veya bütçe sınırı yüzünden doğrulanamayan sonuçlar kesin hata gibi sunulmaz.",
+          "Yerel ve bulut raporlarını ayırmak: proje erişimi hesap bazında denetlenir; son 20 rapor sınırı transaction kilitleriyle korunur."
         ],
-        "limits": "Denetim çalışma alanı README’ye göre Türkçe. Güvenlik kontrol listesi otomatik penetrasyon testi değildir; landing’deki puan yalnızca örnektir.",
+        "limits": "Kişisel demo Vercel Authentication korumalıdır; herkese açık demo bağlantısı olarak sunulmaz. Kontrol listeleri penetrasyon testi değildir; Core Web Vitals ölçümü ve tüm hesap akışının gerçek tarayıcı kabulü ayrı işlerdir.",
         "caption": "İngilizce giriş sayfası ve temsili rapor"
       },
       "en": {
-        "tagline": "Find the gaps in your website before launch.",
+        "tagline": "Review live sites and source code, follow evidence and compare audit reports.",
         "problem": "Pre-launch gaps can be missed when SEO, source review, security and mobile-usability checks are scattered across tools.",
-        "goal": "Bring live-site scanning and local project review into one workspace with clearly scoped checklists.",
+        "goal": "Bring live scans, local project review and manual checklists into one workspace with prioritized findings, repair guidance and traceable reports.",
         "role": "Web application development",
-        "scope": "Scope: Turkish/English landing, interactive sample report, scan API and integration of the existing audit workspace.",
+        "scope": "Personal web application: bilingual landing and audit UI, URL scanning, local AST review, account/project workspace, persistent reports and guarded network transport.",
         "features": [
-          "TR/EN landing with saved language preference",
-          "Interactive sample report, workflow and FAQ",
-          "Live website scan API",
-          "Local project review",
-          "Responsive desktop and mobile layouts"
+          "TR/EN UI and localized URLs, canonical links, hreflang, sitemap and structured data",
+          "SEO, JSON-LD and X-Robots-Tag checks with evidence, priority, effort and repair guidance",
+          "Optional checks of up to three additional same-origin pages and ten internal links, with separate page results",
+          "Bounded Chromium rendering for JavaScript-generated pages",
+          "Babel AST review of Next.js metadata, generateMetadata, routes and JSX signals without executing project code",
+          "Account-owned projects and the latest 20 cloud reports per project, saved through an explicit action",
+          "Latest 10 local reports, finding comparison, per-site notes and JSON/CSV export"
         ],
-        "architecture": "Dependency-free Node.js preview with landing and audit flows built as Cloudflare Worker modules. Landing at /, workspace at /app; the original implementation remains in seo-kontrol.",
+        "architecture": "Node.js scanning transport → parse5 / Babel review engine → Neon PostgreSQL and managed Neon Auth for accounts and reports. The Vercel Node transport validates DNS/IP at connection time. Playwright/Chromium render requests use the same guarded transport; Worker scanning refuses to run without secure transport.",
         "decisions": [
-          "Landing and workspace have separate routes.",
-          "The original audit implementation is retained while adding the new presentation layer.",
-          "The sample score is explicitly distinguished from a real scan result."
+          "The entry score is separate from additional-page scores; pass, fail, unverified and not-applicable states remain distinct.",
+          "Local project code is not executed; AST findings include file/line evidence and require runtime verification.",
+          "Persistent quotas use HMAC keys rather than raw IPs; scans stop safely when the quota service is unavailable.",
+          "Chromium fetches only same-origin GET resources within request/size budgets; WebSockets and service workers are blocked.",
+          "Ordinary reports and notes remain in the browser; cloud saving reruns the server scan and verifies account ownership."
         ],
         "challenges": [
-          "Separating automation from manual verification: security and mobile checklists explicitly require checks on real flows and devices."
+          "SSRF and DNS rebinding: Node socket resolution selects public IPs and redirects are revalidated.",
+          "Uncertainty on SPA pages: rendered DOM adds evidence, but blocked resources and budget limits do not turn unverified findings into definite failures.",
+          "Local versus cloud history: account checks protect projects and transaction locks enforce the latest-20-report limit."
         ],
-        "limits": "The README describes the audit workspace as Turkish. Security checklists are not automated penetration testing; the landing score is illustrative.",
+        "limits": "The personal demo requires Vercel Authentication and is not listed as an open demo. Checklists are not penetration tests; Core Web Vitals and complete real-browser account acceptance are separate work.",
         "caption": "English landing page with illustrative report"
       },
       "de": {
-        "tagline": "Lücken in deiner Website vor dem Start sichtbar machen.",
+        "tagline": "Websites und Quellcode prüfen, Belege nachvollziehen und Auditberichte vergleichen.",
         "problem": "Vor dem Start werden Lücken leicht übersehen, wenn SEO-, Quellcode-, Sicherheits- und Mobilprüfungen verteilt sind.",
-        "goal": "Live-Website-Scans und lokale Projektprüfungen in einem Arbeitsbereich mit klar abgegrenzten Checklisten bündeln.",
+        "goal": "Live-Scans, lokale Projektprüfung und manuelle Checklisten mit priorisierten Befunden, Korrekturhinweisen und nachvollziehbaren Berichten verbinden.",
         "role": "Webanwendungsentwicklung",
-        "scope": "Umfang: türkisch/englische Startseite, interaktiver Beispielbericht, Scan-API und Integration des bestehenden Prüfbereichs.",
+        "scope": "Persönliche Webanwendung: zweisprachige Landingpage und Auditoberfläche, URL-Scanner, lokale AST-Prüfung, Konten und Projekte, dauerhafte Berichte und kontrollierter Netzwerkzugriff.",
         "features": [
-          "TR/EN-Startseite mit gespeicherter Sprachwahl",
-          "Interaktiver Beispielbericht, Ablauf und FAQ",
-          "Scan-API für Live-Websites",
-          "Lokale Projektprüfung",
-          "Responsive Desktop- und Mobillayouts"
+          "TR/EN-Oberfläche und Sprachadressen mit Canonical, hreflang, Sitemap und strukturierten Daten",
+          "SEO-, JSON-LD- und X-Robots-Tag-Prüfung mit Beleg, Priorität, Aufwand und Korrekturhinweis",
+          "Optional bis zu drei weitere Same-Origin-Seiten und zehn interne Links mit getrennten Ergebnissen",
+          "Begrenztes Chromium-Rendering für durch JavaScript erzeugte Seiten",
+          "Babel-AST-Prüfung von Next.js-Metadaten, generateMetadata, Routen und JSX ohne Codeausführung",
+          "Kontoeigene Projekte und die letzten 20 Cloud-Berichte je Projekt, ausdrücklich gespeichert",
+          "Letzte zehn lokale Berichte, Befundvergleich, Website-Notizen sowie JSON-/CSV-Export"
         ],
-        "architecture": "Abhängigkeitsfreie Node.js-Vorschau; Startseite und Prüfablauf werden als Cloudflare-Worker-Module gebaut. Startseite unter /, Arbeitsbereich unter /app; die ursprüngliche Implementierung bleibt in seo-kontrol.",
+        "architecture": "Node.js-Scantransport → parse5-/Babel-Prüfengine → Neon PostgreSQL und verwaltetes Neon Auth für Konten und Berichte. Der Vercel-Node-Transport prüft DNS/IP beim Verbindungsaufbau. Playwright-/Chromium-Anfragen verwenden denselben kontrollierten Transport; der Worker verweigert Scans ohne sicheren Transport.",
         "decisions": [
-          "Startseite und Arbeitsbereich haben getrennte Routen.",
-          "Die ursprüngliche Prüfimplementierung bleibt neben der neuen Präsentationsebene erhalten.",
-          "Der Beispielwert ist ausdrücklich von einem echten Scanergebnis getrennt."
+          "Der Einstiegsscore bleibt von weiteren Seitenscores getrennt; bestanden, Fehler, ungeprüft und nicht anwendbar sind eigene Zustände.",
+          "Lokaler Projektcode wird nicht ausgeführt; AST-Befunde liefern Datei-/Zeilenbelege und benötigen Laufzeitprüfung.",
+          "Dauerhafte Quoten nutzen HMAC-Schlüssel statt roher IPs; bei Ausfall der Quotenprüfung wird der Scan beendet.",
+          "Chromium lädt nur Same-Origin-GET-Ressourcen innerhalb fester Budgets; WebSockets und Service Worker sind gesperrt.",
+          "Normale Berichte und Notizen bleiben im Browser; Cloud-Speicherung erfordert erneuten Serverscan und Kontoprüfung."
         ],
         "challenges": [
-          "Automatik von manueller Prüfung trennen: Sicherheits- und Mobilchecklisten erfordern ausdrücklich echte Abläufe und Geräte."
+          "SSRF und DNS-Rebinding: öffentliche IP-Auswahl bei der Socket-Auflösung und erneute Prüfung jeder Weiterleitung.",
+          "SPA-Unsicherheit: gerenderter DOM ergänzt Belege; blockierte Ressourcen und Budgetgrenzen erzeugen keine fälschlich sicheren Fehlerurteile.",
+          "Lokale und Cloud-Verläufe: Kontoprüfungen schützen Projekte; Transaktionssperren sichern die Grenze von 20 Berichten."
         ],
-        "limits": "Der Prüfbereich ist laut README auf Türkisch. Sicherheitschecklisten sind keine automatischen Penetrationstests; der Startseitenwert ist illustrativ.",
+        "limits": "Die persönliche Demo erfordert Vercel Authentication und wird nicht als offene Demo verlinkt. Checklisten sind keine Penetrationstests; Core Web Vitals und vollständige Browserabnahme sind separate Aufgaben.",
         "caption": "Englische Startseite mit illustrativem Bericht"
       }
+    },
+    "sourceRevisions": {
+      "Rogi": "6ba7f34d9ed6fdf8a64dc16d53fb7f46d54aa849"
     }
   }
 ];
