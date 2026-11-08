@@ -187,7 +187,7 @@ export const experience: Experience[] = [
   {
     title: "Bilgisayar Mühendisliği (Lisans)",
     organization: "Manisa Celal Bayar Üniversitesi · Manisa, Türkiye",
-    period: "Mezuniyet: Haziran 2025",
+    period: "Mezuniyet: Temmuz 2025",
     description: "Yazılım geliştirme, algoritmalar, veri yapıları, nesne yönelimli programlama, veritabanı sistemleri, yapay zekâ, veri madenciliği, bilgisayar ağları, işletim sistemleri ve mikroişlemciler alanlarında eğitim aldım. Teorik bilgilerimi Java, Python, Spring Boot, PostgreSQL, SvelteKit, FastAPI ve Shopify ile geliştirdiğim projelerle pekiştirdim.",
   },
 ];
