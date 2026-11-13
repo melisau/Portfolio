@@ -99,6 +99,35 @@ for (const language of ['tr', 'en', 'de'] as const) {
   });
 }
 
+for (const [timezoneId, locale, expected] of [
+  ['Europe/Istanbul', 'en-US', 'tr'],
+  ['Europe/Berlin', 'tr-TR', 'de'],
+  ['America/New_York', 'tr-TR', 'en'],
+  ['Europe/Paris', 'fr-FR', 'en'],
+  ['UTC', 'de-DE', 'de'],
+] as const) {
+  test(`first visit picks the language from the visitor country: ${timezoneId} / ${locale} → ${expected}`, async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ timezoneId, locale, baseURL });
+    const page = await context.newPage();
+    const home = expected === 'tr' ? '/' : `/${expected}/`;
+    await page.goto('/');
+    await expect(page.locator('html')).toHaveAttribute('lang', expected);
+    await expect(page).toHaveURL(new RegExp(`${home}$`));
+    await expect(page).toHaveTitle(seo[expected].title);
+    await context.clearCookies();
+    await page.evaluate(() => localStorage.clear());
+    await page.goto('/projects/luma/');
+    await expect(page.locator('html')).toHaveAttribute('lang', expected);
+    // An explicit choice wins over the detected country on later visits.
+    await page.locator('select').selectOption('tr');
+    await page.goto('/');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
+    await page.goto('/en/');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    await context.close();
+  });
+}
+
 test('invalid preferences fall back safely', async ({ page }) => {
   await page.addInitScript(() => { localStorage.setItem('portfolio-language', '__proto__'); localStorage.setItem('portfolio-theme', 'invalid'); });
   await page.goto('/');

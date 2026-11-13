@@ -11,6 +11,9 @@ export default defineConfig({
   timeout: 30000,
   use: {
     baseURL: 'http://127.0.0.1:4173',
+    // First-visit language follows the device country; pin it so the default stays Turkish in tests.
+    timezoneId: 'Europe/Istanbul',
+    locale: 'tr-TR',
     channel: process.env.PLAYWRIGHT_CHANNEL || 'msedge',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
