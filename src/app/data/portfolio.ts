@@ -153,7 +153,7 @@ export const projects: Project[] = [
     category: "Shopify Development",
     summary: "Custom Shopify Liquid themes and sections for client projects, with a focus on performance and user experience optimization.",
     technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
-    year: "Feb 2024 — Jul 2025",
+    year: "Feb 2025 — Jul 2025",
     accent: "#16a34a",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&auto=format&q=85",
   },
@@ -187,7 +187,7 @@ export const experience: Experience[] = [
   {
     title: "Bilgisayar Mühendisliği (Lisans)",
     organization: "Manisa Celal Bayar Üniversitesi · Manisa, Türkiye",
-    period: "Mezuniyet: Haziran 2025",
+    period: "Mezuniyet: Temmuz 2025",
     description: "Yazılım geliştirme, algoritmalar, veri yapıları, nesne yönelimli programlama, veritabanı sistemleri, yapay zekâ, veri madenciliği, bilgisayar ağları, işletim sistemleri ve mikroişlemciler alanlarında eğitim aldım. Teorik bilgilerimi Java, Python, Spring Boot, PostgreSQL, SvelteKit, FastAPI ve Shopify ile geliştirdiğim projelerle pekiştirdim.",
   },
 ];
