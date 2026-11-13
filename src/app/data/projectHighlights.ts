@@ -41,4 +41,10 @@ export const projectHighlights: Record<string, ProjectHighlight[]> = {
     { value: '3 + 10', label: { tr: 'Ek sayfa ve iç bağlantı kontrolü', en: 'Extra pages and internal links checked', de: 'Zusätzliche Seiten und interne Links' } },
     { value: 'JSON · CSV', label: { tr: 'Rapor dışa aktarma', en: 'Report export', de: 'Berichtsexport' } },
   ],
+  navilo: [
+    { value: { tr: '1.676', en: '1,676', de: '1.676' }, label: { tr: 'Kaynaklı gömülü ürün kaydı (758 gıda, 918 kozmetik)', en: 'Sourced bundled product records (758 food, 918 cosmetics)', de: 'Mitgelieferte Produkteinträge mit Quelle (758 Lebensmittel, 918 Kosmetik)' } },
+    { value: '34', label: { tr: 'Sürümlü içerik kuralı grubu', en: 'Versioned ingredient rule groups', de: 'Versionierte Regelgruppen für Inhaltsstoffe' } },
+    { value: '14', label: { tr: 'Ayrı raporlanan yasal alerjen', en: 'Regulated allergens reported separately', de: 'Getrennt ausgewiesene regulierte Allergene' } },
+    { value: '41', label: { tr: 'Dart test dosyası', en: 'Dart test files', de: 'Dart-Testdateien' } },
+  ],
 };

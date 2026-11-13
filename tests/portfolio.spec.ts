@@ -35,7 +35,7 @@ for (const language of ['tr', 'en', 'de'] as const) {
       await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://melisauyar.com/social-preview.png');
       await expect(page.getByRole('combobox', { name: interfaceText[language].languageLabel })).toBeVisible();
       await expect(page.locator('.portrait-frame img')).toHaveAttribute('alt', interfaceText[language].portraitAlt);
-      await expect(page.locator('.project-card')).toHaveCount(8);
+      await expect(page.locator('.project-card')).toHaveCount(9);
       const copy = translations[language];
       for (const [index, summary] of copy.projectSummaries.entries()) {
         await expect(page.locator('.project-card').nth(index)).toContainText(summary);
@@ -271,7 +271,7 @@ test('links, local assets and static language metadata are valid', async ({ page
   }
   await expect(page.getByRole('link', { name: 'GitHub', exact: true }).first()).toHaveAttribute('href', 'https://github.com/melisau');
   await expect(page.getByRole('link', { name: 'LinkedIn', exact: true }).first()).toHaveAttribute('href', /^https:\/\/www.linkedin.com\/in\//);
-  for (const url of ['/favicon.svg', '/social-preview.png', '/profile.webp', '/projects/luma.png', '/projects/rogi.png', '/projects/be-a-real-developer.png', '/projects/budget-buddy.png', '/projects/journal.png', '/projects/mitzi-gameplay.webp', '/projects/mitzi-home.webp']) {
+  for (const url of ['/favicon.svg', '/social-preview.png', '/profile.webp', '/projects/luma.png', '/projects/rogi.png', '/projects/be-a-real-developer.png', '/projects/budget-buddy.png', '/projects/journal.png', '/projects/mitzi-gameplay.webp', '/projects/mitzi-home.webp', '/projects/navilo.svg']) {
     const response = await request.get(url);
     expect(response.ok(), url).toBe(true);
     expect(response.headers()['content-type'], url).toMatch(/^image\//);
@@ -368,7 +368,7 @@ test('card opens details, language keeps the project, zoom dialog supports Escap
   await expect(page.locator('h1')).toHaveText('Mitzi: Paw Path');
   await page.locator('.detail-back').click();
   await expect(page).toHaveURL(/\/de\/#projects$/);
-  await expect(page.locator('.project-card')).toHaveCount(8);
+  await expect(page.locator('.project-card')).toHaveCount(9);
 });
 
 for (const language of ['tr', 'en', 'de'] as const) {

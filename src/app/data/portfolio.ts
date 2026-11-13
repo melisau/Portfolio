@@ -34,7 +34,7 @@ export const navigation = [
 ];
 
 export const metrics = [
-  { value: "8", label: "Öne çıkan proje" },
+  { value: "9", label: "Öne çıkan proje" },
   { value: "2025", label: "Mezuniyet yılı" },
   { value: "Uzaktan", label: "Çalışma tercihi" },
 ];
@@ -168,6 +168,18 @@ export const projects: Project[] = [
     image: "/projects/rogi.png",
     imageFit: "contain",
     sourceUrl: "https://github.com/melisau/Rogi",
+  },
+  {
+    title: "Navilo",
+    slug: "navilo",
+    category: "Mobile Application",
+    summary: "A Flutter app that reads product labels by barcode or photo and checks ingredients against transparent rules, dietary preferences and allergens, with a sourced offline catalogue.",
+    technologies: ["Flutter","Dart","ML Kit OCR","Supabase","PostgreSQL"],
+    year: "In Development",
+    accent: "#073f3c",
+    image: "/projects/navilo.svg",
+    imageFit: "contain",
+    sourceUrl: "https://github.com/melisau/Navilo",
   },
 ];
 

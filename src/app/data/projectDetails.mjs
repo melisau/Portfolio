@@ -948,5 +948,144 @@ export const projectDetails = [
     "sourceRevisions": {
       "Rogi": "6ba7f34d9ed6fdf8a64dc16d53fb7f46d54aa849"
     }
+  },
+  {
+    "slug": "navilo",
+    "title": "Navilo",
+    "image": "/projects/navilo.svg",
+    "stack": [
+      "Flutter",
+      "Dart",
+      "Google ML Kit OCR",
+      "mobile_scanner",
+      "Supabase / PostgreSQL",
+      "Python",
+      "GitHub Actions"
+    ],
+    "sources": [
+      {
+        "label": "README",
+        "url": "https://github.com/melisau/Navilo/blob/main/README.md"
+      },
+      {
+        "label": "Project status",
+        "url": "https://github.com/melisau/Navilo/blob/300edcb5ab9c55bf6e2f633446802b545873dd1c/docs/NAVILO_PROJE_DURUMU_20261015.md"
+      },
+      {
+        "label": "Mobile UX flow",
+        "url": "https://github.com/melisau/Navilo/blob/300edcb5ab9c55bf6e2f633446802b545873dd1c/docs/MOBILE_UX_FLOW.md"
+      }
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/melisau/Navilo"
+      }
+    ],
+    "reviewedAt": "2026-11-14",
+    "copy": {
+      "tr": {
+        "tagline": "Barkodu okut ya da etiketi fotoğrafla; içindekileri şeffaf kurallarla ve kendi tercihlerinle karşılaştır.",
+        "problem": "Gıda ve kozmetik etiketleri uzun ve teknik. Aynı ürünü her seferinde yeniden okumak ve ürünleri kişisel ölçütlerle tutarlı biçimde karşılaştırmak zor.",
+        "goal": "İçerik metnini barkod veya fotoğraftan bulup kullanıcıya onaylatmak, sürümlü kurallarla karşılaştırmak ve sonucu kaynağı ve sınırlarıyla birlikte göstermek; güvenlik veya tıbbi uygunluk iddiası üretmeden.",
+        "role": "Flutter mobil geliştirme",
+        "scope": "Bireysel mobil uygulama prototipi: yakalama, inceleme ve sonuç akışı, kural motoru, beslenme tercihleri ve cilt profili, cihazda ürün kütüphanesi, kaynaklı gömülü katalog, Supabase katkı kuyruğu ve veri doğrulama araçları.",
+        "features": [
+          "Barkod, kamera ve galeri ile ürün yakalama; kırpma/döndürme ve cihaz üzerinde Latin alfabesi OCR",
+          "Kişisel kütüphane, onaylı ortak katalog, gömülü Türkiye kataloğu ve dört Open Facts servisinde sıralı barkod araması",
+          "Okuma uyarıları, elle düzeltme ve tamamlık onayı içeren ayrı inceleme ekranı; onay verilmeden sonuç açılmaz",
+          "Gluten, laktoz, şeker, vegan ve FODMAP tercihleri; 14 yasal alerjen için “içerir” ve “içerebilir” ayrımı",
+          "Dokuz soruluk cilt anketi ve kozmetik içeriklerde “uygun görünüyor / dikkat / bilinmiyor” değerlendirmesi",
+          "Gıda ve kozmetik bölümleri ayrı, ad/barkod aramalı, isteğe bağlı fotoğraflı cihaz içi ürün kütüphanesi",
+          "Açık onayla yalnız metin gönderen topluluk katkısı; kayıtlar moderasyon onayından sonra başkalarına görünür",
+          "Türkçe/İngilizce arayüz, büyük dokunma hedefleri ve renklerin yanında metin etiketleri"
+        ],
+        "architecture": "Flutter arayüz → ürün deposu: cihaz kaydı, gömülü katalog, Open Facts → Supabase / PostgreSQL ortak katalog. Kural eşleştirme ve tercih değerlendirmesi cihazda, sürümlü JSON sözlükleriyle deterministik çalışır. OCR için Google ML Kit, barkod için mobile_scanner kullanılır. Python araçları katalog kayıtlarını denetler; GitHub Actions her pull request’te flutter analyze ve flutter test çalıştırır.",
+        "decisions": [
+          "Eşleşme yoksa sonuç “Listemizdeki madde tespit edilmedi” olur; bu bir güvenlik garantisi olarak sunulmaz, eşleşme de tıbbi bulgu sayılmaz.",
+          "İsimle bulunan aday ürün otomatik seçilmez; kullanıcı seçer, barkodu ve içeriği ambalajla karşılaştırır.",
+          "Eşleştirmeden önce metin sadeleştirilir: OCR’ın düşürdüğü Türkçe harfler ve “E 120”, “E-120”, “E12O” gibi yazımlar tek biçime indirilir; diğer okuma hataları tahmin edilmez.",
+          "“Az yağlı” ve “şekersiz” yalnız kullanıcının onayladığı besin değerleriyle ve 1924/2006 sayılı AB Tüzüğü sınırlarıyla değerlendirilir.",
+          "Tercihler öneri üretmez; uygulama hiçbir ürün için “uygundur” demez ve eksik kanıt “bilinmiyor” olarak kalır.",
+          "Fotoğraflar ve profil paylaşılmaz; katkı yalnız barkodu, ürün adını ve incelenmiş içerik metnini özel moderasyon kuyruğuna gönderir."
+        ],
+        "challenges": [
+          "Barkod ve formül belirsizliği: kontrol basamağı geçmeyen, kanıtı bulunmayan veya çelişen kayıtlar kataloğa alınmaz; karantinada incelemeye ayrılır ve başka boyun formülü kopyalanmaz.",
+          "OCR güvenilirliği: başlığın bulunması fotoğrafı tamamlanmış saymaz; metni düzenlemek onayı sıfırlar ve yapısal okuma uyarıları kaydetmeyi engeller.",
+          "“İçermez” ifadeleri: olumsuzlama tüm etiketi değil yalnız adı geçen maddeyi etkiler; laktozsuz beyanı buğday eşleşmesini bastırmaz."
+        ],
+        "limits": "Geliştirme prototipi (0.1.0). Kamera, kırpma ve OCR fiziksel Android cihazda henüz doğrulanmadı; mağaza yayını yoktur. Kural sözlüğü taslaktır ve uzman incelemesi bekler; tıbbi tavsiye değildir.",
+        "caption": "Navilo marka simgesi; uygulama ekran görüntüsü değildir."
+      },
+      "en": {
+        "tagline": "Scan a barcode or photograph a label, then compare the ingredients with transparent rules and your own preferences.",
+        "problem": "Food and cosmetic labels are long and technical. Re-reading the same product each time and comparing products consistently against personal criteria is hard.",
+        "goal": "Find the ingredient text from a barcode or photo, have the user confirm it, compare it with versioned rules and show the result with its source and limits, without making safety or medical suitability claims.",
+        "role": "Flutter mobile development",
+        "scope": "Personal mobile app prototype: capture, review and results flow, rule engine, dietary preferences and skin profile, on-device product library, sourced bundled catalogue, Supabase contribution queue and data-verification tooling.",
+        "features": [
+          "Product capture by barcode, camera or gallery, with crop/rotate and on-device Latin-script OCR",
+          "Sequential barcode lookup across the personal library, approved shared catalogue, bundled Turkish catalogue and four Open Facts services",
+          "A separate review screen with reading warnings, manual correction and completeness confirmation; results stay locked until confirmed",
+          "Gluten, lactose, sugar, vegan and FODMAP preferences, plus “contains” and “may contain” for the 14 regulated allergens",
+          "A nine-question skin self-assessment and a “looks suitable / take care / unknown” fit for cosmetic ingredients",
+          "An on-device product library with separate food and cosmetics sections, name/barcode search and optional photos",
+          "Opt-in, text-only community contributions that become visible to others only after moderation approval",
+          "Turkish/English interface, larger touch targets and text labels alongside colours"
+        ],
+        "architecture": "Flutter UI → product repository: device records, bundled catalogue, Open Facts → Supabase / PostgreSQL shared catalogue. Rule matching and preference evaluation run deterministically on the device from versioned JSON dictionaries. Google ML Kit handles OCR and mobile_scanner handles barcodes. Python tools audit catalogue records; GitHub Actions runs flutter analyze and flutter test on every pull request.",
+        "decisions": [
+          "A no-match result reads “No ingredient from our list was detected”; it is not presented as a safety guarantee, and a match is not a medical finding.",
+          "A product found by name is never selected automatically; the user chooses it and compares its barcode and ingredients with the package.",
+          "Text is folded before matching: Turkish letters dropped by OCR and spellings such as “E 120”, “E-120” and “E12O” become one form; other misreads are not guessed.",
+          "“Low fat” and “sugar-free” use only nutrition values the user confirmed, with the limits of Regulation (EC) No 1924/2006.",
+          "Preferences do not generate recommendations; the app never states that a product is suitable and missing evidence stays unknown.",
+          "Photos and profiles are not shared; a contribution sends only the barcode, product name and reviewed ingredient text to a private moderation queue."
+        ],
+        "challenges": [
+          "Barcode and formula uncertainty: records with a failed check digit, missing evidence or conflicting lists stay out of the catalogue; they are quarantined for review and another size’s formula is never copied.",
+          "OCR reliability: detecting a heading does not mark a photo complete; editing the text clears confirmation and structural reading warnings block saving.",
+          "“Free-from” wording: negation applies to the named ingredient rather than the whole label; a lactose-free claim does not suppress a wheat match."
+        ],
+        "limits": "Development prototype (0.1.0). Camera, cropping and OCR have not yet been validated on a physical Android device and there is no store release. The rule dictionary is a draft pending expert review; it is not medical advice.",
+        "caption": "Navilo brand mark; not an application screenshot."
+      },
+      "de": {
+        "tagline": "Barcode scannen oder Etikett fotografieren und die Inhaltsstoffe mit transparenten Regeln und eigenen Präferenzen vergleichen.",
+        "problem": "Etiketten von Lebensmitteln und Kosmetik sind lang und technisch. Dasselbe Produkt immer wieder zu lesen und Produkte einheitlich nach persönlichen Kriterien zu vergleichen, ist mühsam.",
+        "goal": "Den Inhaltsstofftext per Barcode oder Foto finden, vom Nutzer bestätigen lassen, mit versionierten Regeln vergleichen und das Ergebnis mit Quelle und Grenzen zeigen, ohne Sicherheits- oder medizinische Eignungsaussagen.",
+        "role": "Flutter-Mobile-Entwicklung",
+        "scope": "Persönlicher Mobile-App-Prototyp: Ablauf aus Erfassung, Prüfung und Ergebnis, Regel-Engine, Ernährungspräferenzen und Hautprofil, Produktbibliothek auf dem Gerät, mitgelieferter Katalog mit Quellen, Supabase-Beitragswarteschlange und Werkzeuge zur Datenprüfung.",
+        "features": [
+          "Produkterfassung per Barcode, Kamera oder Galerie mit Zuschneiden/Drehen und OCR für lateinische Schrift auf dem Gerät",
+          "Barcode-Suche nacheinander in persönlicher Bibliothek, freigegebenem gemeinsamen Katalog, mitgeliefertem Türkei-Katalog und vier Open-Facts-Diensten",
+          "Eigene Prüfansicht mit Lesewarnungen, manueller Korrektur und Vollständigkeitsbestätigung; ohne Bestätigung bleibt das Ergebnis gesperrt",
+          "Präferenzen für Gluten, Laktose, Zucker, vegan und FODMAP sowie „enthält“ und „kann enthalten“ für die 14 regulierten Allergene",
+          "Hautselbsttest mit neun Fragen und Einschätzung „wirkt passend / Vorsicht / unbekannt“ für Kosmetik-Inhaltsstoffe",
+          "Produktbibliothek auf dem Gerät mit getrennten Bereichen für Lebensmittel und Kosmetik, Namens-/Barcode-Suche und optionalen Fotos",
+          "Freiwillige, rein textbasierte Community-Beiträge, die erst nach Moderationsfreigabe für andere sichtbar werden",
+          "Türkische/englische Oberfläche, größere Touch-Ziele und Textlabels zusätzlich zu Farben"
+        ],
+        "architecture": "Flutter-Oberfläche → Produkt-Repository: Geräteeinträge, mitgelieferter Katalog, Open Facts → gemeinsamer Katalog in Supabase / PostgreSQL. Regelabgleich und Präferenzbewertung laufen deterministisch auf dem Gerät mit versionierten JSON-Wörterbüchern. Google ML Kit übernimmt OCR, mobile_scanner die Barcodes. Python-Werkzeuge prüfen Katalogeinträge; GitHub Actions führt bei jedem Pull Request flutter analyze und flutter test aus.",
+        "decisions": [
+          "Ohne Treffer lautet das Ergebnis „Kein Inhaltsstoff unserer Liste erkannt“; das ist keine Sicherheitsgarantie, und ein Treffer ist kein medizinischer Befund.",
+          "Ein per Namen gefundenes Produkt wird nie automatisch gewählt; der Nutzer wählt es aus und vergleicht Barcode und Inhaltsstoffe mit der Verpackung.",
+          "Vor dem Abgleich wird der Text vereinheitlicht: von der OCR ausgelassene türkische Buchstaben und Schreibweisen wie „E 120“, „E-120“ und „E12O“ werden zusammengeführt; andere Lesefehler werden nicht geraten.",
+          "„Fettarm“ und „zuckerfrei“ nutzen nur vom Nutzer bestätigte Nährwerte und die Grenzen der Verordnung (EG) Nr. 1924/2006.",
+          "Präferenzen erzeugen keine Empfehlungen; die App bezeichnet kein Produkt als geeignet, fehlende Belege bleiben unbekannt.",
+          "Fotos und Profile werden nicht geteilt; ein Beitrag sendet nur Barcode, Produktname und geprüften Inhaltsstofftext an eine private Moderationswarteschlange."
+        ],
+        "challenges": [
+          "Unsichere Barcodes und Rezepturen: Einträge mit fehlerhafter Prüfziffer, fehlendem Beleg oder widersprüchlichen Listen kommen nicht in den Katalog; sie bleiben in Quarantäne, und die Rezeptur einer anderen Größe wird nicht kopiert.",
+          "OCR-Zuverlässigkeit: Eine erkannte Überschrift gilt nicht als vollständiges Foto; Textänderungen setzen die Bestätigung zurück, strukturelle Lesewarnungen verhindern das Speichern.",
+          "„Frei von“-Angaben: Die Verneinung betrifft nur den genannten Stoff, nicht das ganze Etikett; eine Laktosefrei-Angabe unterdrückt keinen Weizentreffer."
+        ],
+        "limits": "Entwicklungsprototyp (0.1.0). Kamera, Zuschnitt und OCR wurden noch nicht auf einem physischen Android-Gerät abgenommen; es gibt keine Store-Veröffentlichung. Das Regelwörterbuch ist ein Entwurf vor fachlicher Prüfung und keine medizinische Beratung.",
+        "caption": "Navilo-Markenzeichen; kein Screenshot der Anwendung."
+      }
+    },
+    "sourceRevisions": {
+      "Navilo": "300edcb5ab9c55bf6e2f633446802b545873dd1c"
+    }
   }
 ];
