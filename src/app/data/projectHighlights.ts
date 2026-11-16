@@ -31,9 +31,9 @@ export const projectHighlights: Record<string, ProjectHighlight[]> = {
   ],
   'budget-buddy': [
     { value: '3', label: { tr: 'Aile rolü: owner · member · viewer', en: 'Family roles: owner · member · viewer', de: 'Familienrollen: owner · member · viewer' } },
-    { value: 'TR · EN', label: { tr: 'Ayrı kanonik giriş adresleri', en: 'Separate canonical landing routes', de: 'Eigene kanonische Landingpages' } },
-    { value: 'CSV', label: { tr: 'İşlem içe ve dışa aktarma', en: 'Transaction import and export', de: 'Import und Export von Transaktionen' } },
-    { value: 'AI', label: { tr: 'Yalnız onayla işlem oluşturan taslaklar', en: 'Drafts that need confirmation to become transactions', de: 'Entwürfe werden erst nach Bestätigung gebucht' } },
+    { value: { tr: 'Otomatik', en: 'Automatic', de: 'Automatisch' }, label: { tr: 'Tekrarlayan işlem, abonelik ve kategori kuralları', en: 'Recurring transactions, subscriptions and category rules', de: 'Wiederkehrende Buchungen, Abos und Kategorieregeln' } },
+    { value: '2FA', label: { tr: 'Authenticator uygulamasıyla iki adımlı doğrulama', en: 'Two-step verification with an authenticator app', de: 'Zwei-Faktor-Anmeldung per Authenticator-App' } },
+    { value: { tr: 'Günlük', en: 'Daily', de: 'Täglich' }, label: { tr: 'Şifreli, sunucu dışı yedek ve test edilmiş geri yükleme', en: 'Encrypted off-site backups with a tested restore', de: 'Verschlüsselte externe Backups mit getesteter Wiederherstellung' } },
   ],
   rogi: [
     { value: '20', label: { tr: 'Proje başına saklanan bulut raporu', en: 'Cloud reports kept per project', de: 'Cloud-Berichte je Projekt' } },

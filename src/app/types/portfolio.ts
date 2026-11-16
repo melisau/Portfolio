@@ -15,6 +15,7 @@ export type Project = {
   year: string;
   image: string;
   imageFit?: "cover" | "contain";
+  imageBackground?: string;
   accent: string;
   liveUrl?: string;
   sourceUrl?: string;

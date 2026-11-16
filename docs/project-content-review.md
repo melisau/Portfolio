@@ -14,6 +14,7 @@ Bu kayıt portfolyo metinlerinin kaynak kontrolüdür; ürünlerin canlı kabul 
 | Budget Buddy | `7f6543865487b3aa507fe06d14219305ccb8398c` | README ve güncel commit değişiklikleri: Supabase Auth, aile iş birliği, dilli e-postalar ve SEO adresleri |
 | Rogi | `6ba7f34d9ed6fdf8a64dc16d53fb7f46d54aa849` | README, TASKS ve render.js: hesap/proje/rapor, AST, çok sayfa, güvenli taşıma ve Chromium render |
 | Navilo (14 Kasım 2026'da eklendi) | `300edcb5ab9c55bf6e2f633446802b545873dd1c` | README, NAVILO_PROJE_DURUMU ve HEAD'deki dosyalar: yakalama/inceleme/sonuç akışı, 34 kural grubu, 758 gıda + 918 kozmetik gömülü kayıt, 41 Dart test dosyası. Durum belgesindeki 790 kayıt 15 Ekim sayımıdır; portfolyo HEAD sayımını kullanır. Görsel marka simgesidir, ekran görüntüsü değildir |
+| Budget Buddy (16 Kasım 2026'da güncellendi) | `992f4bf555bccca21c515530aa1061b4723084c1` | README, architecture, supabase-auth-migration ve vds belgeleri: Vinext / Cloudflare Workers yerine VDS üzerinde Docker + Caddy, tekrarlayan işlemler, kategori kuralları, bildirimler, 2FA, şifreli günlük yedek ve korumalı main dalı. Yukarıdaki 21 Ekim satırının yerini alır |
 
 GitHub kayıtları `gh api` ile salt okunur alındı. Diğer projelerin çalışma ağaçlarına, veritabanlarına, hesaplarına veya yayınlarına yazılmadı.
 

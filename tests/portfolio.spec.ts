@@ -321,12 +321,12 @@ test('reviewed project content retains current features and source revisions in 
     'mitzi-paw-path': [/Neo/, /70/, /IL2CPP/],
     'pin-paper-journal': [/AES-256-GCM/, /IndexedDB/, /yerel|local|lokal/i],
     'be-a-real-developer': [/1[.,]312/, /13/, /QuickJS/, /Docker/],
-    'budget-buddy': [/Supabase Auth/, /Groq/, /hreflang/],
+    'budget-buddy': [/Supabase Auth/, /Groq/, /hreflang/, /Docker/, /Caddy/],
     rogi: [/Chromium/, /Neon/, /Babel/],
   };
   for (const [slug, patterns] of Object.entries(highlights)) {
     const project = projectDetails.find(item => item.slug === slug)!;
-    expect(project.reviewedAt).toBe('2026-10-21');
+    expect(project.reviewedAt).toBe(slug === 'budget-buddy' ? '2026-11-16' : '2026-10-21');
     expect(Object.values(project.sourceRevisions ?? {}).length).toBeGreaterThan(0);
     for (const revision of Object.values(project.sourceRevisions ?? {})) expect(revision).toMatch(/^[a-f0-9]{40}$/);
     expect(project.sources.length).toBeGreaterThanOrEqual(2);

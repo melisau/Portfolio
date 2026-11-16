@@ -209,7 +209,7 @@ function Projects({ copy, language }: { copy: Copy; language: Language }) {
       <SectionHeading index="03" eyebrow={copy.section.projects[0]} title={copy.section.projects[1]} description={copy.sectionDescriptions[1]} />
       <div className="project-list">
         {projects.map((project, index) => (
-          <article className={`project-card ${project.imageFit === "contain" ? "project-card--contain" : ""}`} key={project.title} style={{ "--project-accent": project.accent } as CSSProperties}>
+          <article className={`project-card ${project.imageFit === "contain" ? "project-card--contain" : ""}`} key={project.title} style={{ "--project-accent": project.accent, ...(project.imageBackground ? { "--project-image-bg": project.imageBackground } : {}) } as CSSProperties}>
             <div className="project-card__image"><SafeImage src={project.image} alt={`${project.title} — ${copy.projectImage}`} fallbackLabel={copy.imageUnavailable} loading="lazy" /><span>0{index + 1}</span></div>
             <div className="project-card__content">
               <div className="project-card__meta"><span>{copy.projectCategories[index] ?? project.category}</span><span>{copy.projectYears[index] ?? project.year}</span></div>

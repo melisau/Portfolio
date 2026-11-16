@@ -552,7 +552,10 @@ export const projectDetails = [
       "Supabase Auth",
       "PostgreSQL",
       "Groq",
-      "Vinext / Workers"
+      "Docker",
+      "Caddy",
+      "Resend",
+      "GitHub Actions"
     ],
     "sources": [
       {
@@ -561,11 +564,15 @@ export const projectDetails = [
       },
       {
         "label": "Architecture",
-        "url": "https://github.com/melisau/budget-buddy/blob/7f6543865487b3aa507fe06d14219305ccb8398c/docs/architecture.md"
+        "url": "https://github.com/melisau/budget-buddy/blob/992f4bf555bccca21c515530aa1061b4723084c1/docs/architecture.md"
       },
       {
         "label": "Auth migration",
-        "url": "https://github.com/melisau/budget-buddy/blob/7f6543865487b3aa507fe06d14219305ccb8398c/docs/supabase-auth-migration.md"
+        "url": "https://github.com/melisau/budget-buddy/blob/992f4bf555bccca21c515530aa1061b4723084c1/docs/supabase-auth-migration.md"
+      },
+      {
+        "label": "VDS hosting",
+        "url": "https://github.com/melisau/budget-buddy/blob/992f4bf555bccca21c515530aa1061b4723084c1/docs/vds.md"
       }
     ],
     "links": [
@@ -574,104 +581,134 @@ export const projectDetails = [
         "url": "https://github.com/melisau/budget-buddy"
       }
     ],
-    "reviewedAt": "2026-10-21",
+    "reviewedAt": "2026-11-16",
     "copy": {
       "tr": {
-        "tagline": "Kişisel bütçeni korurken ailenle hedef, alışveriş ve hediye planla.",
+        "tagline": "Kişisel bütçeni, tekrarlayan ödemelerini ve aile planlarını tek yerde yönet; özel harcamaların sende kalsın.",
         "problem": "Kişisel harcamalar ile ortak aile planlarını aynı araçta yönetirken özel işlemleri gereksiz yere paylaşmamak gerekiyor.",
-        "goal": "Gelir/gider takibini kişisel hedefler, harçlık planı ve seçici aile paylaşımıyla birleştirmek; özel işlemleri ortak planlardan ayrı tutmak.",
-        "role": "Full-stack geliştirme",
-        "scope": "Bireysel full-stack proje: finans ekranları, Supabase Auth geçişi, sunucu sahiplik/rol kontrolleri, aile iş birliği, özel fiş depolama ve onaylı AI işlem taslakları.",
+        "goal": "Gelir/gider takibini kişisel hedefler, harçlık planı, tekrarlayan ödemeler ve seçici aile paylaşımıyla birleştirmek; özel işlemleri ortak planlardan ayrı tutmak ve elle yapılan tekrar eden işleri otomatikleştirmek.",
+        "role": "Full-stack geliştirme ve canlı ortam işletimi",
+        "scope": "Bireysel full-stack proje: finans ekranları, Supabase Auth geçişi, sunucu sahiplik/rol kontrolleri, aile iş birliği, özel fiş depolama, onaylı AI işlem taslakları ve tekrarlayan işlemler. Uygulamayı kendi VDS sunucumda Docker ile yayınlıyor; veritabanı migration’larını, e-posta altyapısını, günlük yedeklemeyi ve CI/branch koruma kurallarını yönetiyorum.",
         "features": [
-          "Hesaplar, gelir/gider, transfer, bütçe, rapor ve kişisel tasarruf hedefleri",
+          "Hesaplar, gelir/gider, transfer, bütçe, rapor ve kişisel tasarruf hedefleri; işlemde banka hesabı isteğe bağlı",
+          "Tekrarlayan işlemler ve abonelikler (kira, maaş, fatura, Netflix): işlemler zamanı gelince otomatik oluşur, aynı işlem iki kez yazılmaz",
+          "Kategori kuralları: “açıklamada Migros geçiyorsa Market” gibi kurallarla yeni ve CSV’den gelen işlemler otomatik kategorilenir",
+          "Bildirimler: bütçe ve hedef uyarıları uygulama içinde, isteğe bağlı günlük e-posta özetiyle",
           "Banka hesabı veya geçmiş işlem gerektirmeden hedef oluşturma; özel aylık harçlık ve tasarruf yüzdesi",
           "Aile grubu, davet ve roller; seçilen hedef ilerlemesini özel işlemleri açmadan paylaşma",
-          "Ortak alışveriş listesi ve not; etkinlik istek listelerinde hediye rezervasyonu ve sürpriz modu",
-          "Supabase Auth ile doğrulamalı kayıt, parola kurtarma ve kullanıcı diline göre e-posta şablonları",
+          "Ortak alışveriş listesi ve not; kişisel ya da aileyle paylaşılan istek listelerinde hediye rezervasyonu ve sürpriz modu",
+          "Supabase Auth ile doğrulamalı kayıt, parola kurtarma, Google ile giriş ve iki adımlı doğrulama",
           "Özel fiş görselleri, CSV içe/dışa aktarma, Groq finans asistanı ve onay gerektiren sesli işlem taslakları",
+          "Profil fotoğrafı veya simge avatar; kurulabilir web uygulaması (PWA) ve Android paketi",
           "Ayrı Türkçe/İngilizce giriş adresleri, canonical/hreflang, sitemap ve yerelleştirilmiş paylaşım metaverisi"
         ],
-        "architecture": "Next.js 16 / React 19 / TypeScript → doğrulanmış Supabase Auth oturumuyla server routes → Supabase PostgreSQL ve özel Storage. Finans grafikleri Recharts; arayüz Tailwind ve shadcn/ui kullanır. Dağıtım altyapısı Vinext / Cloudflare Workers içerir; Groq yalnız yetkilendirilmiş, temizlenmiş finans özetlerini alır.",
+        "architecture": "Next.js 16 / React 19 / TypeScript → doğrulanmış Supabase Auth oturumuyla server routes → Supabase PostgreSQL, özel Storage ve RLS. Finans grafikleri Recharts; arayüz Tailwind ve shadcn/ui kullanır. Uygulama bir VDS üzerinde Docker konteyneri olarak, Caddy ters vekil sunucusunun arkasında çalışır. Bildirim e-postaları Resend (SMTP) ile gönderilir; günlük bildirim işi sunucudaki zamanlanmış görevle, gizli anahtarla korunan bir uç noktayı çağırır. Groq yalnız yetkilendirilmiş, temizlenmiş finans özetlerini alır.",
         "decisions": [
           "Clerk yerine Supabase Auth kullanılır; kimlik her korumalı kaynağın yanında auth.getUser() ile doğrulanır, istemci başlıklarına güvenilmez.",
           "Eski finans kayıtları korunur; e-posta eşleşmesi otomatik sahiplik vermez, doğrulanmış açık kimlik bağlantısı gerekir.",
           "Sunucu aile üyeliği, owner/member/viewer rolleri ve sürpriz hediye görünürlüğünü denetler; özel işlemler hedef paylaşımından ayrıdır.",
           "Fişler özel bucket ve kısa süreli imzalı URL kullanır; AI kullanıcı açıkça onaylamadan işlem oluşturamaz.",
-          "TR/EN girişleri ayrı kanonik adreslerdir; indekslenebilir dil içeriği yalnız tarayıcı tercihine bırakılmaz."
+          "TR/EN girişleri ayrı kanonik adreslerdir; indekslenebilir dil içeriği yalnız tarayıcı tercihine bırakılmaz.",
+          "Veritabanı değişiklikleri yalnız ileriye dönük, geriye uyumlu SQL migration’larıdır; uygulama yeni tablo henüz yokken de çalışır, böylece kod migration’dan önce yayına alınabilir.",
+          "Tekrarlayan işlemlerde aynı tarihe ait işlemin iki kez oluşması veritabanındaki benzersiz indeksle engellenir; eş zamanlı istekler bile kopya üretemez.",
+          "Kategori kuralları kullanıcı başına, büyük/küçük harf duyarsız benzersizdir; bağlı kategori silinince kuralları da silinir.",
+          "main dalı korumalıdır: değişiklikler yalnız pull request ile, CI (lint, tip kontrolü, test, build) güncel dal üzerinde geçtiyse birleşir. Birleştirme otomatik yayın yapmaz; canlıya alma ve canlı migration ayrı, onaylı adımlardır."
         ],
         "challenges": [
           "Kimlik sağlayıcı geçişinin kesinti üretmesi: eksik yayın anahtarı tüm sayfalarda 500 yerine güvenli oturum-dışı duruma düşer; migration’lar mevcut veriyi korur.",
           "Aile gizliliği: üye olmayan, bekleyen davetli ve kaldırılan üyeler veri alamaz; hediye sahibi sürpriz rezervasyonları göremez.",
-          "Yetki testleri: kişisel işlem sahipliği, aile rolleri ve başka hesaba ait hesap/kategori kullanımı bellek içi servislerle sınanır; şema geçişleri PostgreSQL üzerinde ayrıca doğrulanmıştır."
+          "Yetki testleri: kişisel işlem sahipliği, aile rolleri ve başka hesaba ait hesap/kategori kullanımı bellek içi servislerle sınanır; şema geçişleri PostgreSQL üzerinde ayrıca doğrulanmıştır.",
+          "Ücretsiz planda yedek olmaması: Supabase’in ücretsiz planı otomatik yedek almıyor. Sunucuda her gün veritabanı dökümü ve fiş dosyalarının aynası alınıyor; bunlar sunucudan çıkmadan şifrelenip Backblaze B2’ye gönderiliyor ve 60 gün saklanıyor. Geri yükleme yerel bir kopya üzerinde test edildi. Henüz oluşmamış depolama alanları yedeği durdurmadan atlanıyor.",
+          "Kırık ana dal ve sıralı yayın: ayrı ayrı başarılı iki değişiklik birleşince ana dalın testleri kırılabildi. Branch koruma kuralları ve “dal güncel olmalı” zorunluluğuyla her değişiklik ana dalın son hali üzerinde test edilmeden birleşemez hale getirildi."
         ],
-        "limits": "Güncel GitHub README ve kod Supabase Auth kullanımında tutarlı. Stripe ödeme temeli ve Google girişi ayrı yapılandırma gerektirir; bu inceleme canlı ödeme veya AI servis kabulü değildir.",
+        "limits": "İçerik GitHub main dalındaki README, mimari, Auth geçişi ve VDS belgelerine dayanır. Canlı ödeme, AI servis kabulü ve yedekten geri yükleme bu portfolyo güncellemesinde yeniden test edilmedi.",
         "caption": "İngilizce giriş sayfası"
       },
       "en": {
-        "tagline": "Keep your budget private while planning goals, shopping and gifts with family.",
+        "tagline": "Manage your personal budget, recurring payments and family plans in one place, while your private spending stays yours.",
         "problem": "Managing personal spending and family plans in one tool should not require sharing private transactions.",
-        "goal": "Combine income and expense tracking with personal goals, allowance planning and selective family sharing, keeping private transactions separate from shared plans.",
-        "role": "Full-stack development",
-        "scope": "Personal full-stack project: finance screens, Supabase Auth migration, server-side ownership and role checks, family collaboration, private receipts and confirmed AI transaction drafts.",
+        "goal": "Combine income and expense tracking with personal goals, allowance planning, recurring payments and selective family sharing; keep private transactions separate from shared plans and automate repetitive manual work.",
+        "role": "Full-stack development and production operations",
+        "scope": "Personal full-stack project: finance screens, Supabase Auth migration, server-side ownership and role checks, family collaboration, private receipt storage, confirmed AI transaction drafts and recurring transactions. I run the app with Docker on my own VDS and manage the database migrations, email infrastructure, daily backups and CI/branch protection rules.",
         "features": [
-          "Accounts, income/expenses, transfers, budgets, reports and personal savings goals",
+          "Accounts, income/expenses, transfers, budgets, reports and personal savings goals; a bank account is optional on a transaction",
+          "Recurring transactions and subscriptions (rent, salary, bills, Netflix): entries are created automatically when due and the same one is never written twice",
+          "Category rules: rules such as “description contains Migros → Groceries” categorize new and CSV-imported transactions automatically",
+          "Notifications: budget and goal alerts in the app, with an optional daily email digest",
           "Start goals without bank accounts or historical transactions; private monthly allowance and savings percentage",
           "Family groups, invitations and roles; share selected goal progress without exposing private transactions",
-          "Shared shopping list and notes, occasion wishlists, gift reservations and surprise mode",
-          "Verified Supabase Auth registration, password recovery and language-aware email templates",
-          "Private receipt images, CSV import/export, Groq assistant and voice drafts requiring confirmation",
+          "Shared shopping list and notes; gift reservations and surprise mode on personal or family-shared wishlists",
+          "Verified Supabase Auth registration, password recovery, Google sign-in and two-step verification",
+          "Private receipt images, CSV import/export, Groq finance assistant and voice transaction drafts requiring confirmation",
+          "Profile photo or icon avatar; installable web app (PWA) and an Android package",
           "Separate Turkish/English landing routes, canonical/hreflang, sitemap and localized sharing metadata"
         ],
-        "architecture": "Next.js 16 / React 19 / TypeScript → server routes with verified Supabase Auth sessions → Supabase PostgreSQL and private Storage. Recharts powers charts, with Tailwind and shadcn/ui for the interface. Deployment infrastructure includes Vinext / Cloudflare Workers; Groq receives only authorized, sanitized financial summaries.",
+        "architecture": "Next.js 16 / React 19 / TypeScript → server routes with verified Supabase Auth sessions → Supabase PostgreSQL, private Storage and RLS. Recharts powers the finance charts, with Tailwind and shadcn/ui for the interface. The app runs as a Docker container on a VDS behind a Caddy reverse proxy. Notification emails are sent with Resend (SMTP); a scheduled job on the server calls a secret-protected endpoint for the daily notification run. Groq receives only authorized, sanitized financial summaries.",
         "decisions": [
           "Supabase Auth replaces Clerk; auth.getUser() verifies identity beside each protected resource and client headers are not trusted.",
           "Legacy financial records are preserved; email matching alone grants no ownership, requiring an explicitly verified identity link.",
           "The server enforces family membership, owner/member/viewer roles and surprise-gift visibility; sharing goals does not expose private transactions.",
           "Receipts use private storage and short-lived signed URLs; AI cannot create transactions without explicit confirmation.",
-          "TR/EN landings have separate canonical URLs, making localized content independent of browser-only preferences."
+          "TR/EN landings have separate canonical URLs, making localized content independent of browser-only preferences.",
+          "Database changes are forward-only, backward-compatible SQL migrations; the app still works before a new table exists, so code can ship ahead of its migration.",
+          "A unique database index prevents a recurring transaction from being created twice for the same date; even concurrent requests cannot produce a duplicate.",
+          "Category rules are unique per user, case-insensitively; deleting the linked category deletes its rules.",
+          "The main branch is protected: changes merge only through pull requests once CI (lint, type check, tests, build) passes on an up-to-date branch. Merging does not deploy; going live and running production migrations are separate, approved steps."
         ],
         "challenges": [
           "Authentication cutover outages: missing publishable configuration falls back safely to signed-out state instead of breaking every page with HTTP 500; migrations preserve existing data.",
           "Family privacy: outsiders, pending invitees and removed members cannot access data, while wishlist owners cannot see surprise reservations.",
-          "Authorization tests cover transaction ownership, family roles and foreign account/category access using in-memory services; migrations are separately checked on PostgreSQL."
+          "Authorization tests cover transaction ownership, family roles and foreign account/category access using in-memory services; migrations are separately checked on PostgreSQL.",
+          "No backups on the free plan: Supabase’s free plan takes no automatic backups. The server takes a daily database dump and mirrors the receipt files; they are encrypted before leaving the server, sent to Backblaze B2 and kept for 60 days. Restore was tested on a local copy. Storage buckets that do not exist yet are skipped without stopping the backup.",
+          "Broken main branch and ordered releases: two changes that each passed on their own could break the main branch’s tests once merged. Branch protection and the “branch must be up to date” requirement mean no change can merge without being tested on the latest main."
         ],
-        "limits": "The current GitHub documentation and code agree on Supabase Auth. Stripe and Google sign-in require separate configuration; this review does not certify live payment or AI flows.",
+        "limits": "Content is based on the README, architecture, Auth migration and VDS documents on GitHub main. Live payments, AI service acceptance and restoring from backup were not retested for this portfolio update.",
         "caption": "English landing page"
       },
       "de": {
-        "tagline": "Das eigene Budget privat halten und Ziele, Einkäufe und Geschenke gemeinsam planen.",
+        "tagline": "Persönliches Budget, wiederkehrende Zahlungen und Familienpläne an einem Ort verwalten – private Ausgaben bleiben privat.",
         "problem": "Private Ausgaben und Familienpläne gemeinsam zu verwalten darf keine unnötige Offenlegung persönlicher Transaktionen erfordern.",
-        "goal": "Einnahmen und Ausgaben mit persönlichen Zielen, Taschengeldplanung und gezieltem Familienteilen verbinden; private Transaktionen bleiben getrennt.",
-        "role": "Full-Stack-Entwicklung",
-        "scope": "Persönliches Full-Stack-Projekt: Finanzoberflächen, Supabase-Auth-Umstellung, serverseitige Rechteprüfung, Familienfunktionen, private Belege und bestätigte KI-Entwürfe.",
+        "goal": "Einnahmen und Ausgaben mit persönlichen Zielen, Taschengeldplanung, wiederkehrenden Zahlungen und gezieltem Familienteilen verbinden; private Transaktionen von gemeinsamen Plänen trennen und wiederkehrende Handarbeit automatisieren.",
+        "role": "Full-Stack-Entwicklung und Betrieb der Produktivumgebung",
+        "scope": "Persönliches Full-Stack-Projekt: Finanzoberflächen, Supabase-Auth-Umstellung, serverseitige Eigentums- und Rollenprüfung, Familienfunktionen, private Belegablage, bestätigte KI-Entwürfe und wiederkehrende Buchungen. Ich betreibe die Anwendung mit Docker auf meinem eigenen VDS und verantworte Datenbankmigrationen, E-Mail-Infrastruktur, tägliche Backups sowie CI- und Branch-Schutzregeln.",
         "features": [
-          "Konten, Einnahmen/Ausgaben, Überweisungen, Budgets, Berichte und Sparziele",
+          "Konten, Einnahmen/Ausgaben, Überweisungen, Budgets, Berichte und Sparziele; ein Bankkonto ist bei Buchungen optional",
+          "Wiederkehrende Buchungen und Abos (Miete, Gehalt, Rechnungen, Netflix): Einträge entstehen automatisch zum Fälligkeitstermin und werden nie doppelt geschrieben",
+          "Kategorieregeln: Regeln wie „Beschreibung enthält Migros → Lebensmittel“ kategorisieren neue und per CSV importierte Buchungen automatisch",
+          "Benachrichtigungen: Budget- und Zielhinweise in der App, optional mit täglicher E-Mail-Zusammenfassung",
           "Ziele ohne Bankkonto oder alte Transaktionen starten; privater monatlicher Taschengeldplan und Sparanteil",
           "Familiengruppen, Einladungen und Rollen; ausgewählten Zielfortschritt ohne private Transaktionen teilen",
-          "Gemeinsame Einkaufsliste und Notizen, Anlass-Wunschlisten, Geschenkreservierungen und Überraschungsmodus",
-          "Supabase Auth mit bestätigter Registrierung, Passwortwiederherstellung und sprachabhängigen E-Mail-Vorlagen",
-          "Private Belege, CSV-Import/-Export, Groq-Assistent und bestätigungspflichtige Sprachentwürfe",
+          "Gemeinsame Einkaufsliste und Notizen; Geschenkreservierungen und Überraschungsmodus auf persönlichen oder mit der Familie geteilten Wunschlisten",
+          "Supabase Auth mit bestätigter Registrierung, Passwortwiederherstellung, Google-Anmeldung und Zwei-Faktor-Anmeldung",
+          "Private Belegbilder, CSV-Import/-Export, Groq-Finanzassistent und bestätigungspflichtige Sprachentwürfe",
+          "Profilfoto oder Symbol-Avatar; installierbare Web-App (PWA) und Android-Paket",
           "Separate türkische/englische Landingpages, Canonical/hreflang, Sitemap und lokalisierte Sharing-Metadaten"
         ],
-        "architecture": "Next.js 16 / React 19 / TypeScript → Serverrouten mit geprüfter Supabase-Auth-Sitzung → Supabase PostgreSQL und privater Storage. Recharts liefert Diagramme, Tailwind und shadcn/ui die Oberfläche. Die Bereitstellung umfasst Vinext / Cloudflare Workers; Groq erhält nur autorisierte, bereinigte Finanzübersichten.",
+        "architecture": "Next.js 16 / React 19 / TypeScript → Serverrouten mit geprüfter Supabase-Auth-Sitzung → Supabase PostgreSQL, privater Storage und RLS. Recharts liefert die Finanzdiagramme, Tailwind und shadcn/ui die Oberfläche. Die Anwendung läuft als Docker-Container auf einem VDS hinter einem Caddy-Reverse-Proxy. Benachrichtigungs-E-Mails werden über Resend (SMTP) versendet; ein geplanter Job auf dem Server ruft für den täglichen Benachrichtigungslauf einen per Geheimschlüssel geschützten Endpunkt auf. Groq erhält nur autorisierte, bereinigte Finanzübersichten.",
         "decisions": [
           "Supabase Auth ersetzt Clerk; auth.getUser() prüft die Identität direkt an geschützten Ressourcen statt Client-Headern zu vertrauen.",
           "Bestehende Finanzdaten bleiben erhalten; gleiche E-Mail-Adressen reichen nicht als Eigentumsnachweis, eine geprüfte Zuordnung ist erforderlich.",
           "Der Server prüft Mitgliedschaft, owner/member/viewer-Rollen und Überraschungsgeschenke; geteilte Ziele veröffentlichen keine privaten Transaktionen.",
           "Belege nutzen privaten Storage und kurzlebige signierte URLs; KI erstellt Transaktionen nur nach ausdrücklicher Bestätigung.",
-          "TR/EN-Landingpages haben eigene kanonische Adressen und sind nicht allein von Browserpräferenzen abhängig."
+          "TR/EN-Landingpages haben eigene kanonische Adressen und sind nicht allein von Browserpräferenzen abhängig.",
+          "Datenbankänderungen sind ausschließlich vorwärtsgerichtete, abwärtskompatible SQL-Migrationen; die Anwendung läuft auch, bevor eine neue Tabelle existiert, sodass Code vor seiner Migration ausgeliefert werden kann.",
+          "Ein eindeutiger Datenbankindex verhindert, dass eine wiederkehrende Buchung für dasselbe Datum doppelt entsteht; selbst gleichzeitige Anfragen erzeugen kein Duplikat.",
+          "Kategorieregeln sind je Nutzer ohne Beachtung der Groß-/Kleinschreibung eindeutig; wird die verknüpfte Kategorie gelöscht, entfallen auch ihre Regeln.",
+          "Der main-Branch ist geschützt: Änderungen gelangen nur per Pull Request hinein, wenn CI (Lint, Typprüfung, Tests, Build) auf einem aktuellen Branch besteht. Ein Merge veröffentlicht nichts; Livegang und Produktivmigration sind getrennte, freigegebene Schritte."
         ],
         "challenges": [
           "Ausfälle bei der Auth-Umstellung: fehlende Konfiguration führt sicher zu abgemeldet statt überall zu HTTP 500; Migrationen erhalten vorhandene Daten.",
           "Familienprivatsphäre: Außenstehende, unbestätigte und entfernte Mitglieder erhalten keinen Zugriff; Wunschlisteneigentümer sehen keine Überraschungsreservierungen.",
-          "Berechtigungstests prüfen Eigentum, Familienrollen und fremde Konten/Kategorien mit In-Memory-Diensten; Migrationen wurden separat mit PostgreSQL geprüft."
+          "Berechtigungstests prüfen Eigentum, Familienrollen und fremde Konten/Kategorien mit In-Memory-Diensten; Migrationen wurden separat mit PostgreSQL geprüft.",
+          "Keine Backups im kostenlosen Tarif: Der kostenlose Supabase-Tarif erstellt keine automatischen Backups. Der Server erzeugt täglich einen Datenbank-Dump und spiegelt die Belegdateien; sie werden vor dem Verlassen des Servers verschlüsselt, an Backblaze B2 übertragen und 60 Tage aufbewahrt. Die Wiederherstellung wurde an einer lokalen Kopie getestet. Noch nicht vorhandene Speicherbereiche werden übersprungen, ohne das Backup zu stoppen.",
+          "Defekter Hauptzweig und geordnete Releases: Zwei einzeln erfolgreiche Änderungen konnten nach dem Zusammenführen die Tests des Hauptzweigs brechen. Branch-Schutz und die Pflicht „Branch muss aktuell sein“ sorgen dafür, dass keine Änderung ohne Test auf dem neuesten Stand des Hauptzweigs gemergt wird."
         ],
-        "limits": "Aktuelle GitHub-Dokumentation und Code verwenden Supabase Auth. Stripe und Google-Anmeldung benötigen gesonderte Konfiguration; Live-Zahlungen und KI-Abläufe wurden hier nicht abgenommen.",
+        "limits": "Der Inhalt stützt sich auf README, Architektur-, Auth-Umstellungs- und VDS-Dokumente im GitHub-main. Live-Zahlungen, KI-Abläufe und die Wiederherstellung aus dem Backup wurden für diese Portfolioaktualisierung nicht erneut geprüft.",
         "caption": "Englische Startseite"
       }
     },
     "sourceRevisions": {
-      "budget-buddy": "7f6543865487b3aa507fe06d14219305ccb8398c"
+      "budget-buddy": "992f4bf555bccca21c515530aa1061b4723084c1"
     }
   },
   {

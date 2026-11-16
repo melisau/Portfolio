@@ -129,7 +129,7 @@ export const projects: Project[] = [
     slug: "budget-buddy",
     category: "Finance Platform",
     summary: "A finance app combining personal budgets and savings goals with selective family sharing, shared shopping and surprise gift wishlists.",
-    technologies: ["Next.js","Supabase Auth","PostgreSQL","Groq","Vinext"],
+    technologies: ["Next.js","Supabase Auth","PostgreSQL","Groq","Docker"],
     year: "Personal Project · Jan 2025 — Present",
     accent: "#0f766e",
     image: "/projects/budget-buddy.png",
@@ -145,6 +145,8 @@ export const projects: Project[] = [
     year: "BusinessUp · Professional Project",
     accent: "#b91c1c",
     image: "https://ataturkarsivi.com/cdn/shop/files/Ataturk.jpg?v=1747747216&width=1200",
+    imageFit: "contain",
+    imageBackground: "#000000",
     liveUrl: "https://ataturkarsivi.com/",
   },
   {
