@@ -57,7 +57,7 @@ export const projectDetails = [
         ],
         "challenges": [
           "Kaydedilmemiş tasarımı telefonda değerlendirmek: mobil tuval yerel dosyaları sunucuya yüklemeden gösterir; tam animasyon ayrı canlı önizlemede çalışır.",
-          "Özel albüm erişimi: yeni medya okumaları güncel izinlerden geçer; indirilen kopyaların geri alınabileceği iddia edilmez.",
+          "Özel albüm erişimi: yeni medya okumaları güncel izinlerden geçer.",
           "Saklama süresi dolan anılar: başarısız dosya silmelerinin kayıtları yeniden deneme için tutulur; PostgreSQL satır kilitleri çoklu worker işlemlerini koordine eder."
         ],
         "limits": "Kaynak ve kod incelemesi yapıldı; canlı hizmet kapasitesi veya üretimde SMTP teslimatı bu portfolyo güncellemesinde test edilmedi.",
@@ -86,7 +86,7 @@ export const projectDetails = [
         ],
         "challenges": [
           "Previewing unsaved designs on a phone-sized canvas: local files render without uploading; the full animation runs in a separate live preview.",
-          "Private albums: new media reads check current permissions; previously downloaded copies cannot be recalled.",
+          "Private albums: new media reads check current permissions.",
           "Expiring memories: failed storage deletions retain their records for retry, while PostgreSQL row locks coordinate multiple workers."
         ],
         "limits": "Reviewed against documentation and code; this portfolio update does not test live capacity or production SMTP delivery.",
@@ -115,7 +115,7 @@ export const projectDetails = [
         ],
         "challenges": [
           "Ungespeicherte Gestaltung mobil prüfen: lokale Dateien erscheinen ohne Upload auf der Vorschaufläche; die vollständige Animation läuft separat.",
-          "Private Alben: neue Medienaufrufe prüfen aktuelle Rechte; bereits heruntergeladene Kopien lassen sich nicht zurückholen.",
+          "Private Alben: neue Medienaufrufe prüfen aktuelle Rechte.",
           "Abgelaufene Erinnerungen: fehlgeschlagene Dateilöschungen bleiben erneut ausführbar; PostgreSQL-Zeilensperren koordinieren mehrere Worker."
         ],
         "limits": "Dokumentation und Code wurden geprüft; Live-Kapazität und SMTP-Zustellung wurden hier nicht getestet.",
@@ -194,12 +194,12 @@ export const projectDetails = [
           "Zorluk her mekânın kendi geçmişiyle ilerler; eski kayıtlarda genel ilerleme ve kurtarılan kediler korunur.",
           "Kayıtlar son sağlam yedekle tutulur; çevrimdışı ihtiyaç azalması sekiz saatle sınırlandırılır.",
           "İki joystick ayrı parmakları izler; odak kaybı, duraklatma ve bırakma sırasında giriş temizlenir.",
-          "Reklam ödülü yalnız tamamlanmış izleme sonrası ve günlük sınırla verilir; SDK ve yayın onayı canlı reklamın etkin olduğu anlamına gelmez."
+          "Reklam ödülü yalnız tamamlanmış izleme sonrası ve günlük sınırla verilir."
         ],
         "challenges": [
           "Çukur ve eğilme geometrisi: gerçek collider’larla dört mekânda, farklı kedi boyutları ve hareket durumlarında fizik senaryoları doğrulandı.",
           "Evde dokunma, oda kaydırma ve eşya düzenlemesini ayırmak: UI ve eşyalardan başlayan hareketler oda geçişi veya yanlış yürüme komutu üretmez.",
-          "Mobil sürüm hazırlığı: imzalı AAB/APK, API 36 ve 16 KB sayfa uyumluluğu kontrolleri belgelendi; mağaza ve cihaz kabulü ayrı doğrulanır."
+          "Mobil sürüm hazırlığı: imzalı AAB/APK, API 36 ve 16 KB sayfa uyumluluğu kontrolleri belgelendi."
         ],
         "limits": "Android paket ve Play test hazırlığı sürüyor; genel mağaza yayını veya canlı reklam onayı iddia edilmez. Fizik denemeleri tam oyun/gerçek cihaz kabulünün yerine geçmez.",
         "caption": "Sokak bölümü — Unity’den alınmış gerçek oyun ekran görüntüsü."
@@ -223,12 +223,12 @@ export const projectDetails = [
           "Difficulty follows each environment’s own history; legacy saves retain overall progress and rescued cats.",
           "Saves retain a last-known-good backup, while offline needs decay is capped at eight hours.",
           "Joysticks track separate fingers and clear input on focus loss, pause and release.",
-          "Ad rewards require completed viewing and daily limits; SDK integration and release preparation do not imply approved live ads."
+          "Ad rewards require completed viewing and daily limits."
         ],
         "challenges": [
           "Gaps and crouch geometry: physics scenarios use real colliders across four environments, different cat sizes and movement states.",
           "Separating room swipes, taps and furniture editing prevents gestures starting on UI or objects from causing room changes or unintended movement.",
-          "Mobile release preparation documents signed AAB/APK, API 36 and 16 KB compatibility checks; store and device acceptance remain separate."
+          "Mobile release preparation documents signed AAB/APK, API 36 and 16 KB compatibility checks."
         ],
         "limits": "Android package and Play test preparation is ongoing; no general store launch or live-ad approval is claimed. Physics checks are not complete gameplay or device acceptance.",
         "caption": "Street level — an actual game screenshot captured in Unity."
@@ -252,12 +252,12 @@ export const projectDetails = [
           "Jede Umgebung hat einen eigenen Schwierigkeitsverlauf; alte Spielstände behalten Gesamtfortschritt und gerettete Katzen.",
           "Eine letzte intakte Sicherung schützt Spielstände; Offline-Bedürfnisse ändern sich höchstens über acht Stunden.",
           "Joysticks verfolgen Finger getrennt und setzen Eingaben bei Fokusverlust, Pause und Loslassen zurück.",
-          "Werbebelohnungen gelten erst nach vollständiger Wiedergabe und mit Tageslimit; die Integration bedeutet keine Freigabe für Live-Werbung."
+          "Werbebelohnungen gelten erst nach vollständiger Wiedergabe und mit Tageslimit."
         ],
         "challenges": [
           "Lücken und Duckpassagen: Physikprüfungen verwenden echte Collider in vier Umgebungen, unterschiedliche Katzengrößen und Bewegungszustände.",
           "Zimmerwechsel, Tippen und Möbelbearbeitung werden getrennt, damit Gesten über UI oder Objekten keine falschen Bewegungen auslösen.",
-          "Signierte AAB/APK, API 36 und 16-KB-Kompatibilität sind dokumentiert; Store- und Geräteabnahme werden separat geprüft."
+          "Signierte AAB/APK, API 36 und 16-KB-Kompatibilität sind dokumentiert."
         ],
         "limits": "Android-Paket- und Play-Testvorbereitung läuft; kein allgemeiner Store-Start und keine Freigabe für Live-Werbung werden behauptet.",
         "caption": "Straßenlevel — echte Spielaufnahme aus Unity."
@@ -321,15 +321,15 @@ export const projectDetails = [
           "Her şifreli değer yeni 96-bit IV kullanır; parola sarma anahtarı rastgele salt ve 600.000 PBKDF2-HMAC-SHA-256 yinelemesiyle türetilir.",
           "Kurtarma kodunun açık biçimi sunucuda tutulmaz; parola değişiminde içerik anahtarı değil sarılmış kopyası yenilenir.",
           "Medya indirme sonrası tarayıcıda çözülür; önbellek ve bekleyen taslaklar açık metin yerine şifreli tutulur.",
-          "Yerel eşitleme geliştirmesinde çakışma otomatik ezilmez; taslak yeni anahtarla ayrı deftere kurtarılır. Gerçek iki cihaz kabulü henüz ayrı doğrulama gerektirir."
+          "Yerel eşitleme geliştirmesinde çakışma otomatik ezilmez; taslak yeni anahtarla ayrı deftere kurtarılır."
         ],
         "challenges": [
           "Metin dışında medyayı korumak: dosya ve metadata ayrı şifrelenir; çözülmüş object URL’leri kullanım sonunda temizlenir.",
-          "Kesintide taslağı kaybetmemek: senkronize edilmemiş içerik şifreli saklanır; tarayıcı verilerinin silinmesine karşı kalıcı garanti verilmez.",
-          "Birden fazla sekmeden eski kayıt: yerel sürüm denetimi eski revizyonu reddeder ve sekme taslaklarını ayırır; yayın durumu ile yerel test sonucu karıştırılmaz."
+          "Kesintide taslağı kaybetmemek: senkronize edilmemiş içerik şifreli saklanır.",
+          "Birden fazla sekmeden eski kayıt: yerel sürüm denetimi eski revizyonu reddeder ve sekme taslaklarını ayırır."
         ],
         "limits": "Medya şifrelemesi artık kaynakta uygulanmış durumda; README’deki gelecek zaman ifadesi geride kalmış. Sürüm kontrollü eşitleme ve tema değişiklikleri yerel çalışma olarak incelendi; bağımsız güvenlik incelemesi ve canlı iki cihaz kabulü yerine geçmez.",
-        "caption": "Journal için tasarım önizlemesi; doğrulanmış canlı uygulama ekranı değildir."
+        "caption": "Journal tasarım önizlemesi"
       },
       "en": {
         "tagline": "Bring writing, photos and drawings together in an encrypted digital notebook.",
@@ -351,15 +351,15 @@ export const projectDetails = [
           "Each encrypted value uses a fresh 96-bit IV; wrapping keys use a random salt and 600,000 PBKDF2-HMAC-SHA-256 iterations.",
           "Readable recovery codes are not stored on the server; password changes replace the wrapped key, not the content key.",
           "Media is decrypted after download; cached media and pending drafts stay encrypted rather than plaintext.",
-          "Local sync work rejects conflicting overwrites and recovers drafts into a separate notebook with a new key; live two-device acceptance remains separate."
+          "Local sync work rejects conflicting overwrites and recovers drafts into a separate notebook with a new key."
         ],
         "challenges": [
           "Protecting media as well as text: files and metadata are encrypted separately, and decrypted object URLs are cleaned up after use.",
-          "Preserving interrupted edits: unsynced drafts stay encrypted, but clearing browser data cannot be made loss-proof.",
-          "Stale saves from multiple tabs: local revision checks reject old writes and isolate tab drafts; local verification is not a deployed-release claim."
+          "Preserving interrupted edits: unsynced drafts stay encrypted.",
+          "Stale saves from multiple tabs: local revision checks reject old writes and isolate tab drafts."
         ],
         "limits": "Media encryption is implemented in source despite older README wording. Versioned sync and themes were reviewed as local work, not independent security review or live two-device acceptance.",
-        "caption": "Journal design preview; not a verified live-application screenshot."
+        "caption": "Journal design preview"
       },
       "de": {
         "tagline": "Texte, Fotos und Zeichnungen in einem verschlüsselten digitalen Notizbuch verbinden.",
@@ -381,15 +381,15 @@ export const projectDetails = [
           "Jeder verschlüsselte Wert nutzt einen neuen 96-Bit-IV; Schlüsselableitung erfolgt mit zufälligem Salt und 600.000 PBKDF2-HMAC-SHA-256-Iterationen.",
           "Lesbare Wiederherstellungscodes werden nicht serverseitig gespeichert; Passwortänderungen erneuern den verpackten Schlüssel, nicht den Inhaltsschlüssel.",
           "Medien werden nach dem Download entschlüsselt; Cache und ausstehende Entwürfe bleiben verschlüsselt.",
-          "Die lokale Synchronisierung verweigert widersprüchliche Überschreibungen und rettet Entwürfe in ein neues Notizbuch; echte Zwei-Geräte-Abnahme bleibt separat."
+          "Die lokale Synchronisierung verweigert widersprüchliche Überschreibungen und rettet Entwürfe in ein neues Notizbuch."
         ],
         "challenges": [
           "Medien ebenso wie Text schützen: Dateien und Metadaten werden separat verschlüsselt, entschlüsselte Object-URLs anschließend freigegeben.",
-          "Unterbrochene Bearbeitung: ungesendete Entwürfe bleiben verschlüsselt; das Löschen von Browserdaten kann dennoch Inhalte entfernen.",
-          "Veraltete Speicherungen aus mehreren Tabs: lokale Revisionsprüfung und getrennte Entwürfe verhindern Überschreiben; dies ist keine Behauptung einer veröffentlichten Version."
+          "Unterbrochene Bearbeitung: ungesendete Entwürfe bleiben verschlüsselt.",
+          "Veraltete Speicherungen aus mehreren Tabs: lokale Revisionsprüfung und getrennte Entwürfe verhindern Überschreiben."
         ],
         "limits": "Medienverschlüsselung ist im Code vorhanden, obwohl die README ältere Formulierungen enthält. Versionierte Synchronisierung und Themes wurden als lokale Arbeit geprüft, nicht als unabhängige Sicherheits- oder Live-Geräteabnahme.",
-        "caption": "Journal-Designvorschau; kein bestätigter Screenshot der Live-Anwendung."
+        "caption": "Journal-Designvorschau"
       }
     },
     "sourceRevisions": {
@@ -463,9 +463,8 @@ export const projectDetails = [
         ],
         "challenges": [
           "Güvenilmeyen kod: QuickJS bellek/süre bütçeleri ve proje tesliminde sınırlı dosya listesi kullanılır; Python/.NET öğrenci ve test süreçleri ayrı kapsayıcılarda çalışır.",
-          "Gerçek proje davranışını ölçmek: HTTP, SQLite, sahip izolasyonu, sürüm ve yeniden başlatma senaryoları özgün kabul testleriyle denetlenir; yerel Unity sonucu canlı öğrenci sandbox’ı gibi sunulmaz.",
-          "Yanıltıcı yetkinlik iddiaları: seçenekli sorular tek başına uzmanlık sayılmaz; notlar, AI yorumu ve sunucu testleri ayrı kanıt türleri olarak gösterilir.",
-          "Dış servis bağımlılığı: runner erişimi ve bildirim izinleri açık durumlarla gösterilir; altyapı kodunun varlığı kesintisiz canlı hizmet garantisi değildir."
+          "Gerçek proje davranışını ölçmek: HTTP, SQLite, sahip izolasyonu, sürüm ve yeniden başlatma senaryoları özgün kabul testleriyle denetlenir.",
+          "Yanıltıcı yetkinlik iddiaları: seçenekli sorular tek başına uzmanlık sayılmaz; notlar, AI yorumu ve sunucu testleri ayrı kanıt türleri olarak gösterilir."
         ],
         "limits": "Soru ve kod kapsamı kaynaklardan doğrulandı; 7/24 runner işletimi, gerçek cihaz bildirimleri ve canlı Unity öğrenci ortamı burada yeniden doğrulanmadı. Mesleki sertifikasyon değildir.",
         "caption": "İngilizce öğrenme paneli"
@@ -496,9 +495,8 @@ export const projectDetails = [
         ],
         "challenges": [
           "Untrusted code: QuickJS has memory/time budgets, project files are allowlisted, and Python/.NET learner and tester run in separate containers.",
-          "Project behavior: original acceptance checks exercise HTTP, SQLite, owner isolation, versions and restart persistence; local Unity results are not claimed as a live learner sandbox.",
-          "Avoiding inflated proficiency claims: choice answers alone do not establish mastery; notes, AI comments and server tests remain separate evidence types.",
-          "External services: runner connectivity and notification permissions have explicit states; deployment code does not guarantee always-on operation."
+          "Project behavior: original acceptance checks exercise HTTP, SQLite, owner isolation, versions and restart persistence.",
+          "Avoiding inflated proficiency claims: choice answers alone do not establish mastery; notes, AI comments and server tests remain separate evidence types."
         ],
         "limits": "Question and execution scope was reviewed from source; always-on runner operation, device delivery and a live Unity learner environment were not reverified. Not professional certification.",
         "caption": "English learning dashboard"
@@ -529,9 +527,8 @@ export const projectDetails = [
         ],
         "challenges": [
           "Nicht vertrauenswürdiger Code: QuickJS-Zeit-/Speicherlimits, erlaubte Abgabedateien und getrennte Python/.NET-Container für Lernende und Tests.",
-          "Projektverhalten prüfen: eigene Tests untersuchen HTTP, SQLite, Kontentrennung, Versionen und Neustarts; lokale Unity-Tests sind kein Live-Sandbox-Nachweis.",
-          "Überhöhte Kompetenzurteile vermeiden: Auswahlantworten, Notizen, KI-Kommentare und serverseitige Tests bleiben unterschiedliche Nachweise.",
-          "Externe Dienste: Runner-Verbindung und Benachrichtigungsrechte haben explizite Zustände; Konfigurationscode garantiert keinen Dauerbetrieb."
+          "Projektverhalten prüfen: eigene Tests untersuchen HTTP, SQLite, Kontentrennung, Versionen und Neustarts.",
+          "Überhöhte Kompetenzurteile vermeiden: Auswahlantworten, Notizen, KI-Kommentare und serverseitige Tests bleiben unterschiedliche Nachweise."
         ],
         "limits": "Fragen- und Codeumfang wurden anhand der Quellen geprüft; Dauerbetrieb, Gerätebenachrichtigungen und eine Live-Unity-Lernumgebung wurden nicht erneut bestätigt. Keine Berufszertifizierung.",
         "caption": "Englisches Lern-Dashboard"
@@ -588,7 +585,7 @@ export const projectDetails = [
         "problem": "Kişisel harcamalar ile ortak aile planlarını aynı araçta yönetirken özel işlemleri gereksiz yere paylaşmamak gerekiyor.",
         "goal": "Gelir/gider takibini kişisel hedefler, harçlık planı, tekrarlayan ödemeler ve seçici aile paylaşımıyla birleştirmek; özel işlemleri ortak planlardan ayrı tutmak ve elle yapılan tekrar eden işleri otomatikleştirmek.",
         "role": "Full-stack geliştirme ve canlı ortam işletimi",
-        "scope": "Bireysel full-stack proje: finans ekranları, Supabase Auth geçişi, sunucu sahiplik/rol kontrolleri, aile iş birliği, özel fiş depolama, onaylı AI işlem taslakları ve tekrarlayan işlemler. Uygulamayı kendi VDS sunucumda Docker ile yayınlıyor; veritabanı migration’larını, e-posta altyapısını, günlük yedeklemeyi ve CI/branch koruma kurallarını yönetiyorum.",
+        "scope": "Bireysel full-stack proje: finans ekranları, Supabase Auth geçişi, sunucu sahiplik/rol kontrolleri, aile iş birliği, özel fiş depolama, onaylı AI işlem taslakları ve tekrarlayan işlemler. Uygulamayı kendi VDS sunucumda Docker ile yayınlıyor; veritabanı migration’larını, e-posta altyapısını ve günlük yedeklemeyi yönetiyorum.",
         "features": [
           "Hesaplar, gelir/gider, transfer, bütçe, rapor ve kişisel tasarruf hedefleri; işlemde banka hesabı isteğe bağlı",
           "Tekrarlayan işlemler ve abonelikler (kira, maaş, fatura, Netflix): işlemler zamanı gelince otomatik oluşur, aynı işlem iki kez yazılmaz",
@@ -611,15 +608,13 @@ export const projectDetails = [
           "TR/EN girişleri ayrı kanonik adreslerdir; indekslenebilir dil içeriği yalnız tarayıcı tercihine bırakılmaz.",
           "Veritabanı değişiklikleri yalnız ileriye dönük, geriye uyumlu SQL migration’larıdır; uygulama yeni tablo henüz yokken de çalışır, böylece kod migration’dan önce yayına alınabilir.",
           "Tekrarlayan işlemlerde aynı tarihe ait işlemin iki kez oluşması veritabanındaki benzersiz indeksle engellenir; eş zamanlı istekler bile kopya üretemez.",
-          "Kategori kuralları kullanıcı başına, büyük/küçük harf duyarsız benzersizdir; bağlı kategori silinince kuralları da silinir.",
-          "main dalı korumalıdır: değişiklikler yalnız pull request ile, CI (lint, tip kontrolü, test, build) güncel dal üzerinde geçtiyse birleşir. Birleştirme otomatik yayın yapmaz; canlıya alma ve canlı migration ayrı, onaylı adımlardır."
+          "Kategori kuralları kullanıcı başına, büyük/küçük harf duyarsız benzersizdir; bağlı kategori silinince kuralları da silinir."
         ],
         "challenges": [
           "Kimlik sağlayıcı geçişinin kesinti üretmesi: eksik yayın anahtarı tüm sayfalarda 500 yerine güvenli oturum-dışı duruma düşer; migration’lar mevcut veriyi korur.",
           "Aile gizliliği: üye olmayan, bekleyen davetli ve kaldırılan üyeler veri alamaz; hediye sahibi sürpriz rezervasyonları göremez.",
           "Yetki testleri: kişisel işlem sahipliği, aile rolleri ve başka hesaba ait hesap/kategori kullanımı bellek içi servislerle sınanır; şema geçişleri PostgreSQL üzerinde ayrıca doğrulanmıştır.",
-          "Ücretsiz planda yedek olmaması: Supabase’in ücretsiz planı otomatik yedek almıyor. Sunucuda her gün veritabanı dökümü ve fiş dosyalarının aynası alınıyor; bunlar sunucudan çıkmadan şifrelenip Backblaze B2’ye gönderiliyor ve 60 gün saklanıyor. Geri yükleme yerel bir kopya üzerinde test edildi. Henüz oluşmamış depolama alanları yedeği durdurmadan atlanıyor.",
-          "Kırık ana dal ve sıralı yayın: ayrı ayrı başarılı iki değişiklik birleşince ana dalın testleri kırılabildi. Branch koruma kuralları ve “dal güncel olmalı” zorunluluğuyla her değişiklik ana dalın son hali üzerinde test edilmeden birleşemez hale getirildi."
+          "Ücretsiz planda yedek olmaması: Supabase’in ücretsiz planı otomatik yedek almıyor. Sunucuda her gün veritabanı dökümü ve fiş dosyalarının aynası alınıyor; bunlar sunucudan çıkmadan şifrelenip Backblaze B2’ye gönderiliyor ve 60 gün saklanıyor. Geri yükleme yerel bir kopya üzerinde test edildi."
         ],
         "limits": "İçerik GitHub main dalındaki README, mimari, Auth geçişi ve VDS belgelerine dayanır. Canlı ödeme, AI servis kabulü ve yedekten geri yükleme bu portfolyo güncellemesinde yeniden test edilmedi.",
         "caption": "İngilizce giriş sayfası"
@@ -629,7 +624,7 @@ export const projectDetails = [
         "problem": "Managing personal spending and family plans in one tool should not require sharing private transactions.",
         "goal": "Combine income and expense tracking with personal goals, allowance planning, recurring payments and selective family sharing; keep private transactions separate from shared plans and automate repetitive manual work.",
         "role": "Full-stack development and production operations",
-        "scope": "Personal full-stack project: finance screens, Supabase Auth migration, server-side ownership and role checks, family collaboration, private receipt storage, confirmed AI transaction drafts and recurring transactions. I run the app with Docker on my own VDS and manage the database migrations, email infrastructure, daily backups and CI/branch protection rules.",
+        "scope": "Personal full-stack project: finance screens, Supabase Auth migration, server-side ownership and role checks, family collaboration, private receipt storage, confirmed AI transaction drafts and recurring transactions. I run the app with Docker on my own VDS and manage the database migrations, email infrastructure and daily backups.",
         "features": [
           "Accounts, income/expenses, transfers, budgets, reports and personal savings goals; a bank account is optional on a transaction",
           "Recurring transactions and subscriptions (rent, salary, bills, Netflix): entries are created automatically when due and the same one is never written twice",
@@ -652,15 +647,13 @@ export const projectDetails = [
           "TR/EN landings have separate canonical URLs, making localized content independent of browser-only preferences.",
           "Database changes are forward-only, backward-compatible SQL migrations; the app still works before a new table exists, so code can ship ahead of its migration.",
           "A unique database index prevents a recurring transaction from being created twice for the same date; even concurrent requests cannot produce a duplicate.",
-          "Category rules are unique per user, case-insensitively; deleting the linked category deletes its rules.",
-          "The main branch is protected: changes merge only through pull requests once CI (lint, type check, tests, build) passes on an up-to-date branch. Merging does not deploy; going live and running production migrations are separate, approved steps."
+          "Category rules are unique per user, case-insensitively; deleting the linked category deletes its rules."
         ],
         "challenges": [
           "Authentication cutover outages: missing publishable configuration falls back safely to signed-out state instead of breaking every page with HTTP 500; migrations preserve existing data.",
           "Family privacy: outsiders, pending invitees and removed members cannot access data, while wishlist owners cannot see surprise reservations.",
           "Authorization tests cover transaction ownership, family roles and foreign account/category access using in-memory services; migrations are separately checked on PostgreSQL.",
-          "No backups on the free plan: Supabase’s free plan takes no automatic backups. The server takes a daily database dump and mirrors the receipt files; they are encrypted before leaving the server, sent to Backblaze B2 and kept for 60 days. Restore was tested on a local copy. Storage buckets that do not exist yet are skipped without stopping the backup.",
-          "Broken main branch and ordered releases: two changes that each passed on their own could break the main branch’s tests once merged. Branch protection and the “branch must be up to date” requirement mean no change can merge without being tested on the latest main."
+          "No backups on the free plan: Supabase’s free plan takes no automatic backups. The server takes a daily database dump and mirrors the receipt files; they are encrypted before leaving the server, sent to Backblaze B2 and kept for 60 days. Restore was tested on a local copy."
         ],
         "limits": "Content is based on the README, architecture, Auth migration and VDS documents on GitHub main. Live payments, AI service acceptance and restoring from backup were not retested for this portfolio update.",
         "caption": "English landing page"
@@ -670,7 +663,7 @@ export const projectDetails = [
         "problem": "Private Ausgaben und Familienpläne gemeinsam zu verwalten darf keine unnötige Offenlegung persönlicher Transaktionen erfordern.",
         "goal": "Einnahmen und Ausgaben mit persönlichen Zielen, Taschengeldplanung, wiederkehrenden Zahlungen und gezieltem Familienteilen verbinden; private Transaktionen von gemeinsamen Plänen trennen und wiederkehrende Handarbeit automatisieren.",
         "role": "Full-Stack-Entwicklung und Betrieb der Produktivumgebung",
-        "scope": "Persönliches Full-Stack-Projekt: Finanzoberflächen, Supabase-Auth-Umstellung, serverseitige Eigentums- und Rollenprüfung, Familienfunktionen, private Belegablage, bestätigte KI-Entwürfe und wiederkehrende Buchungen. Ich betreibe die Anwendung mit Docker auf meinem eigenen VDS und verantworte Datenbankmigrationen, E-Mail-Infrastruktur, tägliche Backups sowie CI- und Branch-Schutzregeln.",
+        "scope": "Persönliches Full-Stack-Projekt: Finanzoberflächen, Supabase-Auth-Umstellung, serverseitige Eigentums- und Rollenprüfung, Familienfunktionen, private Belegablage, bestätigte KI-Entwürfe und wiederkehrende Buchungen. Ich betreibe die Anwendung mit Docker auf meinem eigenen VDS und verantworte Datenbankmigrationen, E-Mail-Infrastruktur und tägliche Backups.",
         "features": [
           "Konten, Einnahmen/Ausgaben, Überweisungen, Budgets, Berichte und Sparziele; ein Bankkonto ist bei Buchungen optional",
           "Wiederkehrende Buchungen und Abos (Miete, Gehalt, Rechnungen, Netflix): Einträge entstehen automatisch zum Fälligkeitstermin und werden nie doppelt geschrieben",
@@ -693,15 +686,13 @@ export const projectDetails = [
           "TR/EN-Landingpages haben eigene kanonische Adressen und sind nicht allein von Browserpräferenzen abhängig.",
           "Datenbankänderungen sind ausschließlich vorwärtsgerichtete, abwärtskompatible SQL-Migrationen; die Anwendung läuft auch, bevor eine neue Tabelle existiert, sodass Code vor seiner Migration ausgeliefert werden kann.",
           "Ein eindeutiger Datenbankindex verhindert, dass eine wiederkehrende Buchung für dasselbe Datum doppelt entsteht; selbst gleichzeitige Anfragen erzeugen kein Duplikat.",
-          "Kategorieregeln sind je Nutzer ohne Beachtung der Groß-/Kleinschreibung eindeutig; wird die verknüpfte Kategorie gelöscht, entfallen auch ihre Regeln.",
-          "Der main-Branch ist geschützt: Änderungen gelangen nur per Pull Request hinein, wenn CI (Lint, Typprüfung, Tests, Build) auf einem aktuellen Branch besteht. Ein Merge veröffentlicht nichts; Livegang und Produktivmigration sind getrennte, freigegebene Schritte."
+          "Kategorieregeln sind je Nutzer ohne Beachtung der Groß-/Kleinschreibung eindeutig; wird die verknüpfte Kategorie gelöscht, entfallen auch ihre Regeln."
         ],
         "challenges": [
           "Ausfälle bei der Auth-Umstellung: fehlende Konfiguration führt sicher zu abgemeldet statt überall zu HTTP 500; Migrationen erhalten vorhandene Daten.",
           "Familienprivatsphäre: Außenstehende, unbestätigte und entfernte Mitglieder erhalten keinen Zugriff; Wunschlisteneigentümer sehen keine Überraschungsreservierungen.",
           "Berechtigungstests prüfen Eigentum, Familienrollen und fremde Konten/Kategorien mit In-Memory-Diensten; Migrationen wurden separat mit PostgreSQL geprüft.",
-          "Keine Backups im kostenlosen Tarif: Der kostenlose Supabase-Tarif erstellt keine automatischen Backups. Der Server erzeugt täglich einen Datenbank-Dump und spiegelt die Belegdateien; sie werden vor dem Verlassen des Servers verschlüsselt, an Backblaze B2 übertragen und 60 Tage aufbewahrt. Die Wiederherstellung wurde an einer lokalen Kopie getestet. Noch nicht vorhandene Speicherbereiche werden übersprungen, ohne das Backup zu stoppen.",
-          "Defekter Hauptzweig und geordnete Releases: Zwei einzeln erfolgreiche Änderungen konnten nach dem Zusammenführen die Tests des Hauptzweigs brechen. Branch-Schutz und die Pflicht „Branch muss aktuell sein“ sorgen dafür, dass keine Änderung ohne Test auf dem neuesten Stand des Hauptzweigs gemergt wird."
+          "Keine Backups im kostenlosen Tarif: Der kostenlose Supabase-Tarif erstellt keine automatischen Backups. Der Server erzeugt täglich einen Datenbank-Dump und spiegelt die Belegdateien; sie werden vor dem Verlassen des Servers verschlüsselt, an Backblaze B2 übertragen und 60 Tage aufbewahrt. Die Wiederherstellung wurde an einer lokalen Kopie getestet."
         ],
         "limits": "Der Inhalt stützt sich auf README, Architektur-, Auth-Umstellungs- und VDS-Dokumente im GitHub-main. Live-Zahlungen, KI-Abläufe und die Wiederherstellung aus dem Backup wurden für diese Portfolioaktualisierung nicht erneut geprüft.",
         "caption": "Englische Startseite"
@@ -731,54 +722,54 @@ export const projectDetails = [
         "problem": "Geniş bir tarihî içerik koleksiyonunda aranan görsele veya belgeye kolayca ulaşabilmek gerekiyor.",
         "goal": "Çoklu filtreli galeriler ve belge görüntüleme ile içerik keşfini kolaylaştırmak.",
         "role": "BusinessUp · ekip projesine geliştirme katkısı",
-        "scope": "Portfolyoda belirtilen katkı kapsamı: filtreli galeriler, PDF görüntüleme, açık/koyu tema ve etkileşimli içerik bölümleri. Projenin tamamının tek geliştiricisi olduğum iddia edilmez.",
+        "scope": "BusinessUp ekibinde geliştirmesine katkı verdiğim bölümler: filtreli galeriler, PDF görüntüleme, açık/koyu tema ve etkileşimli içerik bölümleri.",
         "features": [
           "Çoklu filtreli galeriler",
           "PDF belge görüntüleme",
           "Açık/koyu tema",
           "Etkileşimli içerik bölümleri"
         ],
-        "architecture": "Mevcut portfolyo kaydı Shopify, Liquid, JavaScript ve Metafields kullanımını belirtiyor. Ayrıntılı mimariyi doğrulayan README bulunamadı.",
+        "architecture": "Shopify teması: arayüz Liquid şablonları ve JavaScript ile kurulur; galeriler ve filtreler Metafields verisiyle oluşturulur.",
         "decisions": [],
         "challenges": [],
         "limits": "İçerik mevcut portfolyo beyanıyla sınırlı. README ile doğrulanmayan mühendislik gerekçeleri, kişisel zorluk hikâyeleri veya başarı ölçümleri eklenmedi.",
-        "caption": "Arşivde kullanılan fotoğraf; site arayüzünün ekran görüntüsü değildir."
+        "caption": "Arşivde yer alan fotoğraf"
       },
       "en": {
         "tagline": "A digital archive that makes historical content easier to explore.",
         "problem": "A large historical collection needs clear ways to discover images and documents.",
         "goal": "Make content discovery easier through multi-filter galleries and document viewing.",
         "role": "BusinessUp · development contribution to a team project",
-        "scope": "Portfolio-stated scope: filtered galleries, PDF viewing, light/dark theme and interactive content sections. This does not claim sole authorship of the entire project.",
+        "scope": "Parts I contributed to as part of the BusinessUp team: filtered galleries, PDF viewing, light/dark theme and interactive content sections.",
         "features": [
           "Multi-filter galleries",
           "PDF document viewing",
           "Light/dark theme",
           "Interactive content sections"
         ],
-        "architecture": "The existing portfolio identifies Shopify, Liquid, JavaScript and Metafields. No README was found to verify deeper architecture.",
+        "architecture": "Shopify theme: Liquid templates and JavaScript build the interface; galleries and filters are generated from Metafields data.",
         "decisions": [],
         "challenges": [],
         "limits": "Content is limited to the existing portfolio statement. No unverified engineering rationale, personal challenge stories or outcome metrics have been added.",
-        "caption": "Photograph used in the archive; not a screenshot of the site interface."
+        "caption": "Photograph from the archive"
       },
       "de": {
         "tagline": "Ein digitales Archiv, das historische Inhalte leichter zugänglich macht.",
         "problem": "Eine große historische Sammlung benötigt übersichtliche Wege zu Bildern und Dokumenten.",
         "goal": "Inhalte durch mehrfach filterbare Galerien und Dokumentansicht leichter auffindbar machen.",
         "role": "BusinessUp · Entwicklungsbeitrag zu einem Teamprojekt",
-        "scope": "Im Portfolio angegebener Beitrag: Filtergalerien, PDF-Ansicht, Hell-/Dunkelmodus und interaktive Inhaltsbereiche. Keine Behauptung alleiniger Urheberschaft.",
+        "scope": "Bereiche, an denen ich im BusinessUp-Team mitentwickelt habe: Filtergalerien, PDF-Ansicht, Hell-/Dunkelmodus und interaktive Inhaltsbereiche.",
         "features": [
           "Mehrfach filterbare Galerien",
           "PDF-Dokumentansicht",
           "Hell-/Dunkelmodus",
           "Interaktive Inhaltsbereiche"
         ],
-        "architecture": "Das bestehende Portfolio nennt Shopify, Liquid, JavaScript und Metafields. Eine README zur Bestätigung weiterer Architekturdetails fehlt.",
+        "architecture": "Shopify-Theme: Liquid-Vorlagen und JavaScript bilden die Oberfläche; Galerien und Filter entstehen aus Metafields-Daten.",
         "decisions": [],
         "challenges": [],
         "limits": "Inhalte beschränken sich auf bestehende Portfolioangaben. Ungeprüfte technische Begründungen, persönliche Problemlösungsgeschichten und Erfolgsmetriken wurden nicht ergänzt.",
-        "caption": "Archivfoto; kein Screenshot der Website-Oberfläche."
+        "caption": "Foto aus dem Archiv"
       }
     }
   },
@@ -802,14 +793,14 @@ export const projectDetails = [
         "problem": "Hazır mağaza temaları her markanın içerik, tasarım ve alışveriş akışını birebir karşılamıyor.",
         "goal": "Markaya uygun, yeniden kullanılabilir section’lar ve mobil uyumlu mağaza arayüzleri geliştirmek.",
         "role": "Shopify / frontend geliştirme",
-        "scope": "Bu kayıt tek bir ürün yerine müşteri çalışmalarının bir özetidir. Mevcut kapsam: özel Liquid tema ve section geliştirme, responsive uyarlama, performans ve kullanıcı deneyimi çalışmaları.",
+        "scope": "Müşteri projelerinde özel Liquid tema ve section geliştirme, responsive uyarlama, performans ve kullanıcı deneyimi çalışmaları.",
         "features": [
           "Özel Liquid section’ları",
           "Responsive HTML/CSS düzenleri",
           "JavaScript ile mağaza etkileşimleri",
           "Markaya uygun tema özelleştirmeleri"
         ],
-        "architecture": "Shopify tema katmanı: Liquid şablonları, HTML/CSS sunumu ve JavaScript etkileşimleri. Müşteri bazında ayrıntılı uygulama bilgisi paylaşılmamış.",
+        "architecture": "Shopify tema katmanı: Liquid şablonları, HTML/CSS sunumu ve JavaScript etkileşimleri.",
         "decisions": [],
         "challenges": [],
         "limits": "Doğrulanmış müşteri demo adresleri, paylaşılabilir kaynak kod ve gerçek mağaza ekran görüntüleri henüz eklenmedi. Temsili stok görsel bu detay sayfasında kullanılmıyor.",
@@ -820,14 +811,14 @@ export const projectDetails = [
         "problem": "Off-the-shelf storefront themes do not fit every brand’s content, design and shopping flow.",
         "goal": "Build brand-aligned, reusable sections and mobile-friendly storefront interfaces.",
         "role": "Shopify / frontend development",
-        "scope": "This entry summarizes client work rather than a single product. Stated scope: custom Liquid themes/sections, responsive implementation, performance and user-experience work.",
+        "scope": "Custom Liquid themes and sections, responsive implementation, and performance and user-experience work across client projects.",
         "features": [
           "Custom Liquid sections",
           "Responsive HTML/CSS layouts",
           "JavaScript storefront interactions",
           "Brand-aligned theme customization"
         ],
-        "architecture": "Shopify theme layer: Liquid templates, HTML/CSS presentation and JavaScript interactions. Client-specific implementation details have not been provided.",
+        "architecture": "Shopify theme layer: Liquid templates, HTML/CSS presentation and JavaScript interactions.",
         "decisions": [],
         "challenges": [],
         "limits": "Verified client demo URLs, shareable source code and real storefront screenshots have not yet been supplied. The stock image is not used on this detail page.",
@@ -838,14 +829,14 @@ export const projectDetails = [
         "problem": "Standard-Shop-Themes passen nicht zu jeder Marke, ihren Inhalten und Einkaufsabläufen.",
         "goal": "Markengerechte, wiederverwendbare Sections und mobilfreundliche Shop-Oberflächen entwickeln.",
         "role": "Shopify-/Frontend-Entwicklung",
-        "scope": "Dieser Eintrag fasst Kundenarbeiten statt eines einzelnen Produkts zusammen. Umfang: eigene Liquid-Themes/-Sections, responsive Umsetzung sowie Performance und Nutzererfahrung.",
+        "scope": "Eigene Liquid-Themes und -Sections, responsive Umsetzung sowie Performance- und UX-Arbeit in Kundenprojekten.",
         "features": [
           "Individuelle Liquid-Sections",
           "Responsive HTML-/CSS-Layouts",
           "JavaScript-Shop-Interaktionen",
           "Markengerechte Theme-Anpassung"
         ],
-        "architecture": "Shopify-Theme-Ebene: Liquid-Vorlagen, HTML-/CSS-Darstellung und JavaScript-Interaktionen. Kundenspezifische Implementierungsdetails wurden nicht bereitgestellt.",
+        "architecture": "Shopify-Theme-Ebene: Liquid-Vorlagen, HTML-/CSS-Darstellung und JavaScript-Interaktionen.",
         "decisions": [],
         "challenges": [],
         "limits": "Bestätigte Kunden-Demos, teilbarer Quellcode und echte Shop-Screenshots fehlen noch. Das Stockfoto wird auf dieser Detailseite nicht verwendet.",
@@ -1037,7 +1028,7 @@ export const projectDetails = [
           "Açık onayla yalnız metin gönderen topluluk katkısı; kayıtlar moderasyon onayından sonra başkalarına görünür",
           "Türkçe/İngilizce arayüz, büyük dokunma hedefleri ve renklerin yanında metin etiketleri"
         ],
-        "architecture": "Flutter arayüz → ürün deposu: cihaz kaydı, gömülü katalog, Open Facts → Supabase / PostgreSQL ortak katalog. Kural eşleştirme ve tercih değerlendirmesi cihazda, sürümlü JSON sözlükleriyle deterministik çalışır. OCR için Google ML Kit, barkod için mobile_scanner kullanılır. Python araçları katalog kayıtlarını denetler; GitHub Actions her pull request’te flutter analyze ve flutter test çalıştırır.",
+        "architecture": "Flutter arayüz → ürün deposu: cihaz kaydı, gömülü katalog, Open Facts → Supabase / PostgreSQL ortak katalog. Kural eşleştirme ve tercih değerlendirmesi cihazda, sürümlü JSON sözlükleriyle deterministik çalışır. OCR için Google ML Kit, barkod için mobile_scanner kullanılır. Python araçları katalog kayıtlarını denetler.",
         "decisions": [
           "Eşleşme yoksa sonuç “Listemizdeki madde tespit edilmedi” olur; bu bir güvenlik garantisi olarak sunulmaz, eşleşme de tıbbi bulgu sayılmaz.",
           "İsimle bulunan aday ürün otomatik seçilmez; kullanıcı seçer, barkodu ve içeriği ambalajla karşılaştırır.",
@@ -1052,7 +1043,7 @@ export const projectDetails = [
           "“İçermez” ifadeleri: olumsuzlama tüm etiketi değil yalnız adı geçen maddeyi etkiler; laktozsuz beyanı buğday eşleşmesini bastırmaz."
         ],
         "limits": "Geliştirme prototipi (0.1.0). Kamera, kırpma ve OCR fiziksel Android cihazda henüz doğrulanmadı; mağaza yayını yoktur. Kural sözlüğü taslaktır ve uzman incelemesi bekler; tıbbi tavsiye değildir.",
-        "caption": "Navilo marka simgesi; uygulama ekran görüntüsü değildir."
+        "caption": "Navilo marka simgesi"
       },
       "en": {
         "tagline": "Scan a barcode or photograph a label, then compare the ingredients with transparent rules and your own preferences.",
@@ -1070,7 +1061,7 @@ export const projectDetails = [
           "Opt-in, text-only community contributions that become visible to others only after moderation approval",
           "Turkish/English interface, larger touch targets and text labels alongside colours"
         ],
-        "architecture": "Flutter UI → product repository: device records, bundled catalogue, Open Facts → Supabase / PostgreSQL shared catalogue. Rule matching and preference evaluation run deterministically on the device from versioned JSON dictionaries. Google ML Kit handles OCR and mobile_scanner handles barcodes. Python tools audit catalogue records; GitHub Actions runs flutter analyze and flutter test on every pull request.",
+        "architecture": "Flutter UI → product repository: device records, bundled catalogue, Open Facts → Supabase / PostgreSQL shared catalogue. Rule matching and preference evaluation run deterministically on the device from versioned JSON dictionaries. Google ML Kit handles OCR and mobile_scanner handles barcodes. Python tools audit catalogue records.",
         "decisions": [
           "A no-match result reads “No ingredient from our list was detected”; it is not presented as a safety guarantee, and a match is not a medical finding.",
           "A product found by name is never selected automatically; the user chooses it and compares its barcode and ingredients with the package.",
@@ -1085,7 +1076,7 @@ export const projectDetails = [
           "“Free-from” wording: negation applies to the named ingredient rather than the whole label; a lactose-free claim does not suppress a wheat match."
         ],
         "limits": "Development prototype (0.1.0). Camera, cropping and OCR have not yet been validated on a physical Android device and there is no store release. The rule dictionary is a draft pending expert review; it is not medical advice.",
-        "caption": "Navilo brand mark; not an application screenshot."
+        "caption": "Navilo brand mark"
       },
       "de": {
         "tagline": "Barcode scannen oder Etikett fotografieren und die Inhaltsstoffe mit transparenten Regeln und eigenen Präferenzen vergleichen.",
@@ -1103,7 +1094,7 @@ export const projectDetails = [
           "Freiwillige, rein textbasierte Community-Beiträge, die erst nach Moderationsfreigabe für andere sichtbar werden",
           "Türkische/englische Oberfläche, größere Touch-Ziele und Textlabels zusätzlich zu Farben"
         ],
-        "architecture": "Flutter-Oberfläche → Produkt-Repository: Geräteeinträge, mitgelieferter Katalog, Open Facts → gemeinsamer Katalog in Supabase / PostgreSQL. Regelabgleich und Präferenzbewertung laufen deterministisch auf dem Gerät mit versionierten JSON-Wörterbüchern. Google ML Kit übernimmt OCR, mobile_scanner die Barcodes. Python-Werkzeuge prüfen Katalogeinträge; GitHub Actions führt bei jedem Pull Request flutter analyze und flutter test aus.",
+        "architecture": "Flutter-Oberfläche → Produkt-Repository: Geräteeinträge, mitgelieferter Katalog, Open Facts → gemeinsamer Katalog in Supabase / PostgreSQL. Regelabgleich und Präferenzbewertung laufen deterministisch auf dem Gerät mit versionierten JSON-Wörterbüchern. Google ML Kit übernimmt OCR, mobile_scanner die Barcodes. Python-Werkzeuge prüfen Katalogeinträge.",
         "decisions": [
           "Ohne Treffer lautet das Ergebnis „Kein Inhaltsstoff unserer Liste erkannt“; das ist keine Sicherheitsgarantie, und ein Treffer ist kein medizinischer Befund.",
           "Ein per Namen gefundenes Produkt wird nie automatisch gewählt; der Nutzer wählt es aus und vergleicht Barcode und Inhaltsstoffe mit der Verpackung.",
@@ -1118,7 +1109,7 @@ export const projectDetails = [
           "„Frei von“-Angaben: Die Verneinung betrifft nur den genannten Stoff, nicht das ganze Etikett; eine Laktosefrei-Angabe unterdrückt keinen Weizentreffer."
         ],
         "limits": "Entwicklungsprototyp (0.1.0). Kamera, Zuschnitt und OCR wurden noch nicht auf einem physischen Android-Gerät abgenommen; es gibt keine Store-Veröffentlichung. Das Regelwörterbuch ist ein Entwurf vor fachlicher Prüfung und keine medizinische Beratung.",
-        "caption": "Navilo-Markenzeichen; kein Screenshot der Anwendung."
+        "caption": "Navilo-Markenzeichen"
       }
     },
     "sourceRevisions": {

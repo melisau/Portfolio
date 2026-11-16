@@ -199,7 +199,7 @@ test('mobile menu traps focus, closes on Escape and focuses the destination', as
 test('reduced motion shows a full static phrase without a cursor', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/en/');
-  await expect(page.locator('.hero__eyebrow span')).toHaveText('JUNIOR FULL-STACK DEVELOPER');
+  await expect(page.locator('.hero__eyebrow span')).toHaveText('FULL-STACK DEVELOPER');
   await expect(page.locator('.hero__eyebrow')).not.toHaveAttribute('aria-label');
   await expect(page.locator('.hero__eyebrow i')).toHaveCount(0);
   const before = await page.locator('.hero__eyebrow').textContent();
